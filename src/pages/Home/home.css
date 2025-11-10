@@ -1,0 +1,60 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(135deg, #0d0d0d 0%, #1a0000 40%, #400000 100%);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+h1 {
+    color: white;
+    font-size: 50px;
+    margin-top: 150px;
+    text-align: center;
+    font-family: "Montserrat", sans-serif;
+}
+
+p {
+    margin-top: 10px;
+    color: white;
+    text-align: center;
+    font-family: "Montserrat", sans-serif;
+}
+
+.button-group {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+    align-items: center;
+    justify-content: center;
+
+}
+
+h2 {
+    color: white;
+}
+
+hr {
+    margin-top: 10px;
+    color: white;
+    width: 90%; /* ou 100% */
+    margin-left: 20px;
+}
+
+.home-content,
+.home-categories {
+  max-width: 1200px; /* Ou o tamanho que preferir */
+  margin: 0 auto; /* Centraliza */
+  padding: 20px; /* Dá um respiro nas laterais */
+}
+
+.home-slider-section {
+  /* Por exemplo, você pode querer que ela não tenha 
+     padding lateral para o slider "colar" nas bordas */
+  width: 100%;
+}

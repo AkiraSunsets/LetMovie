@@ -1,0 +1,174 @@
+.login-page {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #151515;
+      /*
+  background-image: url('URL.jpg');
+  background-size: cover;
+  background-position: center;
+  */
+}
+
+.login-container {
+    width: 100%;
+    width: 1000px;
+    background-color: rgba(21, 21, 21, 0.85); 
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px); /*efeito de desfoque*/
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+}
+
+.login-logo-container {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+}
+
+.logo-let {
+    color: #ffffff;
+    font-family: "Montserrat", sans-serif;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.logo-movie {
+    color: #c80710;
+    font-family: "Montserrat", sans-serif;
+    font-size: 35px;
+    font-weight: bold;
+}
+.login-content { 
+    display: grid;
+    grid-template-columns: 1fr 1fr; /*coloca o contéudo dentro de 2 colunas */
+    align-items: center;
+    gap: 40px;
+    margin-top: 50px;
+}
+
+.login-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-image img {
+    width: 100%;
+    height: auto;
+}
+
+.login-form-content {
+    color: #ffffff;
+}
+
+.login-content h2 {
+    font-size: 40px;
+    font-family: "Montserrat", sans-serif;
+    margin-bottom: 30px;
+    text-align: left;
+    font-weight: bold;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.login-form label {
+    font-size: 16px;
+    font-family: "Montserrat", sans-serif;
+    text-align: left;
+    font-weight: 600;
+    margin-bottom: -10px;
+}
+
+.login-form input {
+    background-color: #2b2b2b;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    padding: 15px;
+    color: #ffffff;
+    font-size: 16px;
+    font-family: "Montserrat", sans-serif;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.login-form input:focus {
+    box-shadow: 0 0 10px rgba(200, 7, 16, 0.5);
+}
+
+.login-button {
+    background-color: #c80710;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 15px;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: "Montserrat", sans-serif;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+}
+
+.login-button:hover {
+    background-color: #e50914;
+}
+
+.login-links {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    font-family: "Montserrat", sans-serif;
+}
+
+/* "Esqueceu a senha?" */
+.forgot-password {
+    color: #aaaaaa;
+    text-decoration: none;
+    text-align: end;
+    font-size: 16px;
+    transition: color 0.3s, text-decoration 0.3s;
+}
+
+.forgot-password:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+/* Link de cadastro com spans */
+.sign-up {
+    text-decoration: none;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.signup-white {
+    color: #aaaaaa;
+    font-weight: 500;
+}
+
+.signup-underline {
+    color: #c80710;
+    font-weight: bold;
+    text-decoration: underline;
+    transition: color 0.3s, text-decoration 0.3s;
+}
+
+.signup-underline:hover {
+    color: #e50914;
+    text-decoration: none;
+}
