@@ -1,0 +1,133 @@
+:root {
+    --primary-color: #c80710;
+    --bg-color: #151515;
+    --text-color: #ffffff;
+    --search-bg: #2b2b2b;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--bg-color);
+    padding: 0 30px;
+    height: 60px;
+}
+
+.logo-link {
+    text-decoration: none;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+    margin-right: 30px;
+}
+
+.logo-let {
+    color: var(--text-color);
+    font-family: "Montserrat", sans-serif;
+}
+
+.logo-movie{
+    color: var(--primary-color);
+    font-family: "Montserrat", sans-serif;
+}
+
+.nav-main {
+    flex-grow: 1;
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    gap: 30px;
+}
+
+.nav-item a {
+display: inline-block; 
+color: white;
+text-decoration: none;
+font-size: 16px;
+font-family: "Montserrat", sans-serif;
+padding: 20px 0;
+border-bottom: 3px solid transparent;
+transition: border-color 0.3s, color 0.3s;
+}
+
+/* 4. MUDADO: Em vez de 'underline', mudamos a cor da borda transparente */
+.nav-item a:hover {
+border-bottom-color: var(--primary-color);
+}
+
+/* 5. ADICIONADO: Esta é a regra para o link ativo! */
+.nav-item a.active-link {
+    border-bottom-color: var(--primary-color);
+    /* Opcional: muda a cor do texto também para dar mais ênfase */
+    color: var(--primary-color); 
+}
+
+.header-right-section {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+    background-color: var(--search-bg);
+    border-radius: 10px;
+    padding: 5px 15px;
+    width: 300px;
+}
+
+.search-button {
+    background: none;
+    border: none;
+    color: #aaa;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 0;
+}
+
+.search-input {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    width: 100%;    
+    font-size: 16px;
+    outline: none;
+}
+
+.search-input::placeholder {
+    color: #999;
+}
+
+.section-icons {
+    display: flex;
+    gap: 30px;
+}
+
+.icon-button {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 20px;
+    cursor: pointer;
+    padding: 0;
+    opacity: 0.9;
+    transition: color 0.3s, transform 0.2s ease;
+}
+
+.icon-button i {
+    color: #ffffff;
+}
+
+.icon-button:hover i {
+    color: var(--primary-color);
+    transform: scale(1.1);
+}
+

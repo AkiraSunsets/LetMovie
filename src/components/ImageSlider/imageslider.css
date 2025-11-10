@@ -1,0 +1,102 @@
+/* 1. O Contêiner Principal */
+.slider-container {
+  width: 90%;
+  max-width: 1200px; /* Ajuste a largura máxima conforme o design do seu site */
+  margin: 20px auto; /* Centraliza e dá um espaço */
+  position: relative; /* Essencial para posicionar os pontinhos */
+  overflow: hidden; /* O truque! Esconde os slides que estão fora */
+  border-radius: 15px; /* Para as bordas arredondadas como no exemplo */
+}
+
+/* 2. O "Trilho" que se move (você chamou de slider-carrossel) */
+.slider-carrossel {
+  display: flex; /* Coloca os slides um ao lado do outro */
+  transition: transform 0.5s ease-in-out; /* A animação de "deslizar" */
+}
+
+/* 3. Cada Slide Individual */
+.slide {
+  flex: 0 0 100%; /* Cada slide ocupa 100% da largura do contêiner */
+  width: 100%;
+  position: relative; /* Essencial para posicionar o conteúdo */
+  /* Define uma proporção (opcional, mas bom para responsividade) */
+  aspect-ratio: 16 / 7;
+  box-sizing: border-box;
+}
+
+.slide-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Garante que a imagem cubra todo o espaço sem distorcer */
+  display: block;
+}
+
+/* 4. O Conteúdo (Texto e Botão) */
+.slide-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 40px; /* Espaçamento interno */
+  color: white;
+  z-index: 2;
+  box-sizing: border-box; /* Garante que o padding não "quebre" o layout */
+
+  /* O gradiente escuro na parte de baixo, como no exemplo */
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.9) 10%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+.slide-content h2 {
+  font-size: 2.5rem;
+  margin: 0 0 10px 0;
+}
+
+.slide-content p {
+  font-size: 1rem;
+  max-width: 60%; /* Limita a largura da descrição */
+  margin-bottom: 20px;
+}
+
+.slide-button {
+  background-color: #e50914; /* Cor vermelha (estilo Netflix/Star+) */
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.slide-button:hover {
+  background-color: #f40612;
+}
+
+/* 5. Os Pontinhos de Navegação */
+.pagination-dots {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 3;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5); /* Cor do pontinho inativo */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dot.active {
+  background-color: white; /* Cor do pontinho ativo */
+}

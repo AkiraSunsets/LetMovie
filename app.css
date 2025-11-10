@@ -1,0 +1,12 @@
+/* index.css ou App.css */
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0d0d0d 0%, #1a0000 40%, #400000 100%);
+  background-attachment: fixed; /* mantém o gradiente fixo no scroll */
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  font-family: "Poppins", sans-serif;
+}
