@@ -663,6 +663,157 @@ const AdicionarFilmes = () => {
 
 export default AdicionarFilmes;
 
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import './addfilmes.css';
+import 'bootstrap-icons/font/bootstrap-icons.css';
+
+const AdicionarFilmes = ({
+  initialData = {},      // dados iniciais do filme (para edição)
+  onSubmit,              // função para salvar
+  onCancel,              // função ao clicar em cancelar
+  titleText = "Adicionar Filme", // título da página
+}) => {
+  // Estados controlados (com dados iniciais)
+  const [title, setTitle] = useState(initialData.title || '');
+  const [genre, setGenre] = useState(initialData.genre || '');
+  const [releaseYear, setReleaseYear] = useState(initialData.releaseYear || '');
+  const [posterUrl, setPosterUrl] = useState(initialData.posterUrl || '');
+  const [actors, setActors] = useState(initialData.actors || '');
+  const [synopsis, setSynopsis] = useState(initialData.synopsis || '');
+
+  const navigate = useNavigate();
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const movieData = { title, genre, releaseYear, posterUrl, actors, synopsis };
+
+    if (onSubmit) {
+      onSubmit(movieData); // chama a função passada por props
+    } else {
+      console.log('Filme salvo:', movieData);
+      navigate('/filmes');
+    }
+  };
+
+  const handleCancel = () => {
+    if (onCancel) {
+      onCancel();
+    } else {
+      navigate(-1);
+    }
+  };
+
+  return (
+    <div className="add-movie-container">
+      {/* --- CABEÇALHO --- */}
+      <div className="add-movie-header">
+        <i className="bi bi-plus-circle-fill"></i>
+        <h1>{titleText}</h1>
+      </div>
+
+      {/* --- FORMULÁRIO --- */}
+      <form className="add-movie-form" onSubmit={handleSubmit}>
+        
+        <div className="form-group full-width">
+          <label htmlFor="title">Título:</label>
+          <input
+            type="text"
+            id="title"
+            placeholder="Digite o nome do filme"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            required
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="genre">Gênero:</label>
+          <input
+            type="text"
+            id="genre"
+            placeholder="Digite o gênero do filme"
+            value={genre}
+            onChange={(e) => setGenre(e.target.value)}
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="releaseYear">Ano de Lançamento:</label>
+          <input
+            type="text"
+            id="releaseYear"
+            placeholder="Digite o ano de lançamento"
+            value={releaseYear}
+            onChange={(e) => setReleaseYear(e.target.value)}
+          />
+        </div>
+
+        <div className="form-group full-width">
+          <label htmlFor="posterUrl">URL do Pôster:</label>
+          <input
+            type="text"
+            id="posterUrl"
+            placeholder="Digite a URL do pôster"
+            value={posterUrl}
+            onChange={(e) => setPosterUrl(e.target.value)}
+            required
+          />
+        </div>
+
+        <div className="form-group full-width">
+          <label htmlFor="actors">Atores:</label>
+          <input
+            type="text"
+            id="actors"
+            placeholder="Digite os nomes dos atores (separados por vírgula)"
+            value={actors}
+            onChange={(e) => setActors(e.target.value)}
+          />
+        </div>
+
+        <div className="form-group full-width">
+          <label htmlFor="synopsis">Sinopse:</label>
+          <textarea
+            id="synopsis"
+            placeholder="Digite a sinopse do filme"
+            value={synopsis}
+            onChange={(e) => setSynopsis(e.target.value)}
+            rows="5"
+          />
+        </div>
+
+        {/* --- BOTÕES DE AÇÃO --- */}
+        <div className="form-actions">
+          <button type="button" className="btn btn-secondary" onClick={handleCancel}>
+            Cancelar
+          </button>
+          <button type="submit" className="btn btn-primary">
+            Salvar
+          </button>
+        </div>
+      </form>
+    </div>
+  );
+};
+
+export default AdicionarFilmes;
+
+
+<AdicionarFilmes 
+  initialData={{
+    title: "Inception",
+    genre: "Ficção Científica",
+    releaseYear: "2010",
+    posterUrl: "https://...",
+    actors: "Leonardo DiCaprio, Joseph Gordon-Levitt",
+    synopsis: "Um ladrão invade sonhos para roubar segredos corporativos."
+  }}
+  titleText="Editar Filme"
+  onSubmit={(dados) => console.log("Filme atualizado:", dados)}
+  onCancel={() => console.log("Edição cancelada")}
+/>
+
 
 addfilme.css
 
@@ -1744,3 +1895,4 @@ export default UserProfile;
 
 
 ------------------------
+
