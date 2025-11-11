@@ -1,0 +1,128 @@
+.add-movie-container {
+    max-width: 880px;
+    margin: 60px auto;
+    padding: 40px;
+    background-color: #151515;
+    border-radius: 15px;
+    font-family: "Montserrat", sans-serif;
+    color: #ffffff;
+}
+
+.add-movie-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #2b2b2b;
+}
+
+.add-movie-header h2 {
+    margin: 0;
+    font-size: 40px;
+}
+
+.add-movie-header .bi-plus-circle-fill {
+    font-size: 40px;
+    color: #c80710;
+}
+
+.add-movie-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group.form-full {
+    grid-column: 1 / -1;
+}
+
+
+.form-group label {
+    font-size: 16px;
+    font-weight: 600;
+    color: #eeeeee;
+}
+
+.form-group input {
+    background-color: #2b2b2b;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    padding: 15px;
+    color: #ffffff;
+    font-size: 16px;
+    font-family: "Montserrat", sans-serif;
+    outline: none;
+}
+
+.form-group textarea {
+    background-color: #2b2b2b;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    padding: 15px;
+    color: #ffffff;
+    font-size: 16px;
+    font-family: "Montserrat", sans-serif;
+    outline: none;
+    resize: vertical;
+    min-height: 120px;
+}
+
+.form-group textarea:focus {
+    box-shadow: 0 0 10px rgba(200, 7, 16, 0.5);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #777777;
+}
+
+.form-group input:focus {
+    box-shadow: 0 0 10px rgba(200, 7, 16, 0.5);
+}
+
+.form-actions {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.button {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    font-family: "Montserrat", sans-serif;
+    transition: all 0.3s ease;
+}
+
+.button.button-primary {
+    background-color: #c80710;
+    color: #ffffff;
+}
+
+.button.button-primary:hover {
+    background-color: #e50914;
+    transform: scale(1.02);
+}
+
+.button.button-secondary {
+    background-color: #2b2b2b;
+    color: #cccccc;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.button.button-secondary:hover {
+    background-color: #3a3a3a;
+    color: white;
+}
