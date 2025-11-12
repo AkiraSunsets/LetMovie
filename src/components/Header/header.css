@@ -131,3 +131,10 @@ border-bottom-color: var(--primary-color);
     transform: scale(1.1);
 }
 
+.header.auth-header {
+    justify-content: left; /* Centraliza o logo */
+}
+
+.header.auth-header .logo {
+     margin-right: 0; /* Remove a margem extra do logo */
+}

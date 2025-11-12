@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import MovieForm from '../components/MovieForm/MovieForm'; 
+import MovieForm from "../../components/MovieForm/movieform";
 
 const AdicionarFilmePage = () => {
   const navigate = useNavigate();

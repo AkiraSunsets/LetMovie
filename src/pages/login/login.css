@@ -1,174 +1,150 @@
+
+/* --- Layout Principal --- */
 .login-page {
-    min-height: 100vh;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    box-sizing: border-box;
-    background-color: #151515;
-      /*
-  background-image: url('URL.jpg');
-  background-size: cover;
-  background-position: center;
-  */
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #111; 
+  font-family: 'Inter', sans-serif;
+  padding: 2rem 0; 
+  box-sizing: border-box;
 }
 
 .login-container {
-    width: 100%;
-    width: 1000px;
-    background-color: rgba(21, 21, 21, 0.85); 
-    border-radius: 15px;
-    padding: 40px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(10px); /*efeito de desfoque*/
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    position: relative;
+  width: 900px;
+  max-width: 90%;
+  height: auto; 
+  min-height: 550px; 
+  background-color: rgba(20, 20, 20, 0.9);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  box-sizing: border-box;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .login-logo-container {
-    position: absolute;
-    top: 40px;
-    left: 40px;
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  text-decoration: none;
 }
 
-.logo-let {
-    color: #ffffff;
-    font-family: "Montserrat", sans-serif;
-    font-size: 35px;
-    font-weight: bold;
+.logo-let { color: #E50914; }
+.logo-movie { color: #FFFFFF; }
+
+.login-content {
+  display: flex;
+  width: 100%;
+  flex-grow: 1; 
 }
 
-.logo-movie {
-    color: #c80710;
-    font-family: "Montserrat", sans-serif;
-    font-size: 35px;
-    font-weight: bold;
-}
-.login-content { 
-    display: grid;
-    grid-template-columns: 1fr 1fr; /*coloca o contéudo dentro de 2 colunas */
-    align-items: center;
-    gap: 40px;
-    margin-top: 50px;
-}
-
+/* --- Lado da Imagem --- */
 .login-image {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  flex-basis: 45%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .login-image img {
-    width: 100%;
-    height: auto;
+  width: 80%;
+  max-width: 300px;
 }
 
+/* --- Lado do Formulário --- */
 .login-form-content {
-    color: #ffffff;
+  flex-basis: 55%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 2rem;
+  color: #fff;
 }
 
-.login-content h2 {
-    font-size: 40px;
-    font-family: "Montserrat", sans-serif;
-    margin-bottom: 30px;
-    text-align: left;
-    font-weight: bold;
+.login-form-content h2 {
+  font-size: 2.2rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: #fff;
 }
 
-.login-form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+
+/* Subtítulo para a página de cadastro */
+.auth-subtitle {
+  font-size: 1rem;
+  color: #aaa;
+  margin-top: -1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.login-form { 
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 .login-form label {
-    font-size: 16px;
-    font-family: "Montserrat", sans-serif;
-    text-align: left;
-    font-weight: 600;
-    margin-bottom: -10px;
+  font-size: 0.9rem;
+  color: #aaa;
+  margin-bottom: 0.5rem;
+  margin-top: 1rem;
 }
 
 .login-form input {
-    background-color: #2b2b2b;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 10px;
-    padding: 15px;
-    color: #ffffff;
-    font-size: 16px;
-    font-family: "Montserrat", sans-serif;
-    outline: none;
-    transition: border-color 0.3s, box-shadow 0.3s;
+  background-color: #333;
+  border: 1px solid #555;
+  border-radius: 8px;
+  padding: 0.9rem 1rem;
+  color: #fff;
+  font-size: 1rem;
 }
 
+.login-form input::placeholder { color: #888; }
+
 .login-form input:focus {
-    box-shadow: 0 0 10px rgba(200, 7, 16, 0.5);
+  outline: none;
+  border-color: #E50914;
+  box-shadow: 0 0 5px rgba(229, 9, 20, 0.5);
 }
 
 .login-button {
-    background-color: #c80710;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    padding: 15px;
-    font-size: 20px;
-    font-weight: bold;
-    font-family: "Montserrat", sans-serif;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    margin-top: 10px;
+  background-color: #E50914;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.9rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 2rem;
+  transition: background-color 0.2s ease;
 }
 
-.login-button:hover {
-    background-color: #e50914;
-}
+.login-button:hover { background-color: #f6121d; }
 
 .login-links {
-    margin-top: 25px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    font-family: "Montserrat", sans-serif;
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
 }
 
-/* "Esqueceu a senha?" */
 .forgot-password {
-    color: #aaaaaa;
-    text-decoration: none;
-    text-align: end;
-    font-size: 16px;
-    transition: color 0.3s, text-decoration 0.3s;
+  color: #aaaaaa;
+  text-decoration: none;
 }
+.forgot-password:hover { text-decoration: underline; }
 
-.forgot-password:hover {
-    color: #ffffff;
-    text-decoration: underline;
-}
-
-/* Link de cadastro com spans */
-.sign-up {
-    text-decoration: none;
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-}
-
-.signup-white {
-    color: #aaaaaa;
-    font-weight: 500;
-}
-
+.cadastrar { margin-top: 15px; }
+.sign-up { text-decoration: none; }
+.signup-white { color: #aaaaaa; }
 .signup-underline {
-    color: #c80710;
-    font-weight: bold;
-    text-decoration: underline;
-    transition: color 0.3s, text-decoration 0.3s;
-}
-
-.signup-underline:hover {
-    color: #e50914;
-    text-decoration: none;
+  color: #ffffff;
+  font-weight: 600;
+  text-decoration: underline;
+  cursor: pointer;
 }
