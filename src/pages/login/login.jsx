@@ -1,27 +1,25 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Autenticacao from "../../components/Autenticacao/autenticacao";
+import { useAuth } from "../../context/authcontext";
 import "./login.css"; // Lembre-se de renomear para Auth.css e mover
 
 const Login = () => {
-  const [login, setLogin] = useState("");
+  const [loginInput, setLoginInput] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const { login } = useAuth();
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     setError("");
 
-    console.log("Iniciando tentativa de login...");
-
     try {
       const formData = new URLSearchParams();
-      formData.append("email", login);
+      formData.append("email", loginInput);
       formData.append("password", password);
 
-      // --- CORREÇÃO AQUI ---
-      // Usamos a URL completa do seu backend
       const response = await fetch("http://localhost:8000/send_login", {
         method: "POST",
         headers: {
@@ -33,13 +31,8 @@ const Login = () => {
       const data = await response.json();
 
       if (response.ok) {
-        console.log("Login bem sucedido:", data.message);
-        
-        // --- ADIÇÃO IMPORTANTE ---
-        // Salva o "role" (tipo de usuário) no navegador
-        localStorage.setItem('userRole', data.role);
-        
-        navigate("/");
+        login(data.role);
+        navigate("/")
       } else {
         setError(data.message || "Login ou senhas incorretos, tente novamente.");
       }
@@ -58,8 +51,8 @@ const Login = () => {
           type="text"
           id="login-input"
           placeholder="Digite seu email ou nome de usuário"
-          value={login}
-          onChange={(e) => setLogin(e.target.value)}
+          value={loginInput}
+          onChange={(e) => setLoginInput(e.target.value)}
           required
         />
         <label htmlFor="password-input">Senha:</label>
