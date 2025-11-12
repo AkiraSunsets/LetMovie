@@ -10,7 +10,7 @@ try:
     mydb = mysql.connector.connect(
         host="localhost",
         user="root",
-        password="root",        
+        password="senai",        
         database="LetMovie"
     )
     print("✅ Conexão com o banco de dados 'LetMovie' estabelecida.")
