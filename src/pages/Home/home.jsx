@@ -7,9 +7,9 @@ import CarrosselDeFilmes from "../../components/CarrosseldeFilmes/carrosseldefil
 
 
 const dummyData = [
-  { id: 1, title: 'Alerta Vermelho', year: 2021, rating: 4.1, img: 'https://img.elo7.com.br/product/main/3F02D64/poster-alerta-vermelho-red-notice-com-moldura-filme.jpg' },
-  { id: 2, title: 'Alerta Vermelhaaa', year: 2021, rating: 4.1, img: 'https://img.elo7.com.br/product/main/3F02D64/poster-alerta-vermelho-red-notice-com-moldura-filme.jpg' },
-  { id: 3, title: 'Alerta Vermelho', year: 2021, rating: 4.1, img: 'https://img.elo7.com.br/product/main/3F02D64/poster-alerta-vermelho-red-notice-com-moldura-filme.jpg' },
+  { id: 1, title: 'Alerta Vermelho', year: 2021, rating: 4.1, img: 'https://www.papodecinema.com.br/wp-content/uploads/2021/09/20210908-alerta-vermelho-papo-de-cinema-cartaz-1.webp' },
+  { id: 2, title: 'Bagagem de Risco', year: 2024, rating: 3.8, img: 'https://m.media-amazon.com/images/M/MV5BMTA0MDQ3NmMtY2NmMC00MTJmLTk0MTMtZjAzZDU1OTg5ZmE3XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg' },
+  { id: 3, title: 'O Projeto Adam', year: 2019, rating: 4.1, img: 'https://www.papodecinema.com.br/wp-content/uploads/2022/03/20220312-adamproject_main_payoff_vertical_27x40_rgb_pre_pt-br.webp' },
   { id: 4, title: 'Alerta Vermelho', year: 2021, rating: 4.1, img: 'https://img.elo7.com.br/product/main/3F02D64/poster-alerta-vermelho-red-notice-com-moldura-filme.jpg' },
   { id: 5, title: 'Alerta Vermelho', year: 2021, rating: 4.1, img: 'https://img.elo7.com.br/product/main/3F02D64/poster-alerta-vermelho-red-notice-com-moldura-filme.jpg' },
   { id: 6, title: 'Alerta Vermelho', year: 2021, rating: 4.1, img: 'https://img.elo7.com.br/product/main/3F02D64/poster-alerta-vermelho-red-notice-com-moldura-filme.jpg' },
