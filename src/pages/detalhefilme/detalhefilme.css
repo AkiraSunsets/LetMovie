@@ -7,7 +7,7 @@
   padding: 64px 0;
   width: 100%; 
   box-sizing: border-box;
-  overflow: hidden; /* Para o backdrop não vazar */
+  overflow: hidden; 
 }
 
 .detalhe-backdrop {
@@ -16,31 +16,27 @@
   left: 0;
   width: 100%;
   height: 100%;
-  
-  /* --- CORRIGIDO --- */
+
+  /*coloca o poster do filme como background do filme*/
   background-size: cover; 
   background-position: center;
-  
-  filter: blur(20px) brightness(0.3);
+  filter: blur(15px) brightness(0.3);
   z-index: 1;
-  transform: scale(1.1); 
+  transform: scale(1.2); 
 }
 
-/* CORREÇÃO: O content é irmão do backdrop */
 .detalhe-content {
   position: relative;
   z-index: 2;
   display: flex;
-  gap: 3rem;
-  max-width: 1200px;
+  gap: 48px;
+  max-width: 1100px;
   margin: 0 auto;
-  padding: 0 2rem;
-  
-  /* Fundo de vidro fosco */
+  padding: 0 40px;
   background-color: rgba(21, 21, 21, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 16px;
-  padding: 2rem;
+  padding: 40px;
 }
 
 .detalhe-poster {
@@ -60,71 +56,82 @@
 }
 
 .detalhe-title {
-  font-size: 2.8rem;
+  font-size: 40px;
+  text-align: left;
   font-weight: 700;
   margin: 0;
+  font-family: "Montserrat", sans-serif;
 }
 
 .detalhe-year {
-  font-size: 2.2rem;
+  font-size: 24px;
   font-weight: 300;
-  color: #ccc;
-  margin-left: 1rem;
+  color: #cccccc;
+  margin-left: 16px;
+  font-family: "Montserrat", sans-serif;
 }
 
 .detalhe-meta {
   display: flex;
-  gap: 1.5rem;
-  font-size: 1rem;
-  color: #ddd;
-  margin-top: 1rem;
+  gap: 24px;
+  font-size: 16px;
+  color: red;
+  margin-top: 16px;
   align-items: center;
+  font-family: "Montserrat", sans-serif;
 }
 
 .detalhe-rating {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 8px;
   color: #f5c518;
-  font-weight: 600;
+  font-weight: bold;
 }
 
 .detalhes-generos {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-top: 1rem;
+  gap: 8px;
+  margin-top: 16px;
 }
 
 .detalhe-genero-tag {
-  background-color: rgba(255, 255, 255, 0.15);
+  background-color: rgba(255, 255, 255, 0.20);
   padding: 0.3rem 0.7rem;
   border-radius: 20px;
-  font-size: 0.9rem;
+  font-size: 16px;
+  font-family: "Montserrat", sans-serif;
 }
 
 .detalhe-subtitle {
-  font-size: 1.4rem;
+  font-size: 22px;
   font-weight: 600;
-  margin-top: 2rem;
-  margin-bottom: 0.5rem;
+  margin-top: 42px;
+  margin-bottom: 8px;
   border-bottom: 2px solid var(--primary-color, #c80710);
-  padding-bottom: 0.3rem;
+  padding-bottom: 6px;
   display: inline-block;
+  font-family: "Montserrat", sans-serif;
 }
 
 .detalhe-sinopse {
-  font-size: 1rem;
-  line-height: 1.6;
-  color: #eee;
-  max-width: 70ch;
+  text-align: left;
+  font-size: 16px;
+  line-height: 1.6; /*util para definir espaçamento*/
+  color: #ffffff;
+  width: 100%;
+  white-space: pre-wrap; /* mantém as quebras de linha originais */
+  overflow-wrap: break-word; /* quebra palavras longas pra não estourar a caixa */
+  font-family: "Montserrat", sans-serif;
 }
 
 .detalhe-crew {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
-  margin-top: 2rem;
+  gap: 16px;
+  margin-top: 32px;
+  font-family: "Montserrat", sans-serif;
 }
 
 .crew-item {
@@ -136,20 +143,26 @@
 }
 .crew-item strong {
   display: block;
-  font-size: 1rem;
+  font-size: 16px;
   font-weight: 600;
-  color: #aaa;
-  margin-bottom: 0.3rem;
+  color: #aaaaaa;
+  margin-bottom: 5px;
+  font-family: "Montserrat", sans-serif;
+  
 }
 .crew-item span {
-  font-size: 1rem;
-  color: #eee;
+  font-size: 16px;
+  color: #ffffff;
+  font-family: "Montserrat", sans-serif;
 }
 
 .detalhe-admin-actions {
   display: flex;
-  gap: 1rem;
-  margin-top: 2rem;
+  gap: 16px;
+  margin-top: 32px;
+  align-items: center;
+  justify-content: end;
+
 }
 
 .detalhe-button,
@@ -157,16 +170,16 @@
 .detalhe-button.delete {
   border: none;
   border-radius: 8px;
-  padding: 0.7rem 1.2rem;
-  font-size: 1rem;
+  padding: 12px 18px;
+  font-size: 16px;
   font-weight: 600;
   font-family: "Montserrat", sans-serif;
   cursor: pointer;
   display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
+  gap: 8px;
   text-decoration: none;
   transition: all 0.2s ease;
+  font-family: "Montserrat", sans-serif;
 }
 
 .detalhe-button.edit {
@@ -191,6 +204,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.5rem;
+  font-size: 24px;
   color: white;
+  font-family: "Montserrat", sans-serif;
 }

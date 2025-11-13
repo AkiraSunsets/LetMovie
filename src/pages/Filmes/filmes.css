@@ -22,7 +22,6 @@
     margin: 40px 0 30px ;
     font-family: "Montserrat", sans-serif;
     gap: 10px;
-    
 }
 
 .title-seemovie {
@@ -49,4 +48,16 @@
 .page-status.error {
     color:#c80710;
     font-family: "Montserrat, sans-serif";
+}
+
+.filter-button {
+    padding: 12px 20px;
+    border-radius: 8px;
+    color: white;
+    background-color: #c80710;
+    border: 1px solid #c80710;
+    cursor: pointer;
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+    font-size: 16px;
 }

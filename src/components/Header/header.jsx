@@ -61,7 +61,8 @@ const Header = () => {
     const ProfileMenu = () => (
         <>
             <div className="profile-menu-header">
-                <i className="bi bi-person-circle profile-menu-avatar"></i>
+                <i className="bi bi-person-circle header-avatar-icon"></i>
+
                 <span className="profile-menu-user">
                     {userRole === "admin" ? "Administrador" : "Usuário Comum"}
                 </span>
@@ -161,7 +162,7 @@ const Header = () => {
                             <DropdownHeader // Seu componente Dropdown
                                 trigger={
                                     <button className="icon-button" aria-label="Conta de Usuário">
-                                        <i className="bi bi-person-circle profile-menu-avatar"></i>
+                                        <i className="bi bi-person-circle header-avatar-icon"></i>
                                     </button>
                                 }>
                                 <ProfileMenu />

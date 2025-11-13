@@ -19,7 +19,7 @@ const DetalheFilme = () => {
       setError(null);
       try {
         // CORREÇÃO: http:// (sem s) e /api/filme/ (singular)
-        const response = await fetch(`http://localhost:8000/api/filme/${id}`); 
+        const response = await fetch(`http://localhost:8000/api/filme/${id}`);
         if (!response.ok) {
           throw new Error("Filme não encontrado");
         }
@@ -75,13 +75,12 @@ const DetalheFilme = () => {
 
   return (
     <div className="detalhe-container">
-      {/* CORREÇÃO ESTRUTURAL: Backdrop é irmão do content */}
+
       <div
         className="detalhe-backdrop"
         style={{ backgroundImage: `url(${filme.poster})` }}
       ></div>
-      
-      {/* CORREÇÃO ESTRUTURAL: Content fica fora do backdrop */}
+
       <div className="detalhe-content">
         <div className="detalhe-poster">
           <img
@@ -116,22 +115,23 @@ const DetalheFilme = () => {
             ))}
           </div>
 
-          <h3 className="detalhe-subtitle">Sinopse</h3>
+          <h3 className="detalhe-subtitle">Sinopse:</h3>
           <p className="detalhe-sinopse">
             {filme.sinopse || "Nenhuma sinopse disponível."}
           </p>
 
+
           <div className="detalhe-crew">
             <div className="crew-item">
-              <strong>Diretor(es)</strong>
+              <strong>Diretor(es):</strong>
               <span>{filme.diretores || "Não informado"}</span>
             </div>
             <div className="crew-item">
-              <strong>Produtora(s)</strong>
+              <strong>Produtora(s):</strong>
               <span>{filme.produtoras || "Não informado"}</span>
             </div>
             <div className="crew-item full">
-              <strong>Elenco</strong>
+              <strong>Elenco:</strong>
               <span>{filme.atores || "Não informado"}</span>
             </div>
           </div>

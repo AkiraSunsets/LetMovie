@@ -43,7 +43,7 @@
     display: -webkit-box;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    min-height: 2.5em; /* Garante altura de 2 linhas */
+    min-height: 40px; 
     font-family: "Montserrat", sans-serif;
 }
 
@@ -51,7 +51,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 0.9rem;
+    font-size: 16px;
     color: #aaa;
     font-family: "Montserrat", sans-serif;
 }
@@ -66,14 +66,14 @@
 
 .movie-card-button {
     display: block;
-    width: calc(100% - 2rem); /* 100% - padding */
-    margin: 0 1rem 1rem 1rem;
-    padding: 0.7rem;
+    width: calc(100% - 32px); /* 100% - padding */
+    margin: 0 16px 16px 16px;
+    padding: 12px;
     text-align: center;
     text-decoration: none;
     font-weight: 600;
     border-radius: 8px;
-    background-color: var(--primary-color, #c80710);
+    background-color:#c80710;
     color: white;
     transition: background-color 0.2s ease;
     font-family: "Montserrat", sans-serif;
