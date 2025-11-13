@@ -1,17 +1,196 @@
 .detalhe-container {
-    position: relative;
-    min-height: 90vh;
-    color: #ffffff;
-    display: flex;
-    align-items: center;
-    padding: 64px 0;
+  position: relative;
+  min-height: 90vh;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  padding: 64px 0;
+  width: 100%; 
+  box-sizing: border-box;
+  overflow: hidden; /* Para o backdrop não vazar */
 }
 
 .detalhe-backdrop {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  
+  /* --- CORRIGIDO --- */
+  background-size: cover; 
+  background-position: center;
+  
+  filter: blur(20px) brightness(0.3);
+  z-index: 1;
+  transform: scale(1.1); 
+}
+
+/* CORREÇÃO: O content é irmão do backdrop */
+.detalhe-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  
+  /* Fundo de vidro fosco */
+  background-color: rgba(21, 21, 21, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 2rem;
+}
+
+.detalhe-poster {
+  flex: 0 0 300px;
+  width: 300px;
+}
+
+.detalhe-poster img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.detalhe-info {
+  flex: 1;
+}
+
+.detalhe-title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.detalhe-year {
+  font-size: 2.2rem;
+  font-weight: 300;
+  color: #ccc;
+  margin-left: 1rem;
+}
+
+.detalhe-meta {
+  display: flex;
+  gap: 1.5rem;
+  font-size: 1rem;
+  color: #ddd;
+  margin-top: 1rem;
+  align-items: center;
+}
+
+.detalhe-rating {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #f5c518;
+  font-weight: 600;
+}
+
+.detalhes-generos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.detalhe-genero-tag {
+  background-color: rgba(255, 255, 255, 0.15);
+  padding: 0.3rem 0.7rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}
+
+.detalhe-subtitle {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 2px solid var(--primary-color, #c80710);
+  padding-bottom: 0.3rem;
+  display: inline-block;
+}
+
+.detalhe-sinopse {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #eee;
+  max-width: 70ch;
+}
+
+.detalhe-crew {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.crew-item {
+  flex: 1;
+  min-width: 200px;
+}
+.crew-item.full {
+  flex-basis: 100%;
+}
+.crew-item strong {
+  display: block;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #aaa;
+  margin-bottom: 0.3rem;
+}
+.crew-item span {
+  font-size: 1rem;
+  color: #eee;
+}
+
+.detalhe-admin-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.detalhe-button,
+.detalhe-button.edit,
+.detalhe-button.delete {
+  border: none;
+  border-radius: 8px;
+  padding: 0.7rem 1.2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: "Montserrat", sans-serif;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.detalhe-button.edit {
+  background-color: #007bff;
+  color: white;
+}
+.detalhe-button.edit:hover {
+  background-color: #0056b3;
+}
+
+.detalhe-button.delete {
+  background-color: var(--primary-color, #c80710);
+  color: white;
+}
+.detalhe-button.delete:hover {
+  background-color: #a0050c;
+}
+
+.detalhe-loading,
+.detalhe-error {
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  color: white;
 }

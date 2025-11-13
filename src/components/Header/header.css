@@ -12,6 +12,8 @@
     background-color: var(--bg-color);
     padding: 0 30px;
     height: 60px;
+    position: relative; 
+    z-index: 1000;
 }
 
 .logo-link {
@@ -57,15 +59,12 @@ border-bottom: 3px solid transparent;
 transition: border-color 0.3s, color 0.3s;
 }
 
-/* 4. MUDADO: Em vez de 'underline', mudamos a cor da borda transparente */
 .nav-item a:hover {
 border-bottom-color: var(--primary-color);
 }
 
-/* 5. ADICIONADO: Esta é a regra para o link ativo! */
 .nav-item a.active-link {
     border-bottom-color: var(--primary-color);
-    /* Opcional: muda a cor do texto também para dar mais ênfase */
     color: var(--primary-color); 
 }
 
@@ -120,6 +119,7 @@ border-bottom-color: var(--primary-color);
     padding: 0;
     opacity: 0.9;
     transition: color 0.3s, transform 0.2s ease;
+    position: relative; /* Necessário para o badge */
 }
 
 .icon-button i {
@@ -132,9 +132,27 @@ border-bottom-color: var(--primary-color);
 }
 
 .header.auth-header {
-    justify-content: left; /* Centraliza o logo */
+    justify-content: left; 
 }
 
 .header.auth-header .logo {
-     margin-right: 0; /* Remove a margem extra do logo */
+     margin-right: 0;
+}
+
+/* --- Badge de Notificação (NOVO) --- */
+.notification-badge {
+  position: absolute;
+  top: -5px;
+  right: -8px;
+  background-color: var(--primary-color);
+  color: white;
+  font-size: 10px;
+  font-weight: 600;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid var(--bg-color);
 }

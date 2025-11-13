@@ -6,17 +6,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #111; 
+  background-color: #111;
   font-family: 'Inter', sans-serif;
-  padding: 2rem 0; 
+  padding: 2rem 0;
   box-sizing: border-box;
 }
 
 .login-container {
   width: 900px;
   max-width: 90%;
-  height: auto; 
-  min-height: 550px; 
+  height: auto;
+  min-height: 550px;
   background-color: rgba(20, 20, 20, 0.9);
   border-radius: 16px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
@@ -41,7 +41,7 @@
 .login-content {
   display: flex;
   width: 100%;
-  flex-grow: 1; 
+  flex-grow: 1;
 }
 
 /* --- Lado da Imagem --- */
@@ -74,7 +74,6 @@
   color: #fff;
 }
 
-
 /* Subtítulo para a página de cadastro */
 .auth-subtitle {
   font-size: 1rem;
@@ -83,7 +82,7 @@
   margin-bottom: 1.5rem;
 }
 
-.login-form { 
+.login-form {
   display: flex;
   flex-direction: column;
   width: 100%;

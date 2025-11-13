@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Autenticacao from "../../components/Autenticacao/autenticacao";
+// CORREÇÃO: Importa o layout do novo local
+import Autenticacao from "../../layouts/Autenticacao/autenticacao"; 
 import { useAuth } from "../../context/authcontext";
-import "./login.css"; // Lembre-se de renomear para Auth.css e mover
+// O import do './login.css' foi REMOVIDO daqui
 
 const Login = () => {
   const [loginInput, setLoginInput] = useState("");
@@ -32,7 +33,7 @@ const Login = () => {
 
       if (response.ok) {
         login(data.role);
-        navigate("/")
+        navigate("/");
       } else {
         setError(data.message || "Login ou senhas incorretos, tente novamente.");
       }
@@ -65,7 +66,9 @@ const Login = () => {
           required
         />
         {error && (
-          <p style={{ color: "#E50914", marginTop: "10px", textAlign: "center" }}>
+          <p
+            style={{ color: "#E50914", marginTop: "10px", textAlign: "center" }}
+          >
             {error}
           </p>
         )}
