@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../../components/MovieCard/moviecard';
+import '../../components/MovieCard/moviecard.css';
 import 'bootstrap-icons/font/bootstrap-icons.css'; // Para o ícone de estrela
+
 
 const MovieCard = ({ filme }) => {
   // Desestrutura o objeto 'filme' que vem da API

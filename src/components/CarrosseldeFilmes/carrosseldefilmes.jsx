@@ -45,21 +45,21 @@ const CarrosselDeFilmes = ({ titulo, icone, filmes }) => {
                 </div>
             </div>
 
-            <div className="movie-list-container" ref={listRef}>   {/* usa o reflist pra puxar a função das setas acima */}
-                <div className="movie-list">
+            <div className="carrossel-list-container" ref={listRef}>   {/* usa o reflist pra puxar a função das setas acima */}
+                <div className="carrossel-list">
                     {filmes.map((movie) => (
-                        <div className="movie-card" key={movie.id}>
-                            <img src={movie.img} alt={movie.title} className="movie-card-poster" />
-                            <div className="movie-card-body">
+                        <div className="carrossel-card" key={movie.id}>
+                            <img src={movie.img} alt={movie.title} className="carrossel-card-poster" />
+                            <div className="carrossel-card-body">
                                 <h4>{movie.title}</h4>
-                                <div className="movie-card-details">
+                                <div className="carrossel-card-details">
                                     <span>{movie.year}</span>
                                     <span>
                                         <i className="bi bi-star-fill" style={{ color: '#f5c518' }}></i>
                                         {movie.rating}
                                     </span>
                                 </div>
-                                <button className="movie-card-button">Ver Mais</button>
+                                <button className="carrossel-card-button">Ver Mais</button>
                             </div>
                         </div>
                     ))}

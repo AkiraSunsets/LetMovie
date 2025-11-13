@@ -29,7 +29,7 @@ const EditarFilme = () => {
                 // CORRIGIDO: Rota correta
                 const response = await fetch(`http://localhost:8000/api/filme/${id}`);
                 const data = await response.json();
-                
+
                 if (response.ok) {
                     setFormData({
                         id_filme: data.id_filme,
@@ -96,60 +96,64 @@ const EditarFilme = () => {
     };
 
     if (loading) {
-        return <div style={{color: 'white', textAlign: 'center', marginTop: '5rem', fontSize: '2rem'}}>Carregando...</div>;
+        return <div style={{ color: 'white', textAlign: 'center', marginTop: '5rem', fontSize: '2rem' }}>Carregando...</div>;
     }
 
     return (
         <div className="form-filme-container">
-            <h1><i className="bi bi-pencil-fill"></i> Editar Filme</h1>
-            
+            <h1>
+                <i className="bi bi-pencil-fill"></i>
+                <span className='title-addmovie'>
+                    Editar Filme
+                </span>
+            </h1>
             <form onSubmit={handleSubmit} className="form-filme">
                 {/* Campos do formulário (idênticos ao de Adicionar) */}
                 <div className="form-group">
-                    <label htmlFor="nome">Título do Filme</label>
+                    <label htmlFor="nome">Título do Filme:</label>
                     <input type="text" id="nome" name="nome" value={formData.nome} onChange={handleChange} required />
                 </div>
-                
+
                 <div className="form-group">
-                    <label htmlFor="urlposter">URL do Pôster</label>
+                    <label htmlFor="urlposter">URL do Pôster:</label>
                     <input type="url" id="urlposter" name="urlposter" value={formData.urlposter} onChange={handleChange} required />
                 </div>
 
                 <div className="form-row">
                     <div className="form-group">
-                        <label htmlFor="ano">Ano de Lançamento</label>
+                        <label htmlFor="ano">Ano de Lançamento:</label>
                         <input type="number" id="ano" name="ano" value={formData.ano} onChange={handleChange} required />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="duracao">Duração (em minutos)</label>
+                        <label htmlFor="duracao">Duração (em minutos):</label>
                         <input type="number" id="duracao" name="duracao" value={formData.duracao} onChange={handleChange} required />
                     </div>
                 </div>
 
                 <div className="form-group">
-                    <label htmlFor="sinopse">Sinopse</label>
-                    <textarea id="sinopse" name="sinopse" value={formData.sinopse} onChange={handleChange} required />
+                    <label htmlFor="sinopse">Sinopse:</label>
+                    <textarea id="sinopse" name="sinopse" value={formData.sinopse} onChange={handleChange} />
                 </div>
-                
+
                 <div className="form-row">
                     <div className="form-group">
-                        <label htmlFor="diretor">Diretor</label>
+                        <label htmlFor="diretor">Diretor:</label>
                         <input type="text" id="diretor" name="diretor" value={formData.diretor} onChange={handleChange} required />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="produtora">Produtora</label>
+                        <label htmlFor="produtora">Produtora:</label>
                         <input type="text" id="produtora" name="produtora" value={formData.produtora} onChange={handleChange} required />
                     </div>
                 </div>
-                
+
                 <div className="form-group">
-                    <label htmlFor="atores">Atores (separados por vírgula)</label>
+                    <label htmlFor="atores">Atores (separados por vírgula):</label>
                     <input type="text" id="atores" name="atores" value={formData.atores} onChange={handleChange} required />
                 </div>
 
                 <div className="form-row">
                     <div className="form-group">
-                        <label htmlFor="id_genero">Gênero</label>
+                        <label htmlFor="id_genero">Gênero:</label>
                         <select id="id_genero" name="id_genero" value={formData.id_genero} onChange={handleChange}>
                             <option value="1">Romance</option>
                             <option value="2">Drama</option>
@@ -163,7 +167,7 @@ const EditarFilme = () => {
                         </select>
                     </div>
                     <div className="form-group">
-                        <label htmlFor="id_linguagem">Linguagem Original</label>
+                        <label htmlFor="id_linguagem">Linguagem Original:</label>
                         <select id="id_linguagem" name="id_linguagem" value={formData.id_linguagem} onChange={handleChange}>
                             <option value="2">Inglês</option>
                             <option value="1">Português</option>
@@ -174,7 +178,7 @@ const EditarFilme = () => {
                         </select>
                     </div>
                 </div>
-                
+
                 <div className="form-actions">
                     <button type="button" className="form-button cancel" onClick={() => navigate(-1)}>Cancelar</button>
                     <button type="submit" className="form-button submit">Enviar Edição</button>

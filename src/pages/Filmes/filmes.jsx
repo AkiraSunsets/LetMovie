@@ -35,12 +35,17 @@ const Filmes = () => {
     return (
         <div className="filmes-page-container">
             <div className="filmes-header">
-                <h1>Nossos Filmes</h1>
-                {/* <button className="filter-button">
+                <h1>
+                    <i className="bi bi-film"></i>
+                    <span className='title-seemovie'
+                    >Nossos Filmes
+                    </span>
+                </h1>
+                <button className="filter-button">
                     <i className="bi bi-filter"></i> Ver Filtros
-                </button> */}
+                </button>
             </div>
-            
+
             <div className="filmes-grid">
                 {filmes.length > 0 ? (
                     filmes.map(filme => (

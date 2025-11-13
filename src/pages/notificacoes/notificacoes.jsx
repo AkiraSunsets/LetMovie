@@ -73,8 +73,14 @@ const Notificacoes = () => {
 
     return (
         <div className="notificacoes-container">
-            <h1><i className="bi bi-bell-fill"></i> Notificações Pendentes</h1>
-            
+            <h1>
+                <i className="bi bi-bell-fill"></i>
+                <span className='title-notificacoes'>
+                    Notificações Pendentes
+                </span>
+                
+            </h1>
+
             {pendentes.length === 0 ? (
                 <p>Nenhum filme pendente de aprovação.</p>
             ) : (
@@ -86,14 +92,14 @@ const Notificacoes = () => {
                                 <span> (Ano: {filme.ano})</span>
                             </div>
                             <div className="notificacao-actions">
-                                <button 
-                                    className="action-btn approve" 
+                                <button
+                                    className="action-btn approve"
                                     onClick={() => handleAction(filme.id_filme, 'aprovar')}
                                     aria-label="Aprovar"
                                 >
                                     <i className="bi bi-check-circle-fill"></i> Aprovar
                                 </button>
-                                <button 
+                                <button
                                     className="action-btn reject"
                                     onClick={() => handleAction(filme.id_filme, 'rejeitar')}
                                     aria-label="Rejeitar"

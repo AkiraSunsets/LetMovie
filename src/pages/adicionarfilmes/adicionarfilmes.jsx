@@ -64,57 +64,61 @@ const AdicionarFilmes = () => {
 
     return (
         <div className="form-filme-container">
-            <h1><i className="bi bi-plus-circle-fill"></i> Adicionar Novo Filme</h1>
-            
+            <h1>
+                <i className="bi bi-plus-circle-fill"></i>
+                <span className='title-addmovie'
+                >Adicionar Filme
+                </span>
+            </h1>
+
             <form onSubmit={handleSubmit} className="form-filme">
-                
+
                 <div className="form-group">
-                    <label htmlFor="nome">Título do Filme</label>
-                    <input type="text" id="nome" name="nome" value={formData.nome} onChange={handleChange} required />
+                    <label htmlFor="nome">Título do Filme:</label>
+                    <input type="text" id="nome" name="nome" value={formData.nome} onChange={handleChange} placeholder="Ex: A volta dos que não foram" required />
                 </div>
-                
+
                 <div className="form-group">
-                    <label htmlFor="urlposter">URL do Pôster</label>
-                    <input type="url" id="urlposter" name="urlposter" value={formData.urlposter} onChange={handleChange} required />
+                    <label htmlFor="urlposter">URL do Pôster:</label>
+                    <input type="url" id="urlposter" name="urlposter" value={formData.urlposter} onChange={handleChange} placeholder="Ex: Www.URLimage.com/" required />
                 </div>
 
                 <div className="form-row">
                     <div className="form-group">
-                        <label htmlFor="ano">Ano de Lançamento</label>
+                        <label htmlFor="ano">Ano de Lançamento:</label>
                         <input type="number" id="ano" name="ano" value={formData.ano} onChange={handleChange} placeholder="Ex: 2024" required />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="duracao">Duração (em minutos)</label>
+                        <label htmlFor="duracao">Duração (em minutos):</label>
                         <input type="number" id="duracao" name="duracao" value={formData.duracao} onChange={handleChange} placeholder="Ex: 120" required />
                     </div>
                 </div>
 
                 <div className="form-group">
-                    <label htmlFor="sinopse">Sinopse</label>
-                    <textarea id="sinopse" name="sinopse" value={formData.sinopse} onChange={handleChange} required />
+                    <label htmlFor="sinopse">Sinopse:</label>
+                    <textarea id="sinopse" name="sinopse" value={formData.sinopse} onChange={handleChange} placeholder="Digite a descrição do filme" />
                 </div>
-                
+
                 <div className="form-row">
                     <div className="form-group">
-                        <label htmlFor="diretor">Diretor</label>
+                        <label htmlFor="diretor">Diretor:</label>
                         <input type="text" id="diretor" name="diretor" value={formData.diretor} onChange={handleChange} placeholder="Ex: Christopher Nolan" required />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="produtora">Produtora</label>
+                        <label htmlFor="produtora">Produtora:</label>
                         <input type="text" id="produtora" name="produtora" value={formData.produtora} onChange={handleChange} placeholder="Ex: Warner Bros." required />
                     </div>
                 </div>
-                
+
                 <div className="form-group">
-                    <label htmlFor="atores">Atores (separados por vírgula)</label>
+                    <label htmlFor="atores">Atores (separados por vírgula):</label>
                     <input type="text" id="atores" name="atores" value={formData.atores} onChange={handleChange} placeholder="Ex: Ator Um, Atriz Dois" required />
                 </div>
 
                 <div className="form-row">
                     <div className="form-group">
-                        <label htmlFor="id_genero">Gênero</label>
+                        <label htmlFor="id_genero">Gênero:</label>
                         <select id="id_genero" name="id_genero" value={formData.id_genero} onChange={handleChange}>
-                            {/* Os IDs são do seu script SQL */}
                             <option value="1">Romance</option>
                             <option value="2">Drama</option>
                             <option value="3">Ação</option>
@@ -127,19 +131,19 @@ const AdicionarFilmes = () => {
                         </select>
                     </div>
                     <div className="form-group">
-                        <label htmlFor="id_linguagem">Linguagem Original</label>
+                        <label htmlFor="id_linguagem">Linguagem Original:</label>
                         <select id="id_linguagem" name="id_linguagem" value={formData.id_linguagem} onChange={handleChange}>
-                            {/* Os IDs são do seu script SQL */}
                             <option value="2">Inglês</option>
                             <option value="1">Português</option>
                             <option value="9">Coreano</option>
                             <option value="7">Japonês</option>
                             <option value="4">Francês</option>
                             <option value="3">Espanhol</option>
+                            
                         </select>
                     </div>
                 </div>
-                
+
                 <div className="form-actions">
                     <button type="button" className="form-button cancel" onClick={() => navigate(-1)}>Cancelar</button>
                     <button type="submit" className="form-button submit">Enviar para Aprovação</button>
