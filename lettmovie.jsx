@@ -418,3 +418,77 @@ class MyHandle(SimpleHTTPRequestHandler):
         
         # ... (Resto do do_POST: /send_login, /delete, /aprovar, /rejeitar ... não mudam) ...
 # Oculto para brevidade...
+
+
+
+                  .filmes-page-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: 'Inter', sans-serif;
+  color: #ffffff;
+  min-height: calc(100vh - 60px); /* Ocupa a altura da tela menos o header */
+}
+
+.filmes-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #2b2b2b;
+}
+
+.filmes-header h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #c80710;
+}
+
+/* Estilos da Grelha */
+.filmes-grid {
+  display: grid;
+  /* Cria colunas automáticas: 
+     - Mínimo de 200px de largura
+     - Máximo de 1fr (ocupa o espaço disponível)
+     - Repete quantas vezes couber */
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Mensagens de status */
+.page-status {
+  color: #aaa;
+  font-size: 1.2rem;
+  text-align: center;
+  padding: 4rem 0;
+}
+
+.page-status.error {
+  color: #e50914;
+}
+
+/* Estilo para o botão de filtro (se você o re-adicionar) */
+.filter-button {
+  background-color: #2b2b2b;
+  color: #fff;
+  border: 1px solid #444;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.filter-button i {
+  font-size: 1.1rem;
+}
+
+.filter-button:hover {
+  background-color: #c80710;
+  border-color: #c80710;
+}
