@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import "./detalhefilme.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
-import { useAuth } from "../../context/authcontext"; // <-- CORREÇÃO
+import { useAuth } from "../../context/authcontext";
 
 const DetalheFilme = () => {
   const { id } = useParams();
@@ -11,14 +11,13 @@ const DetalheFilme = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const { userRole } = useAuth(); // <-- CORREÇÃO (usando context)
+  const { userRole } = useAuth();
 
   useEffect(() => {
     const fetchFilme = async () => {
       setLoading(true);
       setError(null);
       try {
-        // CORREÇÃO: http:// (sem s) e /api/filme/ (singular)
         const response = await fetch(`http://localhost:8000/api/filme/${id}`);
         if (!response.ok) {
           throw new Error("Filme não encontrado");
@@ -35,7 +34,6 @@ const DetalheFilme = () => {
   }, [id]);
 
   const handleDelete = async () => {
-    // Substitua por um modal customizado se der tempo
     if (!window.confirm("Tem certeza que deseja deletar este filme?")) {
       return;
     }
@@ -44,7 +42,6 @@ const DetalheFilme = () => {
       const body = new URLSearchParams();
       body.append("id", id);
 
-      // CORREÇÃO: http:// (sem s)
       const response = await fetch("http://localhost:8000/delete", {
         method: "POST",
         headers: {
@@ -71,11 +68,10 @@ const DetalheFilme = () => {
   if (!filme) return null;
 
   // Gera nota aleatória (pois o banco não tem)
-  const rating = (filme.id_filme % 20 / 10 + 3.0).toFixed(1);
+  const rating = ((filme.id_filme % 20) / 10 + 3.0).toFixed(1);
 
   return (
     <div className="detalhe-container">
-
       <div
         className="detalhe-backdrop"
         style={{ backgroundImage: `url(${filme.poster})` }}
@@ -120,7 +116,6 @@ const DetalheFilme = () => {
             {filme.sinopse || "Nenhuma sinopse disponível."}
           </p>
 
-
           <div className="detalhe-crew">
             <div className="crew-item">
               <strong>Diretor(es):</strong>
@@ -136,22 +131,36 @@ const DetalheFilme = () => {
             </div>
           </div>
 
-          {userRole === "admin" && (
-            <div className="detalhe-admin-actions">
-              <Link
-                to={`/editarfilme/${filme.id_filme}`}
-                className="detalhe-button edit"
-              >
-                <i className="bi bi-pencil-fill"></i> Editar Filme
-              </Link>
-              <button
-                onClick={handleDelete}
-                className="detalhe-button delete"
-              >
-                <i className="bi bi-trash-fill"></i> Excluir Filme
-              </button>
-            </div>
-          )}
+
+
+          <div className="detalhe-actions">
+            
+            {/* Botão Voltar (Cancelar) - APARECE PARA TODOS */}
+            <button
+              onClick={() => navigate(-1)} // -1 navega para a página anterior
+              className="detalhe-button back"
+            >
+              <i className="bi bi-arrow-left-circle"></i> Voltar
+            </button>
+
+            {/* Botões de Admin - SÓ APARECEM PARA ADMIN */}
+            {userRole === "admin" && (
+              <>
+                <Link
+                  to={`/editarfilme/${filme.id_filme}`}
+                  className="detalhe-button edit"
+                >
+                  <i className="bi bi-pencil-fill"></i> Editar
+                </Link>
+                <button
+                  onClick={handleDelete}
+                  className="detalhe-button delete"
+                >
+                  <i className="bi bi-trash-fill"></i> Excluir
+                </button>
+              </>
+            )}
+          </div>
         </div>
       </div>
     </div>

@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-// CORREÇÃO: Importa o layout do novo local
 import Autenticacao from "../../layouts/Autenticacao/autenticacao";
-// O import do '../login/login.css' foi REMOVIDO daqui
 
 const Cadastro = () => {
   const [username, setUsername] = useState("");
