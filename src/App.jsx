@@ -1,18 +1,17 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
+//componentes globais
 import { AuthProvider } from "./context/authcontext";
 import Header from "./components/Header/header";
-
-// CORREÇÃO: Importando layouts do novo local
+import Footer from "./components/footer/footer";
 import MainLayout from "./layouts/MainLayout/MainLayout"; 
 import ProtectedRoute from "./layouts/ProtectedRoute/ProtectedRoute";
 
-// Importa suas páginas
+//páginas
 import Home from "./pages/Home/home";
 import Login from "./pages/login/login";
 import Cadastro from "./pages/cadastro/cadastro";
-// ... (todos os seus outros imports de páginas) ...
 import AdicionarFilmes from "./pages/adicionarfilmes/adicionarfilmes";
 import Filmes from "./pages/Filmes/filmes";
 import Sobre from "./pages/Sobre/sobre";
@@ -54,6 +53,7 @@ const App = () => {
 
           </Routes>
         </main>
+        <Footer />
       </Router>
     </AuthProvider>
   );

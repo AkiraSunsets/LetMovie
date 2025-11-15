@@ -1,0 +1,90 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  font-family: 'Inter', sans-serif;
+}
+
+.modal-content {
+  position: relative;
+  background-color: #1c1c1c;
+  border-radius: 12px;
+  padding: 2.5rem;
+  width: 90%;
+  max-width: 450px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  border: 1px solid #333;
+  color: #ffffff;
+}
+
+.modal-close-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: #888;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.modal-close-button:hover {
+  color: #fff;
+  transform: scale(1.1);
+}
+
+/* Estilos específicos para o Modal de Logout (baseado no seu design) */
+.logout-modal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+.logout-modal-content h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+}
+.logout-modal-content p {
+  font-size: 1rem;
+  color: #aaa;
+  margin: 0;
+}
+.logout-modal-actions {
+  display: flex;
+  width: 100%;
+  gap: 1rem;
+}
+.logout-modal-button {
+  flex: 1;
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: "Montserrat", sans-serif;
+}
+.logout-modal-button.cancel {
+  background-color: #444;
+  color: #fff;
+}
+.logout-modal-button.cancel:hover {
+  background-color: #555;
+}
+.logout-modal-button.confirm {
+  background-color: #c80710;
+  color: #fff;
+}
+.logout-modal-button.confirm:hover {
+  background-color: #e50914;
+}

@@ -1,0 +1,64 @@
+.filter-modal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  font-family: "Montserrat", sans-serif;
+}
+.filter-modal-content h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin: 0;
+  text-align: center;
+  color: #c80710;
+}
+.filter-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.filter-form-group label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #aaa;
+}
+.filter-form-group input {
+  background-color: #333;
+  border: 1px solid #555;
+  border-radius: 8px;
+  padding: 0.9rem 1rem;
+  color: #fff;
+  font-size: 1rem;
+  font-family: "Montserrat", sans-serif;
+}
+.filter-form-group input::placeholder { color: #888; }
+.filter-modal-actions {
+  display: flex;
+  width: 100%;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.filter-button {
+  flex: 1; 
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: "Montserrat", sans-serif;
+}
+.filter-button.cancel {
+  background-color: #444;
+  color: #fff;
+}
+.filter-button.cancel:hover {
+  background-color: #555;
+}
+.filter-button.confirm {
+  background-color: #c80710;
+  color: #fff;
+}
+.filter-button.confirm:hover {
+  background-color: #e50914;
+}

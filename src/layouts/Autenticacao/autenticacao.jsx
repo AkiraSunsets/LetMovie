@@ -10,7 +10,7 @@ const Autenticacao = ({ children }) => {
           <div className="login-image">
             <img
               src={
-                "/assets/images/popcorn.svg" 
+                 new URL("../../assets/images/popcorn.svg", import.meta.url).href 
               }
               alt="Pipoca e claquete"
             />

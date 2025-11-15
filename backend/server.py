@@ -10,14 +10,14 @@ try:
     mydb = mysql.connector.connect(
         host="localhost",
         user="root",
-        password="senai",        
+        password="root",        #Mariii, altera a senha aqui para a senha do seu workbench
         database="LetMovie"
     )
     print("✅ Conexão 'LetMovie' estabelecida.")
 except mysql.connector.Error as err:
     print(f"❌ Erro ao conectar ao MySQL: {err}")
     exit(1)
-
+\
 # --- Classe Principal do Servidor ---
 class MyHandle(SimpleHTTPRequestHandler):
 
