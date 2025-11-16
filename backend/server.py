@@ -17,7 +17,7 @@ try:
 except mysql.connector.Error as err:
     print(f"❌ Erro ao conectar ao MySQL: {err}")
     exit(1)
-\
+
 # --- Classe Principal do Servidor ---
 class MyHandle(SimpleHTTPRequestHandler):
 
@@ -137,21 +137,47 @@ class MyHandle(SimpleHTTPRequestHandler):
                 # Verifica se há um parâmetro de busca
                 if 'busca' in query_params:
                     termo_busca = f"%{query_params['busca'][0]}%"
-                    # Busca no Título, Atores ou Diretores
                     where_clauses.append("""
                         (f.Titulo LIKE %s 
-                        OR a.Nome LIKE %s OR a.Sobrenome LIKE %s
-                        OR d.Nome LIKE %s OR d.Sobrenome LIKE %s)
+                        OR CONCAT(a.Nome, ' ', a.Sobrenome) LIKE %s
+                        OR CONCAT(d.Nome, ' ', d.Sobrenome) LIKE %s)
                     """)
-                    params.extend([termo_busca, termo_busca, termo_busca, termo_busca, termo_busca])
+                    params.extend([termo_busca, termo_busca, termo_busca])
                 
-                # (Futuramente, adicione filtros de gênero, ano, etc. aqui)
+                # --- LÓGICA DE FILTRO (ATUALIZADA) ---
+                if 'genero' in query_params and query_params['genero'][0]:
+                    where_clauses.append("g.Nome LIKE %s")
+                    params.append(f"%{query_params['genero'][0]}%")
+
+                if 'ano' in query_params and query_params['ano'][0]:
+                    where_clauses.append("f.Ano = %s")
+                    params.append(query_params['ano'][0])
+
+                if 'ator' in query_params and query_params['ator'][0]:
+                    where_clauses.append("CONCAT(a.Nome, ' ', a.Sobrenome) LIKE %s")
+                    params.append(f"%{query_params['ator'][0]}%")
+                
+                # --- NOVOS FILTROS (DO SEU DESIGN) ---
+                if 'poster' in query_params and query_params['poster'][0]:
+                    # Filtra por parte da URL do poster
+                    where_clauses.append("f.Poster LIKE %s")
+                    params.append(f"%{query_params['poster'][0]}%")
+
+                if 'sinopse' in query_params and query_params['sinopse'][0]:
+                    # Filtra por parte do texto da sinopse
+                    where_clauses.append("f.Sinopse LIKE %s")
+                    params.append(f"%{query_params['sinopse'][0]}%")
+                # --- FIM DOS NOVOS FILTROS ---
                 
                 if where_clauses:
                     sql += " WHERE " + " AND ".join(where_clauses)
 
                 sql += " GROUP BY f.ID ORDER BY f.Titulo;"
                 
+                # DEBUG: Imprime a query final e os parâmetros
+                # print("SQL Query:", sql)
+                # print("Params:", tuple(params))
+
                 cursor.execute(sql, tuple(params))
                 filmes = cursor.fetchall()
                 cursor.close()
@@ -168,6 +194,53 @@ class MyHandle(SimpleHTTPRequestHandler):
                 self.send_header("Content-type", "application/json; charset=utf-8")
                 self.end_headers()
                 self.wfile.write(json.dumps({"error": f"Erro ao buscar filmes: {str(e)}"}).encode("utf-8"))
+
+        # --- NOVA ROTA: /api/home ---
+        elif path == "/api/home":
+            try:
+                if not mydb.is_connected(): mydb.reconnect()
+                cursor = mydb.cursor(dictionary=True)
+                
+                # 1. Buscar Gêneros
+                cursor.execute("SELECT ID, Nome FROM Genero ORDER BY Nome")
+                generos = cursor.fetchall()
+                
+                # 2. Buscar Filmes Recentes (Aprovados)
+                sql_filmes = """
+                    SELECT 
+                        f.ID AS id_filme, f.Titulo AS nomeFilme, f.TempoDuracao AS tempo_duracao,
+                        f.Ano AS ano, f.Poster AS poster, f.Sinopse AS sinopse, f.Status AS status,
+                        GROUP_CONCAT(DISTINCT g.Nome SEPARATOR ', ') AS generos
+                    FROM Filme f
+                    LEFT JOIN GeneroFilme gf ON f.ID = gf.id_filme
+                    LEFT JOIN Genero g ON gf.id_genero = g.ID
+                    WHERE f.Status = 'APROVADO'
+                    GROUP BY f.ID
+                    ORDER BY f.ID DESC
+                    LIMIT 10
+                """
+                cursor.execute(sql_filmes)
+                filmes = cursor.fetchall()
+                
+                cursor.close()
+                
+                response_data = {
+                    "generos": generos,
+                    "filmes": filmes
+                }
+
+                self.send_response(200)
+                self.send_cors_headers()
+                self.send_header("Content-type", "application/json; charset=utf-8")
+                self.end_headers()
+                self.wfile.write(json.dumps(response_data, ensure_ascii=False).encode("utf-8"))
+
+            except Exception as e:
+                self.send_response(500)
+                self.send_cors_headers()
+                self.send_header("Content-type", "application/json; charset=utf-8")
+                self.end_headers()
+                self.wfile.write(json.dumps({"error": f"Erro ao buscar dados da home: {str(e)}"}).encode("utf-8"))
 
         # Rota API: /api/filme/{id} (Filme individual)
         elif re.match(r"/api/filme/(\d+)", path):
@@ -228,7 +301,7 @@ class MyHandle(SimpleHTTPRequestHandler):
                 if not mydb.is_connected(): mydb.reconnect()
                 cursor = mydb.cursor(dictionary=True)
                 # Busca apenas filmes com Status PENDENTE
-                sql = "SELECT ID AS id_filme, Titulo AS nomeFilme FROM Filme WHERE Status = 'PENDENTE' ORDER BY ID DESC"
+                sql = "SELECT ID AS id_filme, Titulo AS nomeFilme, Ano AS ano FROM Filme WHERE Status = 'PENDENTE' ORDER BY ID DESC"
                 cursor.execute(sql)
                 filmes_pendentes = cursor.fetchall()
                 cursor.close()
@@ -304,7 +377,7 @@ class MyHandle(SimpleHTTPRequestHandler):
                 if not mydb.is_connected(): mydb.reconnect()
                 cursor = mydb.cursor()
                 
-                # Determina o status baseado no role
+                # Determina o status baseado no role (REQUISITO CUMPRIDO)
                 status_filme = 'APROVADO' if data['userRole'] == 'admin' else 'PENDENTE'
                 
                 # Salva com o status correto
@@ -361,6 +434,7 @@ class MyHandle(SimpleHTTPRequestHandler):
                 cursor = mydb.cursor()
                 id_filme = int(data['id_filme'])
                 
+                # Edição também força o status PENDENTE se for usuário comum
                 status_filme = 'APROVADO' if data['userRole'] == 'admin' else 'PENDENTE'
                 
                 sql_filme = """
@@ -466,7 +540,6 @@ class MyHandle(SimpleHTTPRequestHandler):
         elif path == '/api/filme/rejeitar':
             try:
                 # Esta rota vai deletar o filme, então reutiliza a lógica de /delete
-                # (Seria melhor ter uma função auxiliar de delete)
                 content_length = int(self.headers['Content-Length'])
                 body = self.rfile.read(content_length).decode('utf-8')
                 form_data = parse_qs(body)
