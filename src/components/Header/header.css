@@ -1,3 +1,5 @@
+
+/*configuração de estilização do header*/
 .header {
     display: flex;
     align-items: center;
@@ -9,10 +11,12 @@
     z-index: 1000;
 }
 
+/*tira o underline dos links*/
 .logo-link {
     text-decoration: none;
 }
 
+/*config logo letmovie*/
 .logo {
     font-size: 28px;
     font-weight: bold;
@@ -29,10 +33,12 @@
     font-family: "Montserrat", sans-serif;
 }
 
+/*navegação*/
 .nav-main {
-    flex-grow: 1;
+    flex-grow: 1; /*empurra o menu pra ocupar espaço*/
 }
 
+/*lista itens do menu*/
 .nav-list {
     list-style: none;
     display: flex;
@@ -41,6 +47,7 @@
     gap: 30px;
 }
 
+/*links individuais do menu*/
 .nav-item a {
 display: inline-block; 
 color: white;
@@ -56,36 +63,40 @@ transition: border-color 0.3s, color 0.3s;
 border-bottom-color: #c80710;
 }
 
+/*link ativo*/
 .nav-item a.active-link {
     border-bottom-color: #c80710;
     color: #c80710; 
 }
 
+/*icones à direita*/
 .header-right-section {
     display: flex;
     align-items: center;
     gap: 20px;
 }
 
+/*barra de pesquisa*/
 .search-form {
     display: flex;
     align-items: center;
-    /* --- CORREÇÃO DA COR AQUI --- */
-    background-color: rgba(255, 255, 255, 0.1); /* FFFFFF com 10% de opacidade */
+    background-color: rgba(255, 255, 255, 0.1); 
     border-radius: 10px;
     padding: 5px 15px;
     width: 300px;
 }
 
+/*botão de pesquisa*/
 .search-button {
     background: none;
     border: none;
-    color: #aaa;
+    color: #dddddd;
     font-size: 18px;
     cursor: pointer;
     padding: 0;
 }
 
+/*texto interno*/
 .search-input {
     background: none;
     border: none;
@@ -95,10 +106,12 @@ border-bottom-color: #c80710;
     outline: none;
 }
 
+/*acessibilidade*/
 .search-input::placeholder {
-    color: #999;
+    color: #999999;
 }
 
+/*config sessão de icones*/
 .section-icons {
   display: flex;
   align-items: center;
@@ -106,6 +119,7 @@ border-bottom-color: #c80710;
   gap: 20px;
 }
 
+/*icones config*/
 .icon-button {
   display: flex;
   align-items: center;
@@ -132,6 +146,7 @@ border-bottom-color: #c80710;
     transform: scale(1.1);
 }
 
+/*config pagina sem logar*/
 .header.auth-header {
     justify-content: left; 
 }
@@ -140,6 +155,7 @@ border-bottom-color: #c80710;
      margin-right: 0;
 }
 
+/*badge de notificações*/
 .notification-badge {
   position: absolute;
   top: -5px;

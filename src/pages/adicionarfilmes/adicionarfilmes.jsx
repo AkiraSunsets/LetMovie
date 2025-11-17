@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import '../../components/MovieForm/movieform.css';
+import "../../components/MovieForm/movieform.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
-import { useAuth } from "../../context/authcontext"; 
+import { useAuth } from "../../context/authcontext";
 
+
+// componente funcional que representa o forms de add filmes
 const AdicionarFilmes = () => {
-  const navigate = useNavigate();
-  const { userRole } = useAuth(); // 2. Obter o userRole
-  const [formData, setFormData] = useState({
+  const navigate = useNavigate(); //navegação entre paginas
+  const { userRole } = useAuth(); //userrole do contexto da autenticação
+  const [formData, setFormData] = useState({ //estado para armazenar os dados do forms
     nome: "",
     atores: "",
     diretor: "",
@@ -19,28 +21,34 @@ const AdicionarFilmes = () => {
     urlposter: "",
     sinopse: "",
   });
+
+  //controla status de envio (loading, erro ou sucesso)
   const [status, setStatus] = useState({
     loading: false,
     error: null,
     success: null,
   });
 
+  //função para atualizar o estado formData quando o usuário digita algo
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value } = e.target; 
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  //função chamada ao enviar o forms
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setStatus({ loading: true, error: null, success: null });
+    e.preventDefault(); //evita recarregar a página 
+    setStatus({ loading: true, error: null, success: null }); //indica que o envio começou
 
     try {
+      //constroi o corpo da resquisicao como url encoded
       const body = new URLSearchParams();
       for (const key in formData) {
         body.append(key, formData[key]);
       }
-      body.append("userRole", userRole); // 3. Enviar o userRole para o backend
+      body.append("userRole", userRole); //envia o role do usuario
 
+      //faz a requisicao post para o backend
       const response = await fetch("http://localhost:8000/cadastro", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -49,14 +57,17 @@ const AdicionarFilmes = () => {
 
       const data = await response.json();
 
+      //define a mensaggem de sucesso de acordo com o usuário
       if (response.ok) {
         const successMsg =
           userRole === "admin"
             ? "Filme adicionado com sucesso!"
             : "Filme enviado para aprovação!";
 
+        //atualiza o estado com sucesso
         setStatus({ loading: false, error: null, success: successMsg });
 
+        //reseta os campos do formulário
         setFormData({
           nome: "",
           atores: "",
@@ -69,26 +80,30 @@ const AdicionarFilmes = () => {
           urlposter: "",
           sinopse: "",
         });
-        
-        // **AJUSTE FEITO AQUI**
-        // Redireciona ambos os usuários para /filmes
-        setTimeout(() => navigate('/filmes'), 2000); 
 
+        // Redireciona ambos os usuários para /filmes dps de 2 segundos
+        setTimeout(() => navigate("/filmes"), 2000);
       } else {
         throw new Error(data.message || "Erro ao adicionar filme");
       }
+
+      //atualiza o caso dê erro
     } catch (err) {
       setStatus({ loading: false, error: err.message, success: null });
     }
   };
 
   return (
-    <div className="form-page-container">
+
+    //container principal
+    <div className="form-page-container"> 
       <div className="form-filme-container">
         <h1>
           <i className="bi bi-plus-circle-fill"></i>
           <span className="title-addmovie">Adicionar Filme</span>
         </h1>
+        
+        {/*forms de cadastro de filme */}
         <form onSubmit={handleSubmit} className="form-filme">
           <div className="form-group">
             <label htmlFor="nome">Título do Filme:</label>
@@ -209,11 +224,20 @@ const AdicionarFilmes = () => {
                 <option value="4">Ficção Científica</option>
                 <option value="5">Aventura</option>
                 <option value="6">Terror</option>
+                <option value="7">Mistério</option>
+                <option value="8">Suspense</option>
                 <option value="9">Biografia</option>
                 <option value="10">Comédia</option>
+                <option value="11">Crime</option>
                 <option value="12">Animação</option>
+                <option value="13">Musical</option>
+                <option value="14">Fantasia</option>
+                <option value="15">Documentário</option>
+                <option value="16">Comédia Romântica</option>
+                <option value="17">Policial</option>
               </select>
             </div>
+
             <div className="form-group">
               <label htmlFor="id_linguagem">Linguagem Original:</label>
               <select
@@ -222,12 +246,22 @@ const AdicionarFilmes = () => {
                 value={formData.id_linguagem}
                 onChange={handleChange}
               >
-                <option value="2">Inglês</option>
                 <option value="1">Português</option>
-                <option value="9">Coreano</option>
-                <option value="7">Japonês</option>
-                <option value="4">Francês</option>
+                <option value="2">Inglês</option>
                 <option value="3">Espanhol</option>
+                <option value="4">Francês</option>
+                <option value="5">Alemão</option>
+                <option value="6">Italiano</option>
+                <option value="7">Japonês</option>
+                <option value="8">Chinês</option>
+                <option value="9">Coreano</option>
+                <option value="10">Russo</option>
+                <option value="11">Árabe</option>
+                <option value="12">Grego</option>
+                <option value="13">Turco</option>
+                <option value="14">Sueco</option>
+                <option value="15">Hebraico</option>
+                <option value="16">Tailandês</option>
               </select>
             </div>
           </div>
@@ -240,12 +274,21 @@ const AdicionarFilmes = () => {
             >
               Cancelar
             </button>
-            <button type="submit" className="form-button submit" disabled={status.loading}>
-              {status.loading ? "Enviando..." : (userRole === 'admin' ? "Adicionar Filme" : "Enviar para Aprovação")}
+            <button
+              type="submit"
+              className="form-button submit"
+              disabled={status.loading}
+            >
+              {status.loading
+                ? "Enviando..."
+                : userRole === "admin"
+                ? "Adicionar Filme"
+                : "Enviar para Aprovação"}
             </button>
           </div>
         </form>
-
+        
+         {/* Mensagens de erro e sucesso */}
         {status.error && (
           <div className="form-message error">{status.error}</div>
         )}

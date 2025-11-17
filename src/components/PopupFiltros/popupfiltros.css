@@ -1,42 +1,53 @@
+
+/*container principal modal de filtro*/
 .filter-modal-content {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem; /* Espaço entre os grupos de formulário */
+  gap: 24px; 
   font-family: "Montserrat", sans-serif;
 }
+
+/*título do modal*/
 .filter-modal-content h2 {
-  font-size: 1.8rem;
+  font-size: 28px;
   font-weight: 600;
-  margin: 0 0 0.5rem 0; /* Adiciona margem inferior */
+  margin: 0 0 0.8px 0; 
   text-align: center;
-  color: #ffffff; /* Cor branca, como na imagem */
+  color: #ffffff; 
 }
+
+/*estilização form (label + input/textarea)*/
 .filter-form-group {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 8px;
   flex: 1; /* Faz com que os grupos na linha dividam o espaço */
 }
+
+/*estilo dos labels*/
 .filter-form-group label {
-  font-size: 0.9rem;
+  font-size: 16px;
   font-weight: 500;
-  color: #aaa;
+  color: #ffffff;
 }
-/* Estilo unificado para input e textarea */
+
+/* Estilo input e textarea */
 .filter-form-group input,
 .filter-form-group textarea {
-  background-color: #3b3b3b; /* Tom de cinza escuro da imagem */
-  border: 1px solid #555;
+  background-color: #3b3b3b;
+  border: 1px solid #555555;
   border-radius: 8px;
-  padding: 0.9rem 1rem;
-  color: #fff;
-  font-size: 1rem;
+  padding: 14px 16px;
+  color: #ffffff;
+  font-size: 16px;
   font-family: "Montserrat", sans-serif;
-  height: 50px; /* Altura fixa para inputs */
+  height: 50px; 
 }
+
+/* Placeholder */
 .filter-form-group input::placeholder,
 .filter-form-group textarea::placeholder { 
-  color: #888; 
+  color: #999999; 
   font-family: "Montserrat", sans-serif;
 }
 
@@ -47,11 +58,11 @@
 }
 
 
-/* Para alinhar Ano e Ator lado a lado */
+/* Alinhamento ator e ano lado a lado*/
 .filter-form-row {
   display: flex;
   flex-direction: row;
-  gap: 1.5rem; /* Espaço entre os inputs de ano e ator */
+  gap: 24px; 
 }
 
 /* Botões com o layout da imagem */
@@ -59,26 +70,31 @@
   display: flex;
   width: 100%;
   gap: 1rem;
-  margin-top: 1.5rem; /* Mais espaço acima dos botões */
-  justify-content: center; /* Centraliza os botões */
+  margin-top: 24px; 
+  justify-content: center;
 }
 .filter-button {
-  padding: 0.8rem 1rem;
-  min-width: 180px; /* Largura mínima para os botões */
-  font-size: 1rem;
+  padding: 12px 16px;
+  text-align: center;
+  min-width: 140px; /* Largura mínima para os botões */
+  font-size: 16px;
   font-weight: 600;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.2s ease;
   font-family: "Montserrat", sans-serif;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
 }
 .filter-button.cancel {
-  background-color: #444; 
+  background-color: #555555; 
   color: #fff;
+  border: none;
 }
 .filter-button.cancel:hover {
-  background-color: #555;
+  background-color: #777777;
 }
 .filter-button.confirm {
   background-color: #c80710; 

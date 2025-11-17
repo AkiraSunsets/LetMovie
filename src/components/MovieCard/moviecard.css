@@ -1,4 +1,4 @@
-
+/*estilização card de filmes*/
 .movie-card {
     border-radius: 10px;
     overflow: hidden;
@@ -10,8 +10,8 @@
 }
 
 .movie-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+    transform: translateY(-8px); /*efeito de subir ao passar o mouse por cima*/
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4); /*sombra de profundidade*/
 }
 
 .movie-card-link {
@@ -22,40 +22,44 @@
     flex-grow: 1; /* Faz o link ocupar o espaço */
 }
 
-
+/*poster do filme */
 .movie-card-poster img{
     width: 270px;
-    height: 400px; /* Altura fixa para os pôsteres */
-    object-fit: cover; /* Garante que a imagem cubra o espaço */
+    height: 400px; /*tamanho padrão para posters*/
+    object-fit: cover; /*preenchimento sem distorcer */
     display: block;
     
 }
 
+/*informações do filme*/
 .movie-card-info {
     padding: 16px;
     flex-grow: 1; /* Ocupa espaço */
 }
 
+/*titulo do filme*/
 .movie-card-title {
     font-size: 18px;
     font-weight: 600;
     margin: 0 0 8px 0;
     display: -webkit-box;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+    -webkit-box-orient: vertical; 
+    overflow: hidden; /*evira que o texto exceda o container*/
     min-height: 40px; 
     font-family: "Montserrat", sans-serif;
 }
 
+/*ano do filme*/
 .movie-card-meta {
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-size: 16px;
-    color: #aaa;
+    color: #dddddd;
     font-family: "Montserrat", sans-serif;
 }
 
+/*estrelas*/
 .movie-card-rating {
     display: flex;
     align-items: center;
@@ -64,9 +68,10 @@
     font-weight: 600;
 }
 
+/*botão de ver mais*/
 .movie-card-button {
     display: block;
-    width: calc(100% - 32px); /* 100% - padding */
+    width: calc(100% - 32px); /* lógica para compensar margens laterais */
     margin: 0 16px 16px 16px;
     padding: 12px;
     text-align: center;
@@ -74,11 +79,11 @@
     font-weight: 600;
     border-radius: 8px;
     background-color:#c80710;
-    color: white;
+    color: #ffffff;
     transition: background-color 0.2s ease;
     font-family: "Montserrat", sans-serif;
 }
 
 .movie-card-button:hover {
-    background-color: #a0050c;
+    background-color: #e50914;
 }

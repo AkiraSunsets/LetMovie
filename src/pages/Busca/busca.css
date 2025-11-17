@@ -1,36 +1,42 @@
+
+/* container da página de busca*/
 .busca-container {
     max-width: 1200px;
-    margin: 3rem auto;
-    padding: 2rem;
+    margin: 48px auto;
+    padding: 32px;
     color: white;
+    font-family: "Montserrat", sans-serif;
 }
 
+/*titulo da busca*/
 .busca-container h1 {
-    font-size: 2.5rem;
+    font-size: 35px;
     font-weight: 600;
-    margin-bottom: 2rem;
-    border-bottom: 2px solid #333;
-    padding-bottom: 1rem;
+    margin-bottom: 32px;
+    border-bottom: 2px solid #333333;
+    padding-bottom: 16px;
 }
 
+/*em vermelho o que foi pesquisado*/
 .busca-container h1 span {
-    color: var(--primary-color, #c80710);
+    color: #c80710;
 }
 
+/*grid de cards da busca*/
 .busca-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /*cards responsivos*/
+    gap: 24px;
 }
 
+/*card individual*/
 .busca-card {
-    background-color: #1c1c1c;
     border-radius: 8px;
     overflow: hidden;
     text-decoration: none;
     color: white;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
-    border: 1px solid #333;
+    border: 1px solid #333333;
     font-family: "Montserrat, sans-serif";
 }
 
@@ -39,6 +45,7 @@
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 }
 
+/*imagem dentro do card*/
 .busca-card img {
     width: 100%;
     height: 300px;
@@ -46,24 +53,30 @@
     display: block;
 }
 
+/*info do card*/
 .busca-card-info {
-    padding: 1rem;
+    padding: 16px;
+    font-family: "Montserrat", sans-serif;
 }
 
+/*subtitulo*/
 .busca-card-info h3 {
-    font-size: 1.1rem;
+    font-size: 18px;
     font-weight: 600;
-    margin: 0 0 0.5rem 0;
+    margin: 0 0 8px 0;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
+/*ano*/
 .busca-card-info span {
-    font-size: 0.9rem;
-    color: #aaa;
+    font-size: 16px;
+    color: #dddddd;
 }
 
+/*erro na busca*/
 .busca-error {
     color: #dc3545;
+    font-family: "Montserrat", sans-serif;
 }

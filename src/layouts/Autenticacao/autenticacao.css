@@ -1,12 +1,12 @@
 /* --- Layout Principal --- */
 .login-page {
-  width: 100vw;
-  min-height: 100vh;
+  width: 100vw; /*ocupa toda a largura da tela*/
+  min-height: 100vh; /*ocupa toda a altura da tela*/
   display: flex;
   justify-content: center;
   align-items: center;
   font-family: "Montserrat", sans-serif;
-  padding: 2rem 0;
+  padding: 32px 0;
   box-sizing: border-box;
   background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
     url("/src/assets/images/login.jpg");
@@ -15,6 +15,7 @@
   background-attachment: fixed; 
 }
 
+/*container do login*/
 .login-container {
   width: 900px;
   max-width: 90%;
@@ -26,15 +27,16 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2rem;
+  padding: 32px;
   box-sizing: border-box;
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+/*logo do site*/
 .login-logo-container {
-  font-size: 2.5rem;
+  font-size: 40px;
   font-weight: bold;
-  margin-bottom: 1.5rem;
+  margin-bottom: 24px;
   text-decoration: none;
 }
 
@@ -45,6 +47,8 @@
   color: #ffffff;
 }
 
+
+/*conteúdo principal do login*/
 .login-content {
   display: flex;
   width: 100%;
@@ -53,7 +57,7 @@
 
 /* --- Lado da Imagem --- */
 .login-image {
-  flex-basis: 45%;
+  flex-basis: 45%; /*ocupa 45% do container*/
   display: flex;
   justify-content: center;
   align-items: center;
@@ -66,29 +70,29 @@
 
 /* --- Lado do Formulário --- */
 .login-form-content {
-  flex-basis: 55%;
+  flex-basis: 55%; /*ocupa 55% do container*/
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-left: 2rem;
-  color: #fff;
+  padding-left: 32px;
+  color: #ffffff;
 }
 
 .login-form-content h2 {
-  font-size: 2.2rem;
+  font-size: 36px;
   font-weight: 600;
-  margin-bottom: 1.5rem;
-  color: #fff;
+  margin-bottom: 10px;
+  color: #ffffff;
 }
 
 /* Subtítulo para a página de cadastro */
 .auth-subtitle {
-  font-size: 1rem;
-  color: #aaa;
-  margin-top: -1.2rem;
-  margin-bottom: 1.5rem;
+  font-size: 16px;
+  color: #dddddd;
+  margin-bottom: 24px;
 }
 
+/*formulário*/
 .login-form {
   display: flex;
   flex-direction: column;
@@ -96,23 +100,24 @@
 }
 
 .login-form label {
-  font-size: 0.9rem;
-  color: #aaa;
-  margin-bottom: 0.5rem;
-  margin-top: 1rem;
+  font-size: 16px;
+  color: #ffffff;
+  margin-bottom: 8px;
+  margin-top: 16px;
+  font-weight: 400;
 }
 
 .login-form input {
-  background-color: #333;
-  border: 1px solid #555;
+  background-color: #333333;
+  border: 1px solid #555555;
   border-radius: 8px;
-  padding: 0.9rem 1rem;
-  color: #fff;
-  font-size: 1rem;
+  padding: 14px 16px;
+  color: #ffffff;
+  font-size: 16px;
 }
 
 .login-form input::placeholder {
-  color: #888;
+  color: #999999;
 }
 
 .login-form input:focus {
@@ -123,14 +128,14 @@
 
 .login-button {
   background-color: #e50914;
-  color: #fff;
+  color: #ffffff;
   border: none;
   border-radius: 8px;
-  padding: 0.9rem;
-  font-size: 1.1rem;
+  padding: 14px;
+  font-size: 18px;
   font-weight: 600;
   cursor: pointer;
-  margin-top: 2rem;
+  margin-top: 16px;
   transition: background-color 0.2s ease;
 }
 
@@ -138,28 +143,39 @@
   background-color: #f6121d;
 }
 
+/* Container dos links */
 .login-links {
-  margin-top: 1.5rem;
-  font-size: 0.9rem;
+  display: flex;
+  flex-direction: column; 
+  margin-top: 24px;
+  font-size: 16px;
+  gap: 8px;               
 }
 
+/* "Esqueceu a senha?" */
 .forgot-password {
-  color: #aaaaaa;
+  color: #dddddd;
   text-decoration: none;
+  text-align: right;
 }
 .forgot-password:hover {
   text-decoration: underline;
 }
 
+/* Cadastrar-se" */
 .cadastrar {
-  margin-top: 15px;
+  margin: 0;              /* remove margens extras */
+
 }
+
 .sign-up {
   text-decoration: none;
 }
+
 .signup-white {
-  color: #aaaaaa;
+  color: #dddddd;
 }
+
 .signup-underline {
   color: #ffffff;
   font-weight: 600;

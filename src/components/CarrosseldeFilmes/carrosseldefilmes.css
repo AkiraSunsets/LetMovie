@@ -9,7 +9,7 @@
     align-items: center;
     /* padding-right: 30px; */ /* Removido para alinhar */
     margin-bottom: 20px; /* Mais espaço */
-    border-bottom: 1px solid #333; /* Linha separadora como na referência */
+    border-bottom: 1px solid #333333; /* Linha separadora como na referência */
     padding-bottom: 10px;
 }
 
@@ -67,7 +67,7 @@
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     background-color: #1a1a1a; /* Fundo para o card */
-    border: 1px solid #333; /* Borda sutil */
+    border: 1px solid #333333; /* Borda sutil */
 }
 
 .carrossel-card:hover {

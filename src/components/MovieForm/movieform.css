@@ -22,7 +22,7 @@
 
 /*titulo*/
 .title-addmovie {
-    color: white;
+    color: #ffffff;
     font-family: "Montserrat", sans-serif;
 }
 .form-filme {
@@ -69,8 +69,8 @@
 .form-group textarea:focus,
 .form-group select:focus {
     outline: none;
-    border-color: white;
-    box-shadow: 0 0 5px white;
+    border-color: #ffffff;
+    box-shadow: 0 0 5px #ffffff;
 }
 
 /*campo sinopse que expande verticalmente para baixo*/

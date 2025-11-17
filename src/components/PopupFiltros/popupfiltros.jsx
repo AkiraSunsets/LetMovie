@@ -2,31 +2,36 @@ import React, { useState, useEffect } from 'react';
 import Modal from '../Modal/Modal';
 import '../PopupFiltros/popupfiltros.css';
 
+/* Componente de modal para filtros personalizados */
 const FilterModal = ({ isOpen, onClose, onFilterSubmit, currentFilters }) => {
+
+  //estados locais para os campos de formulário
   const [genero, setGenero] = useState("");
   const [ano, setAno] = useState("");
   const [ator, setAtor] = useState("");
-  const [poster, setPoster] = useState(""); // NOVO
-  const [sinopse, setSinopse] = useState(""); // NOVO
+  const [poster, setPoster] = useState(""); 
+  const [sinopse, setSinopse] = useState(""); 
 
-  // Sincroniza o state do modal com os filtros da página
+  //Quando o modal abre, sincroniza os estados com os filtros atuais da página
   useEffect(() => {
     if (isOpen) {
       setGenero(currentFilters.genero || "");
       setAno(currentFilters.ano || "");
       setAtor(currentFilters.ator || "");
-      setPoster(currentFilters.poster || ""); // NOVO
-      setSinopse(currentFilters.sinopse || ""); // NOVO
+      setPoster(currentFilters.poster || ""); 
+      setSinopse(currentFilters.sinopse || ""); 
     }
   }, [isOpen, currentFilters]);
 
 
+  /* função chamada ao clicar em "Filtrar" */
   const handleFilter = () => {
-    // Envia todos os 5 filtros
-    onFilterSubmit({ genero, ano, ator, poster, sinopse });
-    onClose();
+    
+    onFilterSubmit({ genero, ano, ator, poster, sinopse }); // Envia todos os 5 filtros
+    onClose(); //fecha o modal
   };
 
+  //função chamada ao clicar em "Cancelar"
   const handleCancel = () => {
     onClose();
   }
@@ -36,6 +41,7 @@ const FilterModal = ({ isOpen, onClose, onFilterSubmit, currentFilters }) => {
       <div className="filter-modal-content">
         <h2>Filtre seus filmes de forma personalizada!</h2>
         
+        {/* Campo genero */}
         <div className="filter-form-group">
           <label htmlFor="genero">Gênero:</label>
           <input 
@@ -47,6 +53,7 @@ const FilterModal = ({ isOpen, onClose, onFilterSubmit, currentFilters }) => {
           />
         </div>
 
+        {/* Formato para que ano e ator fiquem lado a lado */}
         <div className="filter-form-row">
             <div className="filter-form-group">
                 <label htmlFor="ano">Ano:</label>
@@ -71,7 +78,7 @@ const FilterModal = ({ isOpen, onClose, onFilterSubmit, currentFilters }) => {
             </div>
         </div>
 
-        {/* --- NOVOS CAMPOS ADICIONADOS (DO SEU DESIGN) --- */}
+        {/* Campo poster */}
         <div className="filter-form-group">
             <label htmlFor="poster">Pôster:</label>
             <input 
@@ -92,8 +99,8 @@ const FilterModal = ({ isOpen, onClose, onFilterSubmit, currentFilters }) => {
                 onChange={(e) => setSinopse(e.target.value)}
             />
         </div>
-        {/* --- FIM DOS NOVOS CAMPOS --- */}
 
+        {/* botão de ação do modal */}
         <div className="filter-modal-actions">
           <button className="filter-button cancel" onClick={handleCancel}>
             Cancelar

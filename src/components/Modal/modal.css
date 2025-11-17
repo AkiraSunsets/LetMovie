@@ -14,15 +14,14 @@
 
 .modal-content {
   position: relative;
-  /* Fundo mais escuro, como na imagem */
-  background-color: #282828; 
+      background-color: rgba(21, 21, 21, 0.9);
+    border: 1px solid rgba(153, 153, 153, 0.3);
   border-radius: 12px;
   padding: 2.5rem;
   width: 90%;
-  max-width: 700px; /* Deixa o modal largo para o layout */
+  max-width: 900px; /* Deixa o modal largo para o layout */
   box-shadow: 0 10px 30px rgba(0,0,0,0.5);
   /* Remove a borda para o visual "flat" */
-  border: none; 
   color: #ffffff;
 }
 

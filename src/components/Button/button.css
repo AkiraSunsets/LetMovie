@@ -2,17 +2,18 @@
     display: inline-block;
     text-decoration: none;
     color: white;
-    border-radius: 8px; /* Mais alinhado com o design */
+    border-radius: 8px; 
     background-color: #C80710;
     font-size: 16px;
     font-family: "Montserrat", sans-serif;
-    font-weight: 600; /* Mais forte */
+    font-weight: 600; 
     padding: 12px 30px;
     cursor: pointer;
     transition: all 0.3s ease;
-    border: 2px solid transparent; /* Borda para o secundário */
+    border: 2px solid transparent; 
 }
 
+/*cor botão primário*/
 .button.primary {
     background-color: #C80710;
     border-color: #C80710;
@@ -25,8 +26,8 @@
     transform: scale(1.05);
 }
 
+/*cor botão segundário*/
 .button.secondary {
-    /* CORREÇÃO AQUI: Fundo escuro como na referência */
     background-color: #2C2F3A; 
     border: 2px solid #2C2F3A; 
     color: white;

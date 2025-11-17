@@ -1,25 +1,31 @@
-CREATE DATABASE LetMovie;
+CREATE DATABASE IF NOT EXISTS LetMovie;
 USE LetMovie;
 
-CREATE TABLE Filme (
+-- ============================
+-- TABELAS PRINCIPAIS
+-- ============================
+
+CREATE TABLE IF NOT EXISTS Filme (
 	ID INT PRIMARY KEY AUTO_INCREMENT,
     Titulo VARCHAR(255) NOT NULL,
     TempoDuracao INT,
     Ano INT NOT NULL,
-    Poster TEXT
+    Poster TEXT,
+    Sinopse TEXT DEFAULT NULL,
+    Status VARCHAR(50) NOT NULL DEFAULT 'PENDENTE'
 );
 
-CREATE TABLE Nacionalidade (
+CREATE TABLE IF NOT EXISTS Nacionalidade (
     ID INT PRIMARY KEY AUTO_INCREMENT,
     Nome VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE GeneroPessoa (
+CREATE TABLE IF NOT EXISTS GeneroPessoa (
 	ID INT PRIMARY KEY AUTO_INCREMENT,
     Titulo VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE Ator (
+CREATE TABLE IF NOT EXISTS Ator (
 	ID INT PRIMARY KEY AUTO_INCREMENT,
     Nome VARCHAR(255) NOT NULL,
     Sobrenome VARCHAR(255) NOT NULL,
@@ -29,7 +35,7 @@ CREATE TABLE Ator (
     FOREIGN KEY (id_generopessoa) REFERENCES GeneroPessoa(ID)
 );
 
-CREATE TABLE AtorFilme (
+CREATE TABLE IF NOT EXISTS AtorFilme (
 	ID INT PRIMARY KEY AUTO_INCREMENT,
     id_filme INT NOT NULL,
     id_ator INT NOT NULL,
@@ -37,12 +43,12 @@ CREATE TABLE AtorFilme (
     FOREIGN KEY (id_ator) REFERENCES Ator(ID)
 );
 
-CREATE TABLE Genero (
+CREATE TABLE IF NOT EXISTS Genero (
 	ID INT PRIMARY KEY AUTO_INCREMENT,
     Nome VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE GeneroFilme (
+CREATE TABLE IF NOT EXISTS GeneroFilme (
 	ID INT PRIMARY KEY AUTO_INCREMENT,
     id_genero INT NOT NULL,
     id_filme INT NOT NULL,
@@ -50,7 +56,7 @@ CREATE TABLE GeneroFilme (
     FOREIGN KEY (id_filme) REFERENCES Filme(ID)
 );
 
-CREATE TABLE Diretor (
+CREATE TABLE IF NOT EXISTS Diretor (
 	ID INT PRIMARY KEY AUTO_INCREMENT,
     Nome VARCHAR(255) NOT NULL,
     Sobrenome VARCHAR(255) NOT NULL,
@@ -60,7 +66,7 @@ CREATE TABLE Diretor (
     FOREIGN KEY (id_generopessoa) REFERENCES GeneroPessoa(ID)
 );
 
-CREATE TABLE FilmeDiretor (
+CREATE TABLE IF NOT EXISTS FilmeDiretor (
 	ID INT PRIMARY KEY AUTO_INCREMENT,
     id_filme INT NOT NULL,
     id_diretor INT NOT NULL,
@@ -68,12 +74,12 @@ CREATE TABLE FilmeDiretor (
     FOREIGN KEY (id_diretor) REFERENCES Diretor(ID)
 );
 
-CREATE TABLE Linguagem (
+CREATE TABLE IF NOT EXISTS Linguagem (
 	ID INT PRIMARY KEY AUTO_INCREMENT,
     Nome VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE LinguagemFilme (
+CREATE TABLE IF NOT EXISTS LinguagemFilme (
 	ID INT PRIMARY KEY AUTO_INCREMENT,
     id_filme INT NOT NULL,
     id_linguagem INT NOT NULL,
@@ -81,12 +87,12 @@ CREATE TABLE LinguagemFilme (
     FOREIGN KEY (id_linguagem) REFERENCES Linguagem(ID)
 );
 
-CREATE TABLE Produtora (
+CREATE TABLE IF NOT EXISTS Produtora (
 	ID INT PRIMARY KEY AUTO_INCREMENT,
     Nome VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE ProdutoraFilme (
+CREATE TABLE IF NOT EXISTS ProdutoraFilme (
 	ID INT PRIMARY KEY AUTO_INCREMENT,
     id_filme INT NOT NULL,
     id_produtora INT NOT NULL,
@@ -94,22 +100,25 @@ CREATE TABLE ProdutoraFilme (
     FOREIGN KEY (id_produtora) REFERENCES Produtora(ID)
 );
 
-CREATE TABLE Pais (
+CREATE TABLE IF NOT EXISTS Pais (
 	ID INT PRIMARY KEY AUTO_INCREMENT,
     Nome VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE PaisFilme (
+CREATE TABLE IF NOT EXISTS PaisFilme (
 	ID INT PRIMARY KEY AUTO_INCREMENT,
     id_pais INT NOT NULL,
-    id_filme INT NOT NULL, 
+    id_filme INT NOT NULL,
     FOREIGN KEY (id_pais) REFERENCES Pais(ID),
     FOREIGN KEY (id_filme) REFERENCES Filme(ID)
 );
 
--- Inserts corrigidos
+-- ============================
+-- FILMES
+-- ============================
+
 INSERT INTO Filme (Titulo, TempoDuracao, Ano, Poster)
-VALUES 
+VALUES
 ("Como eu era antes de você", 110, 2012, "https://m.media-amazon.com/images/M/MV5BMjQ4ZGMyZjYtNDYwNC00MmUyLWE4ZWQtM2ViMTQ0OTc1M2U1XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"),
 ("A culpa é das estrelas", 126, 2014, "https://upload.wikimedia.org/wikipedia/pt/0/08/The_Fault_in_Our_Stars_%28filme%29.jpg"),
 ("P.S. Eu Te Amo", 126, 2007, "https://upload.wikimedia.org/wikipedia/pt/thumb/4/42/P_s_i_love_you.jpg/250px-P_s_i_love_you.jpg"),
@@ -132,6 +141,10 @@ VALUES
 ("O Senhor dos Anéis - A sociedade do anel", 178, 2001, "https://br.web.img3.acsta.net/medias/nmedia/18/92/91/32/20224832.jpg"),
 ("Clube de Luta", 139, 1999, "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSNAklmRu_o2m6mcmMXzTiVSOFAt3gmUDdy8Hd5pr6SDnujHz7kls4BT3dFHy9OvOkxV8BHAaGWage5w1t-NxBb02nl_Vdteo5OZsACmA"),
 ("Divertida Mente", 95, 2015, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShPeyKUi0XDjg4qFq2NkJx4Fj_TxmHpNPxog&s");
+
+-- ============================
+-- NACIONALIDADES (agora 22 certinhas)
+-- ============================
 
 INSERT INTO Nacionalidade (Nome)
 VALUES 
@@ -156,14 +169,20 @@ VALUES
 ("Irlandesa"),
 ("Russa"),
 ("Dinamarquesa"),
-("Sueca");
+("Finlandesa");  -- ID 22 (corrige o FK)
+
+-- ============================
+-- GÊNERO PESSOA
+-- ============================
 
 INSERT INTO GeneroPessoa (Titulo)
-VALUES
-("Feminino"),
-("Masculino");
+VALUES ("Feminino"), ("Masculino");
 
-INSERT INTO Ator (Nome, Sobrenome, id_nacionalidade,id_generopessoa)
+-- ============================
+-- ATORES
+-- ============================
+
+INSERT INTO Ator (Nome, Sobrenome, id_nacionalidade, id_generopessoa)
 VALUES
 ("Emilia", "Clarke", 2, 1),
 ("Shailene", "Woodley", 1, 1),
@@ -179,7 +198,7 @@ VALUES
 ("Ryan", "Gosling", 3, 2),
 ("Russell", "Crowe", 7, 2),
 ("Tom", "Hanks", 1, 2),
-("Cillian", "Murph", 19, 2),
+("Cillian", "Murphy", 19, 2),
 ("Ralph", "Fiennes", 2, 2),
 ("Bruce", "Willis", 1, 2),
 ("Shameik", "Moore", 1, 2),
@@ -188,78 +207,43 @@ VALUES
 ("Brad", "Pitt", 1, 2),
 ("Amy", "Poehler", 1, 1);
 
+-- ============================
+-- ATORES-FILMES
+-- ============================
+
 INSERT INTO AtorFilme (id_filme, id_ator)
 VALUES
-(1, 1),
-(2, 2),
-(3, 3),
-(4, 4),
-(5, 5),
-(6, 6),
-(7, 7),
-(8, 8),
-(9, 9),
-(10, 10),
-(11, 11),
-(12, 12),
-(13, 13),
-(14, 14),
-(15, 15),
-(16, 16),
-(17, 17),
-(18, 18),
-(19, 19),
-(20, 20),
-(21, 21),
-(22, 22);
+(1, 1),(2,2),(3,3),(4,4),(5,5),
+(6,6),(7,7),(8,8),(9,9),(10,10),
+(11,11),(12,12),(13,13),(14,14),(15,15),
+(16,16),(17,17),(18,18),(19,19),(20,20),
+(21,21),(22,22);
+
+-- ============================
+-- GÊNEROS
+-- ============================
 
 INSERT INTO Genero (Nome)
 VALUES
-("Romance"),
-("Drama"),
-("Ação"),
-("Ficção Científica"),
-("Aventura"),
-("Terror"),
-("Mistério"),
-("Suspense"),
-("Biografia"),
-("Comédia"),
-("Crime"),
-("Animação"),
-("Musical"),
-("Fantasia"),
-("Documentário"),
-("Comédia Romantica"),
-("Policial"),
-("Guerra"),
-("Noir"),
-("Histórico");
+("Romance"),("Drama"),("Ação"),("Ficção Científica"),("Aventura"),("Terror"),("Mistério"),("Suspense"),
+("Biografia"),("Comédia"),("Crime"),("Animação"),("Musical"),("Fantasia"),("Documentário"),
+("Comédia Romantica"),("Policial"),("Guerra"),("Noir"),("Histórico");
+
+-- ============================
+-- GENERO x FILME
+-- ============================
 
 INSERT INTO GeneroFilme (id_genero, id_filme)
 VALUES
-(1,1),
-(2,2),
-(1,3),
-(1,4),
-(1,5),
-(3, 6),
-(4, 7),
-(6, 8),
-(9, 9),
-(12, 10),
-(2, 11),
-(13, 12),
-(3, 13),
-(12, 14),
-(3, 15),
-(10, 16),
-(2, 17),
-(12, 18),
-(10, 19),
-(5, 20),
-(2, 21),
-(10, 22);
+(1,1),(2,2),(1,3),(1,4),(1,5),
+(3,6),(4,7),(6,8),(9,9),(12,10),
+(2,11),(13,12),(3,13),(12,14),(3,15),
+(10,16),(2,17),(12,18),(10,19),(5,20),
+(2,21),(10,22);
+
+-- ============================
+-- DIRETORES (corrigido)
+-- ============================
 
 INSERT INTO Diretor (Nome, Sobrenome, id_nacionalidade, id_generopessoa)
 VALUES
@@ -279,85 +263,50 @@ VALUES
 ("Lee", "Unkrich", 1, 2),
 ("Christopher", "Nolan", 2, 2),
 ("Wes", "Anderson", 1, 2),
-("M.", "Night Shyamalan", 1, 2),
+("M. Night", "Shyamalan", 1, 2),
 ("Bob", "Persichetti", 1, 2),
 ("Jean-Pierre", "Jeunet", 4, 2),
 ("Peter", "Jackson", 7, 2),
 ("David", "Fincher", 1, 2),
 ("Peter", "Docter", 1, 2);
 
+-- ============================
+-- FILME-DIRETOR
+-- ============================
+
 INSERT INTO FilmeDiretor (id_filme, id_diretor)
 VALUES
-(1, 1),
-(2, 2),
-(3, 3),
-(4, 4),
-(5, 5),
-(6, 6),
-(7, 7),
-(8, 8),
-(9, 9),
-(10, 10),
-(11, 11),
-(12, 12),
-(13, 13),
-(14, 14),
-(15, 15),
-(16, 16),
-(17, 17),
-(18, 18),
-(19, 19),
-(20, 20),
-(21, 21),
-(22, 22);
+(1,1),(2,2),(3,3),(4,4),(5,5),
+(6,6),(7,7),(8,8),(9,9),(10,10),
+(11,11),(12,12),(13,13),(14,14),(15,15),
+(16,16),(17,17),(18,18),(19,19),(20,20),
+(21,21),(22,22);
+
+-- ============================
+-- LINGUAGENS
+-- ============================
 
 INSERT INTO Linguagem (Nome)
 VALUES
-('Português'),
-('Inglês'),
-('Espanhol'),
-('Francês'),
-('Alemão'),
-('Italiano'),
-('Japonês'),
-('Chinês'),
-('Coreano'),
-('Russo'),
-('Árabe'),
-('Hindi'),
-('Grego'),
-('Turco'),
-('Holandês'),
-('Polonês'),
-('Sueco'),
-('Norueguês'),
-('Hebraico'),
-('Tailandês');
+('Português'),('Inglês'),('Espanhol'),('Francês'),('Alemão'),('Italiano'),('Japonês'),('Chinês'),
+('Coreano'),('Russo'),('Árabe'),('Hindi'),('Grego'),('Turco'),('Holandês'),('Polonês'),
+('Sueco'),('Norueguês'),('Hebraico'),('Tailandês');
+
+-- ============================
+-- LINGUAGEM x FILME
+-- ============================
 
 INSERT INTO LinguagemFilme (id_linguagem, id_filme)
 VALUES
-(2, 1),
-(2, 2),
-(2, 3),
-(2, 4),
-(2, 5),
-(2, 6),
-(2, 7),
-(2, 8),
-(2, 9),
-(2, 10),
-(9, 11),
-(2, 12),
-(2, 13),
-(2, 14),
-(2, 15),
-(2, 16),
-(2, 17),
-(2, 18),
-(2, 19),
-(2, 20),
-(2, 21),
-(2, 22);
+(2,1),(2,2),(2,3),(2,4),(2,5),
+(2,6),(2,7),(2,8),(2,9),(2,10),
+(9,11),(2,12),(2,13),(2,14),(2,15),
+(2,16),(2,17),(2,18),(2,19),(2,20),
+(2,21),(2,22);
+
+-- ============================
+-- PRODUTORAS
+-- ============================
 
 INSERT INTO Produtora (Nome)
 VALUES
@@ -370,7 +319,7 @@ VALUES
 ("21 Laps Entertainment"),
 ("Blumhouse Productions"),
 ("Red Granite Pictures"),
-("Walt Dinsey Feature Animation"),
+("Walt Disney Feature Animation"),
 ("Barunson E&A"),
 ("Summit Entertainment"),
 ("DreamWorks SKG"),
@@ -383,30 +332,21 @@ VALUES
 ("WingNut Films"),
 ("Regency Enterprises");
 
+-- ============================
+-- PRODUTORA x FILME
+-- ============================
+
 INSERT INTO ProdutoraFilme (id_filme, id_produtora)
 VALUES
-(1, 1),
-(2, 2),
-(3, 3),
-(4, 4),
-(5, 5),
-(6, 6),
-(7, 7),
-(8, 8),
-(9, 9),
-(10, 10),
-(11, 11),
-(12, 12),
-(13, 13),
-(14, 14),
-(15, 15),
-(16, 16),
-(17, 17),
-(18, 18),
-(19, 19),
-(20, 20),
-(21, 21),
-(22, 14);
+(1,1),(2,2),(3,3),(4,4),(5,5),
+(6,6),(7,7),(8,8),(9,9),(10,10),
+(11,11),(12,12),(13,13),(14,14),(15,15),
+(16,16),(17,17),(18,18),(19,19),(20,20),
+(21,21),(22,14);
+
+-- ============================
+-- PAÍSES
+-- ============================
 
 INSERT INTO Pais (Nome)
 VALUES
@@ -419,33 +359,22 @@ VALUES
 ("França"),
 ("Brasil");
 
+-- ============================
+-- PAÍS x FILME
+-- ============================
+
 INSERT INTO PaisFilme(id_pais, id_filme)
 VALUES
-(2, 1),
-(2, 2),
-(2, 3),
-(1, 4),
-(2, 5),
-(3, 6),
-(2, 7),
-(2, 8),
-(2, 9),
-(2, 10),
-(5, 11),
-(2, 12),
-(1, 13),
-(2, 14),
-(2, 15),
-(2, 16),
-(2, 17),
-(2, 18),
-(7, 19),
-(6, 20),
-(2, 21),
-(2, 22);
+(2,1),(2,2),(2,3),(1,4),(2,5),(3,6),
+(2,7),(2,8),(2,9),(2,10),(5,11),(2,12),
+(1,13),(2,14),(2,15),(2,16),(2,17),(2,18),
+(7,19),(6,20),(2,21),(2,22);
 
-USE LetMovie;
+-- ============================
+-- APROVAR FILMES
+-- ============================
 
-ALTER TABLE Filme ADD COLUMN Sinopse TEXT NULL;
-ALTER TABLE Filme ADD COLUMN Status VARCHAR(50) NOT NULL DEFAULT 'PENDENTE';
+UPDATE Filme 
+SET Status = 'APROVADO' 
+WHERE Status = 'PENDENTE' AND ID > 0;
 

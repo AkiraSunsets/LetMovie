@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import './generos.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
-// Ícones de exemplo para os gêneros
+
+/*prop de generos*/
 const genreIcons = {
   "Ação": "bi bi-lightning-charge-fill",
   "Aventura": "bi bi-compass-fill",
@@ -25,8 +26,12 @@ const genreIcons = {
 };
 
 const GenreCarousel = ({ generos }) => {
+
+  // Referência usada para controlar o scroll horizontal
   const scrollRef = useRef(null);
 
+
+  //função que controla a lista horizontalmente, define se ela rola para a esquerda ou direita
   const scroll = (direction) => {
     if (scrollRef.current) {
       const scrollAmount = direction === 'left' ? -300 : 300;
@@ -34,19 +39,23 @@ const GenreCarousel = ({ generos }) => {
     }
   };
 
+  //evita que o carrossel renderize vazio
   if (!generos || generos.length === 0) {
     return null;
   }
 
   return (
-    <div className="genre-carousel-container">
+    <div className="genre-carousel-container"> 
+    {/*botão esquerdo de navegação*/}
       <button 
         className="genre-nav-btn left" 
         onClick={() => scroll('left')}
         aria-label="Rolar para esquerda"
       >
         <i className="bi bi-chevron-left"></i>
-      </button>
+      </button> 
+
+      {/*Lista horizontal que contém os botões dos generos*/}
       <div className="genre-list" ref={scrollRef}>
         {generos.map((genero) => (
           <Link
@@ -60,6 +69,8 @@ const GenreCarousel = ({ generos }) => {
           </Link>
         ))}
       </div>
+
+      {/*botão direito de navegação*/}
       <button 
         className="genre-nav-btn right" 
         onClick={() => scroll('right')}
