@@ -8,6 +8,7 @@
     border: 1px solid #333333;
     border-radius: 12px;
     color: white;
+    font-family: "Montserrat", sans-serif;
 
 }
 
@@ -70,7 +71,7 @@
 }
 
 .notificacao-info a:hover strong {
-    color: var(--primary-color, #c80710);
+    color: #c80710;
 }
 
 .notificacao-info span {
@@ -101,6 +102,7 @@
 
 .action-btn i {
     font-size: 18px;
+    font-family: "Montserrat", sans-serif;
 }
 
 .action-btn.approve {
