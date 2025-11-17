@@ -23,40 +23,45 @@ import EditarFilme from "./pages/editarfilmes/editarfilmes";
 import PaginaBusca from "./pages/Busca/busca"; 
 
 const App = () => {
-  return (
-    <AuthProvider>
-      <Router>
-        <Header />
-        <main>
-          <Routes>
-            {/* Rotas Públicas */}
-            <Route path="/login" element={<Login />} />
-            <Route path="/cadastro" element={<Cadastro />} />
+  return (
+    <AuthProvider>
+      <Router>
+        <Header />
+        <main>
+          <Routes>
+            {/* Rotas Públicas */}
+            <Route path="/login" element={<Login />} />
+            <Route path="/cadastro" element={<Cadastro />} />
 
-            {/* Rotas Protegidas (precisa estar logado) */}
-            <Route element={<ProtectedRoute />}>
-              <Route path="/" element={<Home />} />
-              <Route path="/filmes" element={<Filmes />} />
-              <Route path="/sobre" element={<Sobre />} />
-              <Route path="/editarperfil" element={<EditarPerfil />} />
-              <Route path="/perfil" element={<Perfil />} />
-              <Route path="/filme/:id" element={<DetalheFilme />} />
-              <Route path="/busca" element={<PaginaBusca />} />
-            </Route>
+            {/* Rotas Protegidas (precisa estar logado) */}
+            {/* O "ProtectedRoute" (sem adminOnly) é o que redireciona para /login */}
+            <Route element={<ProtectedRoute />}>
+              <Route path="/" element={<Home />} />
+              <Route path="/filmes" element={<Filmes />} />
+              <Route path="/sobre" element={<Sobre />} />
+              <Route path="/editarperfil" element={<EditarPerfil />} />
+              <Route path="/perfil" element={<Perfil />} />
+              <Route path="/filme/:id" element={<DetalheFilme />} />
+              <Route path="/busca" element={<PaginaBusca />} />
 
-            {/* Rotas de Admin (precisa ser admin) */}
-            <Route element={<ProtectedRoute adminOnly={true} />}>
-              <Route path="/adicionarfilmes" element={<AdicionarFilmes />} />
-              <Route path="/editarfilme/:id" element={<EditarFilme />} />
-              <Route path="/notificacoes" element={<Notificacoes />} />
-            </Route>
+              {/* --- CORREÇÃO AQUI --- */}
+              {/* Usuários comuns PRECISAM acessar essas páginas */}
+              <Route path="/adicionarfilmes" element={<AdicionarFilmes />} />
+              <Route path="/editarfilme/:id" element={<EditarFilme />} />
+            </Route>
 
-          </Routes>
-        </main>
-        <Footer />
-      </Router>
-    </AuthProvider>
-  );
+            {/* Rotas de Admin (precisa ser admin) */}
+            <Route element={<ProtectedRoute adminOnly={true} />}>
+              {/* Apenas o admin pode aprovar */}
+              <Route path="/notificacoes" element={<Notificacoes />} />
+            </Route>
+
+          </Routes>
+        </main>
+        <Footer />
+      </Router>
+    </AuthProvider>
+  );
 };
 
 export default App;

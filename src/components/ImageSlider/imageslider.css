@@ -1,10 +1,10 @@
 /* 1. O Contêiner Principal */
 .slider-container {
-  width: 90%;
-  max-width: 1200px; /* Ajuste a largura máxima conforme o design do seu site */
+  /* width: 90%; */ /* Removido para ocupar 100% da largura do container pai */
+  max-width: 1200px; /* Mantém o limite */
   margin: 20px auto; /* Centraliza e dá um espaço */
   position: relative; /* Essencial para posicionar os pontinhos */
-  overflow: hidden; /* O truque! Esconde os slides que estão fora */
+  overflow: hidden; /* Esconde os slides que estão fora */
   border-radius: 15px; /* Para as bordas arredondadas como no exemplo */
 }
 
@@ -48,33 +48,40 @@
     rgba(0, 0, 0, 0.9) 10%,
     rgba(0, 0, 0, 0) 100%
   );
+  
+  /* Alinha o texto à esquerda, como na referência */
+  text-align: left;
 }
 
 .slide-content h2 {
   font-size: 2.5rem;
   margin: 0 0 10px 0;
+  font-family: "Montserrat", sans-serif;
 }
 
 .slide-content p {
   font-size: 1rem;
   max-width: 60%; /* Limita a largura da descrição */
-  margin-bottom: 20px;
+  margin: 0 0 20px 0; /* Remove margin-top e alinha à esquerda */
+  text-align: left;
+  line-height: 1.5;
 }
 
 .slide-button {
-  background-color: #e50914; /* Cor vermelha (estilo Netflix/Star+) */
+  background-color: #c80710; /* Cor vermelha (corrigida) */
   color: white;
   border: none;
   padding: 12px 24px;
   font-size: 1rem;
   font-weight: bold;
-  border-radius: 5px;
+  border-radius: 8px; /* Alinhado com o mockup */
   cursor: pointer;
   transition: background-color 0.3s ease;
+  font-family: "Montserrat", sans-serif;
 }
 
 .slide-button:hover {
-  background-color: #f40612;
+  background-color: #e50914; /* Hover vermelho */
 }
 
 /* 5. Os Pontinhos de Navegação */
@@ -98,5 +105,5 @@
 }
 
 .dot.active {
-  background-color: white; /* Cor do pontinho ativo */
+  background-color: #c80710; /* Cor do pontinho ativo (vermelho) */
 }

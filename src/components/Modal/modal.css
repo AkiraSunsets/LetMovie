@@ -14,13 +14,15 @@
 
 .modal-content {
   position: relative;
-  background-color: #1c1c1c;
+  /* Fundo mais escuro, como na imagem */
+  background-color: #282828; 
   border-radius: 12px;
   padding: 2.5rem;
   width: 90%;
-  max-width: 450px;
+  max-width: 700px; /* Deixa o modal largo para o layout */
   box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-  border: 1px solid #333;
+  /* Remove a borda para o visual "flat" */
+  border: none; 
   color: #ffffff;
 }
 
@@ -40,7 +42,7 @@
   transform: scale(1.1);
 }
 
-/* Estilos específicos para o Modal de Logout (baseado no seu design) */
+/* --- Estilos do Modal de Logout (do seu mockup) --- */
 .logout-modal-content {
   display: flex;
   flex-direction: column;

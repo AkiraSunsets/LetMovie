@@ -1,59 +1,111 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import "./home.css";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import "./home.css"; // O CSS NOVO que eu vou te passar
 import Button from "../../components/Button/button";
-import ImageSlider from "../../components/ImageSlider/imageslider";
-import CarrosselDeFilmes from "../../components/CarrosseldeFilmes/carrosseldefilmes";
-
-
-const dummyData = [
-  { id: 1, title: 'Alerta Vermelho', year: 2021, rating: 4.1, img: 'https://www.papodecinema.com.br/wp-content/uploads/2021/09/20210908-alerta-vermelho-papo-de-cinema-cartaz-1.webp' },
-  { id: 2, title: 'Bagagem de Risco', year: 2024, rating: 3.8, img: 'https://m.media-amazon.com/images/M/MV5BMTA0MDQ3NmMtY2NmMC00MTJmLTk0MTMtZjAzZDU1OTg5ZmE3XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg' },
-  { id: 3, title: 'O Projeto Adam', year: 2019, rating: 4.1, img: 'https://www.papodecinema.com.br/wp-content/uploads/2022/03/20220312-adamproject_main_payoff_vertical_27x40_rgb_pre_pt-br.webp' },
-  { id: 4, title: 'Alerta Vermelho', year: 2021, rating: 4.1, img: 'https://img.elo7.com.br/product/main/3F02D64/poster-alerta-vermelho-red-notice-com-moldura-filme.jpg' },
-  { id: 5, title: 'Alerta Vermelho', year: 2021, rating: 4.1, img: 'https://img.elo7.com.br/product/main/3F02D64/poster-alerta-vermelho-red-notice-com-moldura-filme.jpg' },
-  { id: 6, title: 'Alerta Vermelho', year: 2021, rating: 4.1, img: 'https://img.elo7.com.br/product/main/3F02D64/poster-alerta-vermelho-red-notice-com-moldura-filme.jpg' },
-  { id: 7, title: 'Alerta Vermelho', year: 2021, rating: 4.1, img: 'https://img.elo7.com.br/product/main/3F02D64/poster-alerta-vermelho-red-notice-com-moldura-filme.jpg' },
-];
+import ImageSlider from "../../components/ImageSlider/imageslider"; // Seu componente de slider
+import CarrosselDeFilmes from "../../components/CarrosseldeFilmes/carrosseldefilmes"; // Seu componente de carrossel
+import GenreCarousel from "../../components/Generos/generos"; // O carrossel de gêneros
 
 const Home = () => {
-  return (
-    <div className="home-page">
-           {" "}
-      <section className="home-content">
-                <h1>Welcome to LetMovie</h1>               {" "}
-        <p>
-          Gerencie sua coleção de filmes com estilo. Adicione, edite e descubra
-          novos títulos com a interface elegante do LetMovie.
-        </p>
-                        {/*botões coloridos*/}       {" "}
-        <div className="button-group">
-                 {" "}
-          <Button
-            buttonText="Adicionar Filmes"
-            to="/adicionarfilmes"
-            variant="primary"
-          />
-                 {" "}
-          <Button buttonText="Ver Filmes" to="/filmes" variant="secondary" />   
-             {" "}
+  const [generos, setGeneros] = useState([]);
+  const [filmesPopulares, setFilmesPopulares] = useState([]);
+  const [filmesRecentes, setFilmesRecentes] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchHomeData = async () => {
+      try {
+        setLoading(true);
+        // 1. Busca os dados da rota /api/home
+        const response = await fetch("http://localhost:8000/api/home");
+        if (!response.ok) {
+          throw new Error(`Falha ao buscar dados: ${response.statusText}`);
+        }
+        const data = await response.json();
+
+        // 2. Armazena os dados reais nos states
+        setGeneros(data.generos || []);
+        setFilmesPopulares(data.filmes_populares || []);
+        setFilmesRecentes(data.filmes_recentes || []);
+        setError(null);
+      } catch (err) {
+        setError(err.message); 
+        console.error("Erro em fetchHomeData:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchHomeData();
+  }, []); // Roda apenas uma vez
+
+  // Se estiver carregando
+  if (loading) {
+    return <div className="home-status-message">Carregando...</div>;
+  }
+
+  // Se der erro
+  if (error) {
+    return (
+        <div className="home-status-message error">
+            <strong>Error: {error}</strong>
+            <p>Não foi possível conectar ao servidor. Verifique se o `server.py` está rodando.</p>
         </div>
-             {" "}
+    );
+  }
+
+  // Página completa
+  return (
+    <div className="home-page-container">
+      {/* ===== 1. Seção do Banner "Welcome" (Layout da Referência) ===== */}
+      <section className="home-banner">
+        <div className="home-banner-content">
+          <h1>
+            Welcome to Let<span className="logo-movie-span">Movie</span>
+          </h1>
+          <p>
+            Gerencie sua coleção de filmes com estilo. Adicione, edite e descubra
+            novos títulos com a interface elegante do LetMovie.
+          </p>
+          <div className="button-group">
+            <Button
+              buttonText="Adicionar Filme"
+              to="/adicionarfilmes"
+              variant="primary"
+            />
+            <Button 
+              buttonText="Ver Filmes" 
+              to="/filmes" 
+              variant="secondary" 
+            />
+          </div>
+        </div>
       </section>
 
-      <section>
-         <CarrosselDeFilmes
-        
-                  titulo="Filmes Populares"
-                  icone="bi bi-film"
-                  filmes={dummyData}
-                />
-      </section>
-      
+      {/* ===== 2. Carrossel de Gêneros (Layout da Referência) ===== */}
+      <GenreCarousel generos={generos} />
+
+      {/* ===== 3. Carrossel "Mais Populares" (Layout da Referência) ===== */}
+      <CarrosselDeFilmes
+        titulo="Mais Populares"
+        icone="bi bi-fire" 
+        filmes={filmesPopulares}
+      />
+
+      {/* ===== 4. Slider "Como eu era antes de você" (Layout da Referência) ===== */}
       <section className="home-slider-section">
-                <ImageSlider />     {" "}
+        {/* Passa os 5 primeiros filmes recentes para o slider */}
+        <ImageSlider slides={filmesRecentes.slice(0, 5)} /> 
       </section>
-         
+
+      {/* ===== 5. Carrossel "Mais Recentes" (Opcional, mas bom ter) ===== */}
+      <CarrosselDeFilmes
+        titulo="Mais Recentes"
+        icone="bi bi-clock-history"
+        filmes={filmesRecentes}
+      />
     </div>
   );
 };

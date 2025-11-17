@@ -1,45 +1,70 @@
 .filter-modal-content {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.5rem; /* Espaço entre os grupos de formulário */
   font-family: "Montserrat", sans-serif;
 }
 .filter-modal-content h2 {
   font-size: 1.8rem;
   font-weight: 600;
-  margin: 0;
+  margin: 0 0 0.5rem 0; /* Adiciona margem inferior */
   text-align: center;
-  color: #c80710;
+  color: #ffffff; /* Cor branca, como na imagem */
 }
 .filter-form-group {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  flex: 1; /* Faz com que os grupos na linha dividam o espaço */
 }
 .filter-form-group label {
   font-size: 0.9rem;
   font-weight: 500;
   color: #aaa;
 }
-.filter-form-group input {
-  background-color: #333;
+/* Estilo unificado para input e textarea */
+.filter-form-group input,
+.filter-form-group textarea {
+  background-color: #3b3b3b; /* Tom de cinza escuro da imagem */
   border: 1px solid #555;
   border-radius: 8px;
   padding: 0.9rem 1rem;
   color: #fff;
   font-size: 1rem;
   font-family: "Montserrat", sans-serif;
+  height: 50px; /* Altura fixa para inputs */
 }
-.filter-form-group input::placeholder { color: #888; }
+.filter-form-group input::placeholder,
+.filter-form-group textarea::placeholder { 
+  color: #888; 
+  font-family: "Montserrat", sans-serif;
+}
+
+/* Estilo específico para o textarea da sinopse */
+.filter-form-group textarea {
+  height: 120px; /* Altura maior para sinopse */
+  resize: vertical; /* Permite redimensionar verticalmente */
+}
+
+
+/* Para alinhar Ano e Ator lado a lado */
+.filter-form-row {
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem; /* Espaço entre os inputs de ano e ator */
+}
+
+/* Botões com o layout da imagem */
 .filter-modal-actions {
   display: flex;
   width: 100%;
   gap: 1rem;
-  margin-top: 1rem;
+  margin-top: 1.5rem; /* Mais espaço acima dos botões */
+  justify-content: center; /* Centraliza os botões */
 }
 .filter-button {
-  flex: 1; 
   padding: 0.8rem 1rem;
+  min-width: 180px; /* Largura mínima para os botões */
   font-size: 1rem;
   font-weight: 600;
   border: none;
@@ -49,14 +74,14 @@
   font-family: "Montserrat", sans-serif;
 }
 .filter-button.cancel {
-  background-color: #444;
+  background-color: #444; 
   color: #fff;
 }
 .filter-button.cancel:hover {
   background-color: #555;
 }
 .filter-button.confirm {
-  background-color: #c80710;
+  background-color: #c80710; 
   color: #fff;
 }
 .filter-button.confirm:hover {

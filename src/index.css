@@ -1,68 +1,40 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+/* COLE ISTO NO SEU ARQUIVO CSS GLOBAL (index.css ou App.css)
+  Isto vai consertar o fundo branco em todas as páginas.
+*/
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+html {
+  /* Garante que o gradiente cubra a altura toda */
+  min-height: 100%;
 }
 
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
+  font-family: "Montserrat", sans-serif;
+  color: white; /* Define a cor do texto padrão como branca */
+  
+  /* ESTA É A CORREÇÃO:
+    Define o fundo escuro para TODAS as páginas.
+    (Você pode escolher a cor sólida ou o gradiente)
+  */
+  
+  /* Opção 1: Cor Sólida (Mais simples) */
+  background-color: #151515; 
+
+  /* Opção 2: O Gradiente do seu home.css (Mais bonito) */
+  /*
+  background: linear-gradient(135deg, #0d0d0d 0%, #1a0000 40%, #400000 100%);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
   min-height: 100vh;
+  */
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}
+/* Se você copiar o 'body' acima, pode apagar 
+  o 'body' de dentro do seu 'home.css' para não ter duplicatas.
+*/

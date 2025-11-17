@@ -1,44 +1,48 @@
 .carrossel-container {
-    margin: 20px 0;
-    padding-left: 30px;
+    margin: 40px 0; /* Aumenta o espaçamento vertical */
+    /* Remove o padding-left para alinhar com o resto da página */
 }
 
 .carrossel-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-right: 30px;
-    margin-bottom: 10px;
+    /* padding-right: 30px; */ /* Removido para alinhar */
+    margin-bottom: 20px; /* Mais espaço */
+    border-bottom: 1px solid #333; /* Linha separadora como na referência */
+    padding-bottom: 10px;
 }
 
 .carrossel-header h2 {
     color: white;
     font-size: 20px;
-    align-items: center;
+    display: flex; /* Adicionado para alinhar o ícone */
+    align-items: center; /* Adicionado para alinhar o ícone */
     gap: 10px;
     margin: 0;
     font-family: "Montserrat", sans-serif;
+    font-weight: 600;
 }
 
-.carrrossel-nav button {
+.carrossel-nav button {
     background-color: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.2);
     color: #ffffff;
     width: 36px;
     height: 36px;
-    border-radius: 50px;
+    border-radius: 50%;
     cursor: pointer;
     margin-left: 10px;
     transition: background-color 0.3s;
 }
 
-.carrrossel-nav button:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+.carrossel-nav button:hover {
+    background-color: #c80710;
+    border-color: #c80710;
 }
 
 
 /* rolagem dos filmes */
-
 .carrossel-list-container {
     overflow-x: scroll;
     overflow-y: hidden;
@@ -61,12 +65,15 @@
     width: 200px;
     border-radius: 8px;
     overflow: hidden;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: #1a1a1a; /* Fundo para o card */
+    border: 1px solid #333; /* Borda sutil */
 }
 
 .carrossel-card:hover {
     transform: scale(1.05);
     z-index: 10;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
 }
 
 .carrossel-card-poster {
@@ -79,7 +86,6 @@
 .carrossel-card-body {
     padding: 15px;
     color: #ffffff;
-    font-size: 20px;
     font-family: "Montserrat", sans-serif;
 }
 
@@ -89,6 +95,7 @@
     white-space: nowrap; /*quebra se o texto for muito longo*/
     overflow: hidden;
     text-overflow: ellipsis;
+    color: #fff; /* Garante cor */
 }
 
 .carrossel-card-details {
@@ -96,28 +103,27 @@
     justify-content: space-between;
     align-items: center;
     font-size: 0.9rem;
-    color: white;
+    color: #aaa; /* Cor mais suave */
     font-family: "Montserrat", sans-serif;
-    font-size: 16px;
 }
 
 .carrossel-card-details span {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 5px; /* Reduzido o gap */
 }
 
 .carrossel-card-button {
     width: 100%;
     background-color: #C80710;
     padding: 10px;
-    border-radius: 50px;
+    border-radius: 8px; /* Alinhado com o mockup */
     margin-top: 10px;
     border: none;
     color: white;
     font-weight: bold;
     font-family: "Montserrat", sans-serif;
-    font-size: 16px;
+    font-size: 14px; /* Levemente menor */
     cursor: pointer;
     transition: background-color 0.3s;
 }

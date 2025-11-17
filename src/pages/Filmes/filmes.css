@@ -22,6 +22,9 @@
     margin: 40px 0 30px ;
     font-family: "Montserrat", sans-serif;
     gap: 10px;
+    /* Adicionado para o 'gap' funcionar */
+    display: inline-flex;
+    align-items: center;
 }
 
 .title-seemovie {
@@ -29,8 +32,60 @@
     margin-left: 20px;
 }
 
+/* --- BOTÃO DO FILTRO (TAMANHO CORRETO) --- */
+.filter-button {
+    padding: 8px 16px; 
+    border-radius: 8px;
+    color: white;
+    background-color: #c80710;
+    border: 1px solid #c80710;
+    cursor: pointer;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600; 
+    font-size: 14px; 
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0; /* Impede que o botão estique */
+}
+.filter-button:hover {
+    background-color: #e50914;
+}
+
+/* --- Estilos para Filtros Ativos --- */
+.active-filters {
+    padding: 1rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    min-height: 20px;
+    font-family: "Montserrat", sans-serif;
+    color: #aaa;
+    font-size: 14px;
+}
+.filter-tag {
+    background-color: #333;
+    color: #fff;
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+.clear-filters-btn {
+    background: none;
+    border: none;
+    color: #c80710;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: underline;
+    margin-left: 10px;
+}
+
+/* --- REGRA CORRIGIDA (NÃO ESTÁ MAIS QUEBRADA) --- */
 .filmes-grid {
-    margin-top: 40px;
+    margin-top: 20px; 
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     gap: 20px;
@@ -48,16 +103,4 @@
 .page-status.error {
     color:#c80710;
     font-family: "Montserrat, sans-serif";
-}
-
-.filter-button {
-    padding: 12px 20px;
-    border-radius: 8px;
-    color: white;
-    background-color: #c80710;
-    border: 1px solid #c80710;
-    cursor: pointer;
-    font-family: "Montserrat", sans-serif;
-    font-weight: bold;
-    font-size: 16px;
 }

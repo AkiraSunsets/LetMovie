@@ -1,0 +1,85 @@
+/* Contêiner principal do carrossel de gêneros */
+.genre-carousel-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: 30px 0;
+  position: relative;
+}
+
+/* Lista que faz o scroll */
+.genre-list {
+  display: flex;
+  flex-wrap: nowrap; /* Impede que os botões quebrem linha */
+  overflow-x: scroll; /* Permite o scroll horizontal */
+  padding: 10px 0;
+  gap: 12px;
+  flex-grow: 1;
+  
+  /* Esconde a barra de rolagem */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE e Edge */
+}
+.genre-list::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+/* Botão de Gênero Individual */
+.genre-button {
+  flex-shrink: 0; /* Impede que os botões encolham */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background-color: #2C2F3A; /* Cor de fundo do mockup */
+  color: #ffffff;
+  border-radius: 8px;
+  text-decoration: none;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border: 1px solid #444;
+  transition: all 0.2s ease;
+}
+
+.genre-button:hover,
+.genre-button.active {
+  background-color: #c80710; /* Cor ativa vermelha */
+  border-color: #c80710;
+  transform: translateY(-2px);
+}
+
+.genre-button i {
+  font-size: 1rem;
+}
+
+/* Botões de navegação (Setas) */
+.genre-nav-btn {
+  background-color: rgba(44, 47, 58, 0.8);
+  border: 1px solid #444;
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.genre-nav-btn:hover {
+  background-color: #c80710;
+  border-color: #c80710;
+}
+
+.genre-nav-btn.left {
+  margin-right: 10px;
+}
+
+.genre-nav-btn.right {
+  margin-left: 10px;
+}

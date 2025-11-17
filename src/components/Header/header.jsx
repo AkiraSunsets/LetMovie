@@ -122,10 +122,11 @@ const Header = () => {
                         <ul className="nav-list">
                             <li className="nav-item"><NavLink to="/" className={({ isActive }) => (isActive ? "active-link" : "")}>Home</NavLink></li>
                             <li className="nav-item"><NavLink to="/filmes" className={({ isActive }) => (isActive ? "active-link" : "")}>Filmes</NavLink></li>
-                            {/* Link "Adicionar Filme" só aparece para Admin */}
-                            {userRole === "admin" && (
-                                <li className="nav-item"><NavLink to="/adicionarfilmes" className={({ isActive }) => (isActive ? "active-link" : "")}>Adicionar Filme</NavLink></li>
-                            )}
+                            
+                            {/* --- CORREÇÃO AQUI --- */}
+                            {/* O link agora aparece para TODOS os usuários logados */}
+                            <li className="nav-item"><NavLink to="/adicionarfilmes" className={({ isActive }) => (isActive ? "active-link" : "")}>Adicionar Filme</NavLink></li>
+                            
                             <li className="nav-item"><NavLink to="/sobre" className={({ isActive }) => (isActive ? "active-link" : "")}>Sobre</NavLink></li>
                         </ul>
                     </nav>

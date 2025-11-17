@@ -50,7 +50,6 @@ const AdicionarFilmes = () => {
       const data = await response.json();
 
       if (response.ok) {
-
         const successMsg =
           userRole === "admin"
             ? "Filme adicionado com sucesso!"
@@ -70,7 +69,11 @@ const AdicionarFilmes = () => {
           urlposter: "",
           sinopse: "",
         });
-        setTimeout(() => navigate(userRole === 'admin' ? '/filmes' : '/notificacoes'), 2000); // Redireciona
+        
+        // **AJUSTE FEITO AQUI**
+        // Redireciona ambos os usuários para /filmes
+        setTimeout(() => navigate('/filmes'), 2000); 
+
       } else {
         throw new Error(data.message || "Erro ao adicionar filme");
       }

@@ -1,4 +1,3 @@
-
 .header {
     display: flex;
     align-items: center;
@@ -71,7 +70,8 @@ border-bottom-color: #c80710;
 .search-form {
     display: flex;
     align-items: center;
-    background-color: var(--search-bg);
+    /* --- CORREÇÃO DA COR AQUI --- */
+    background-color: rgba(255, 255, 255, 0.1); /* FFFFFF com 10% de opacidade */
     border-radius: 10px;
     padding: 5px 15px;
     width: 300px;
@@ -90,7 +90,7 @@ border-bottom-color: #c80710;
     background: none;
     border: none;
     color: #ffffff;
-    width: 100%;    
+    width: 100%;     
     font-size: 16px;
     outline: none;
 }

@@ -2,32 +2,39 @@
     display: inline-block;
     text-decoration: none;
     color: white;
-    border-radius: 20px;
+    border-radius: 8px; /* Mais alinhado com o design */
     background-color: #C80710;
     font-size: 16px;
     font-family: "Montserrat", sans-serif;
+    font-weight: 600; /* Mais forte */
     padding: 12px 30px;
     cursor: pointer;
-    transition: background-color 0.3s, color 0.3s, transform 0.2s ease;
+    transition: all 0.3s ease;
+    border: 2px solid transparent; /* Borda para o secundário */
 }
 
-.button.primary { /*define a cor do primeiro botão*/
+.button.primary {
     background-color: #C80710;
+    border-color: #C80710;
     color: white;
 }
 
 .button.primary:hover {
-    background-color: #ff000d;
+    background-color: #e50914;
+    border-color: #e50914;
     transform: scale(1.05);
 }
 
-.button.secondary { /*define a cor do segundo botão*/
-    background-color: #0F1015;
-    border: #2C2F3A;
+.button.secondary {
+    /* CORREÇÃO AQUI: Fundo escuro como na referência */
+    background-color: #2C2F3A; 
+    border: 2px solid #2C2F3A; 
+    color: white;
 }
 
 .button.secondary:hover {
-    background-color: #2C2F3A;
+    background-color: #3e424f;
+    border-color: #3e424f;
     color: white;
     transform: scale(1.05);
 }

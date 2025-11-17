@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import 'bootstrap-icons/font/bootstrap-icons.css';
-import './busca.css'; // Você precisará criar este CSS
+import './busca.css';
 
 const PaginaBusca = () => {
     const [searchParams] = useSearchParams();

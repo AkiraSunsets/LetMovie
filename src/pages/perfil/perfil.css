@@ -1,0 +1,105 @@
+.perfil-container {
+    max-width: 900px;
+    margin: 3rem auto;
+    padding: 2rem;
+    color: white;
+    font-family: "Montserrat", sans-serif;
+}
+
+.perfil-card {
+    background-color: #1c1c1c;
+    border: 1px solid #333;
+    border-radius: 12px;
+    padding: 2rem 3rem;
+}
+
+.perfil-title {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 2rem;
+    font-weight: 600;
+    color: #fff;
+    margin: 0 0 2rem 0;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #333;
+}
+.perfil-title i {
+    color: #c80710;
+}
+
+.perfil-content {
+    display: flex;
+    gap: 2rem;
+}
+
+.perfil-avatar {
+    flex-basis: 150px;
+}
+.perfil-avatar img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 3px solid #c80710;
+}
+
+.perfil-info {
+    flex: 1;
+}
+
+.perfil-field {
+    margin-bottom: 1.5rem;
+}
+.perfil-field label {
+    display: block;
+    font-size: 0.9rem;
+    color: #aaa;
+    margin-bottom: 0.5rem;
+}
+.perfil-field span,
+.perfil-field p {
+    display: block;
+    font-size: 1.1rem;
+    color: #fff;
+    background-color: #333;
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    border: 1px solid #555;
+}
+.perfil-field p {
+    min-height: 80px;
+    line-height: 1.5;
+}
+
+.perfil-field-row {
+    display: flex;
+    gap: 1.5rem;
+}
+.perfil-field-row .perfil-field {
+    flex: 1;
+}
+
+.perfil-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 2rem;
+    border-top: 1px solid #333;
+    padding-top: 1.5rem;
+}
+
+.perfil-button-edit {
+    background-color: #c80710;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+.perfil-button-edit:hover {
+    background-color: #e50914;
+}
