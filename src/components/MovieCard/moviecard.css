@@ -35,6 +35,8 @@
 .movie-card-info {
     padding: 16px;
     flex-grow: 1; /* Ocupa espaço */
+    display: flex; /* Adicionado */
+    flex-direction: column; /* Adicionado */
 }
 
 /*titulo do filme*/
@@ -45,8 +47,37 @@
     display: -webkit-box;
     -webkit-box-orient: vertical; 
     overflow: hidden; /*evira que o texto exceda o container*/
-    min-height: 40px; 
+    -webkit-line-clamp: 2; /* Limita o título a 2 linhas */
+    min-height: 44px; /* Garante altura para 2 linhas */
     font-family: "Montserrat", sans-serif;
+}
+
+/* estilo genero*/
+.movie-card-genre {
+    font-size: 13px;
+    color: #aaa;
+    margin-bottom: 8px;
+    font-family: "Montserrat", sans-serif;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 500;
+}
+
+/* estilo sinopse */
+.movie-card-synopsis {
+    font-size: 14px;
+    color: #dddddd;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    font-family: "Montserrat", sans-serif;
+    /* Limita o texto a 3 linhas */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-height: 58px; /* Altura aprox. de 3 linhas */
 }
 
 /*ano do filme*/
@@ -57,6 +88,7 @@
     font-size: 16px;
     color: #dddddd;
     font-family: "Montserrat", sans-serif;
+    margin-top: auto; /* Empurra para o final do card */
 }
 
 /*estrelas*/
