@@ -202,15 +202,15 @@
   color: white;
 }
 .detalhe-button.edit:hover {
-  background-color: #0056b3;
+  background-color: #06466A;
 }
 
 .detalhe-button.delete {
-  background-color: var(--primary-color, #c80710);
+  background-color: #c80710;
   color: white;
 }
 .detalhe-button.delete:hover {
-  background-color: #a0050c;
+  background-color: #e50914;
 }
 
 .detalhe-loading,

@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 //componentes globais
 import { AuthProvider } from "./context/authcontext";
 import Header from "./components/Header/header";
-import Footer from "./components/footer/footer";
+import Footer from "./components/Footer/footer";
 import MainLayout from "./layouts/MainLayout/MainLayout"; 
 import ProtectedRoute from "./layouts/ProtectedRoute/ProtectedRoute";
 

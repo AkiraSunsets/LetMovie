@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import MovieCard from '../../components/MovieCard/MovieCard';
+import MovieCard from '../../components/MovieCard/moviecard';
 import FilterModal from '../../components/PopupFiltros/popupfiltros';
 import './filmes.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
@@ -10,25 +10,27 @@ function useQuery() {
 }
 
 const Filmes = () => {
-    const [filmes, setFilmes] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
-    const [showFilterModal, setShowFilterModal] = useState(false);
+    // States principais
+    const [filmes, setFilmes] = useState([]); // lista de filmes
+    const [loading, setLoading] = useState(true); // controle de loading
+    const [error, setError] = useState(null); // controle de erros
+    const [showFilterModal, setShowFilterModal] = useState(false); // modal de filtros
+
+    const query = useQuery(); // captura query params da URL
     
-    const query = useQuery();
-    
-    // State de filtros com os 5 campos
+    // State de filtros com 5 campos (genero, ano, ator, poster, sinopse)
     const [filters, setFilters] = useState(() => {
-        const generoFromUrl = query.get('genero');
+        const generoFromUrl = query.get('genero'); // verifica se o gênero veio na URL
         return {
             genero: generoFromUrl || '',
             ano: '',
             ator: '',
-            poster: '', // NOVO
-            sinopse: '' // NOVO
+            poster: '', 
+            sinopse: '' 
         };
     });
 
+    // Efeito que busca filmes sempre que filtros mudam
     useEffect(() => {
         const fetchFilmes = async () => {
             setLoading(true);
@@ -36,12 +38,12 @@ const Filmes = () => {
             
             const params = new URLSearchParams();
             
-            // Adiciona todos os 5 filtros se eles existirem
+            // Adiciona cada filtro que estiver preenchido nos parâmetros da URL
             if (filters.genero) params.append('genero', filters.genero);
             if (filters.ano) params.append('ano', filters.ano);
             if (filters.ator) params.append('ator', filters.ator);
-            if (filters.poster) params.append('poster', filters.poster); // NOVO
-            if (filters.sinopse) params.append('sinopse', filters.sinopse); // NOVO
+            if (filters.poster) params.append('poster', filters.poster); 
+            if (filters.sinopse) params.append('sinopse', filters.sinopse); 
 
             try {
                 // Envia os 5 filtros para o backend
@@ -49,30 +51,32 @@ const Filmes = () => {
                 const data = await response.json();
                 
                 if (response.ok) {
-                    setFilmes(data);
+                    setFilmes(data); // popula lista de filmes
                 } else {
-                    throw new Error(data.message || 'Erro ao buscar filmes');
+                    throw new Error(data.message || 'Erro ao buscar filmes'); // captura erro do backend
                 }
             } catch (err) {
-                setError(err.message);
+                setError(err.message); // seta erro
             } finally {
-                setLoading(false);
+                setLoading(false);  // termina loading
             }
         };
         
         fetchFilmes();
-    }, [filters]); 
+    }, [filters]);  // roda sempre que filters mudar
 
+    // Função chamada quando filtros são aplicados no modal
     const handleFilterSubmit = (newFilters) => {
       console.log("Aplicando filtros:", newFilters);
       setFilters(newFilters);
     };
 
-    // Limpa todos os 5 filtros
+    // Limpa todos os filtros
     const handleClearFilters = () => {
         setFilters({ genero: '', ano: '', ator: '', poster: '', sinopse: '' });
     };
 
+    // Renderiza status de carregamento ou erro
     if (loading) return <div className="page-status">Carregando filmes...</div>;
     if (error) return <div className="page-status error">Erro: {error}</div>;
 
@@ -94,7 +98,7 @@ const Filmes = () => {
                 </button>
             </div>
             
-            {/* Exibe todos os 5 filtros ativos */}
+             {/* Exibe filtros ativos */}
             {hasActiveFilters && (
                 <div className="active-filters">
                     <span>Filtros ativos: </span>

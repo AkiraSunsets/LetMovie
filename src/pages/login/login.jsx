@@ -4,35 +4,40 @@ import Autenticacao from "../../layouts/Autenticacao/autenticacao";
 import { useAuth } from "../../context/authcontext";
 
 const Login = () => {
-  const [loginInput, setLoginInput] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const { login } = useAuth();
-  const navigate = useNavigate();
+  // States do formulário
+  const [loginInput, setLoginInput] = useState(""); // Guarda o email ou usuário
+  const [password, setPassword] = useState("");     // Guarda a senha
+  const [error, setError] = useState("");           // Mensagem de erro
+  const { login } = useAuth();                      // Função do contexto de autenticação
+  const navigate = useNavigate();                   // Navegação programática
 
+  // Função chamada quando envia o formulário
   const handleSubmit = async (event) => {
-    event.preventDefault();
-    setError("");
+    event.preventDefault(); // Evita reload da página
+    setError("");           // Limpa erro anterior
 
     try {
+      // Prepara os dados para envio
       const formData = new URLSearchParams();
       formData.append("email", loginInput);
       formData.append("password", password);
 
+      // Chamada ao backend
       const response = await fetch("http://localhost:8000/send_login", {
         method: "POST",
         headers: {
-          "Content-Type": "application/x-form-urlencoded",
+          "Content-Type": "application/x-www-form-urlencoded", // Formulário URL encoded
         },
         body: formData.toString(),
       });
 
-      const data = await response.json();
+      const data = await response.json(); // Recebe resposta
 
       if (response.ok) {
-        login(data.role);
-        navigate("/");
+        login(data.role); // Atualiza contexto de autenticação
+        navigate("/");    // Redireciona para home
       } else {
+        // Mostra erro do backend ou mensagem padrão
         setError(data.message || "Login ou senhas incorretos, tente novamente.");
       }
     } catch (err) {
@@ -44,6 +49,8 @@ const Login = () => {
   return (
     <Autenticacao>
       <h2>Login</h2>
+
+      {/* Formulário de login */}
       <form onSubmit={handleSubmit} className="login-form">
         <label htmlFor="login-input">Login:</label>
         <input
@@ -51,18 +58,21 @@ const Login = () => {
           id="login-input"
           placeholder="Digite seu email ou nome de usuário"
           value={loginInput}
-          onChange={(e) => setLoginInput(e.target.value)}
+          onChange={(e) => setLoginInput(e.target.value)} // Atualiza state
           required
         />
+
         <label htmlFor="password-input">Senha:</label>
         <input
           type="password"
           id="password-input"
           placeholder="Digite sua senha"
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={(e) => setPassword(e.target.value)} // Atualiza state
           required
         />
+
+        {/* Mostra mensagem de erro se existir */}
         {error && (
           <p
             style={{ color: "#E50914", marginTop: "10px", textAlign: "center" }}
@@ -70,10 +80,14 @@ const Login = () => {
             {error}
           </p>
         )}
+
+        {/* Botão de enviar */}
         <button type="submit" className="login-button">
           Entrar
         </button>
       </form>
+
+      {/* Links de ajuda e cadastro */}
       <div className="login-links">
         <Link to="/recuperar-senha" className="forgot-password">
           Esqueceu a senha?

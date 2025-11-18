@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './editarperfil.css'; // Novo CSS
+import './editarperfil.css'; 
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
-// Página Editar Perfil (baseada no mockup image_e8f36e.png)
 // NOTA: O backend não tem uma API de usuário, então esta ação é simulada.
+
 const EditarPerfil = () => {
     const navigate = useNavigate();
     

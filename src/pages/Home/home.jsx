@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "./home.css"; // O CSS NOVO que eu vou te passar
+import "./home.css"; 
 import Button from "../../components/Button/button";
-import ImageSlider from "../../components/ImageSlider/imageslider"; // Seu componente de slider
-import CarrosselDeFilmes from "../../components/CarrosseldeFilmes/carrosseldefilmes"; // Seu componente de carrossel
-import GenreCarousel from "../../components/Generos/generos"; // O carrossel de gêneros
+import ImageSlider from "../../components/ImageSlider/imageslider"; 
+import CarrosselDeFilmes from "../../components/CarrosseldeFilmes/carrosseldefilmes"; 
+import GenreCarousel from "../../components/Generos/generos"; 
 
 const Home = () => {
   const [generos, setGeneros] = useState([]);
@@ -18,14 +18,14 @@ const Home = () => {
     const fetchHomeData = async () => {
       try {
         setLoading(true);
-        // 1. Busca os dados da rota /api/home
+        // Busca os dados da rota /api/home
         const response = await fetch("http://localhost:8000/api/home");
         if (!response.ok) {
           throw new Error(`Falha ao buscar dados: ${response.statusText}`);
         }
         const data = await response.json();
 
-        // 2. Armazena os dados reais nos states
+        // Armazena os dados reais nos states
         setGeneros(data.generos || []);
         setFilmesPopulares(data.filmes_populares || []);
         setFilmesRecentes(data.filmes_recentes || []);
@@ -59,7 +59,7 @@ const Home = () => {
   // Página completa
   return (
     <div className="home-page-container">
-      {/* ===== 1. Seção do Banner "Welcome" (Layout da Referência) ===== */}
+      {/* ===== Seção do Banner "Welcome" ===== */}
       <section className="home-banner">
         <div className="home-banner-content">
           <h1>
@@ -84,23 +84,23 @@ const Home = () => {
         </div>
       </section>
 
-      {/* ===== 2. Carrossel de Gêneros (Layout da Referência) ===== */}
+      {/* ===== Carrossel de Gêneros ===== */}
       <GenreCarousel generos={generos} />
 
-      {/* ===== 3. Carrossel "Mais Populares" (Layout da Referência) ===== */}
+      {/* ===== Carrossel "Mais Populares"  ===== */}
       <CarrosselDeFilmes
         titulo="Mais Populares"
         icone="bi bi-fire" 
         filmes={filmesPopulares}
       />
 
-      {/* ===== 4. Slider "Como eu era antes de você" (Layout da Referência) ===== */}
+      {/* ===== Slider ===== */}
       <section className="home-slider-section">
         {/* Passa os 5 primeiros filmes recentes para o slider */}
         <ImageSlider slides={filmesRecentes.slice(0, 5)} /> 
       </section>
 
-      {/* ===== 5. Carrossel "Mais Recentes" (Opcional, mas bom ter) ===== */}
+      {/* ===== Carrossel "Mais Recentes"  ===== */}
       <CarrosselDeFilmes
         titulo="Mais Recentes"
         icone="bi bi-clock-history"

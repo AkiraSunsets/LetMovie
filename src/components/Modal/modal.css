@@ -17,7 +17,7 @@
       background-color: rgba(21, 21, 21, 0.9);
     border: 1px solid rgba(153, 153, 153, 0.3);
   border-radius: 12px;
-  padding: 2.5rem;
+  padding: 50px;
   width: 90%;
   max-width: 900px; /* Deixa o modal largo para o layout */
   box-shadow: 0 10px 30px rgba(0,0,0,0.5);
@@ -27,8 +27,8 @@
 
 .modal-close-button {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
+  top: 16px;
+  right: 16px;
   background: none;
   border: none;
   color: #888;

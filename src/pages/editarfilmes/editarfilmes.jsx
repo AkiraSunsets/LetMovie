@@ -2,20 +2,23 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import '../../components/MovieForm/movieform.css';
 import "bootstrap-icons/font/bootstrap-icons.css";
-import { useAuth } from "../../context/authcontext"; // 1. Importar o useAuth
+import { useAuth } from "../../context/authcontext"; 
 
+
+//componente principal
 const EditarFilme = () => {
-  const { id } = useParams();
-  const navigate = useNavigate();
-  const { userRole } = useAuth(); // 2. Obter o userRole
-  const [formData, setFormData] = useState(null); // Inicia como null
+  const { id } = useParams(); // Pega o ID do filme da URL
+  const navigate = useNavigate(); // Para navegação programática
+  const { userRole } = useAuth(); // Pega o papel do usuário (admin ou comum)
+  // Estado do formulário
+  const [formData, setFormData] = useState(null); // Dados do filme carregados
   const [status, setStatus] = useState({
     loading: true,
     error: null,
     success: null,
   });
 
-  // 1. Busca os dados atuais do filme
+  // Busca os dados atuais do filme
   useEffect(() => {
     const fetchFilme = async () => {
       setStatus({ loading: true, error: null, success: null });
@@ -31,11 +34,9 @@ const EditarFilme = () => {
             diretor: data.diretores || "",
             ano: data.ano || "",
             duracao: data.tempo_duracao || "",
-            // NOTA: O backend ainda não retorna os IDs de genero/linguagem
-            // Vamos usar placeholders, mas o ideal era o backend retornar
-            id_genero: "1", // Você precisa buscar isso do 'data.generos'
+            id_genero: "1", 
             produtora: data.produtoras || "",
-            id_linguagem: "2", // Você precisa buscar isso do 'data.linguagens'
+            id_linguagem: "2", 
             urlposter: data.poster || "",
             sinopse: data.sinopse || "",
           });
@@ -94,38 +95,41 @@ const EditarFilme = () => {
     }
   };
 
-  if (status.loading) {
-    return (
-      <div
-        style={{
-          color: "white",
-          textAlign: "center",
-          marginTop: "5rem",
-          fontSize: "2rem",
-        }}
-      >
-        Carregando...
-      </div>
-    );
-  }
+if (status.loading) {
+  return (
+    <div
+      style={{
+        color: "white",
+        textAlign: "center",
+        marginTop: "80px",       
+        fontSize: "32px",        
+        fontFamily: '"Montserrat", sans-serif', 
+      }}
+    >
+      Carregando...
+    </div>
+  );
+}
 
-  if (status.error && !formData) {
-     return (
-      <div
-        style={{
-          color: "red",
-          textAlign: "center",
-          marginTop: "5rem",
-          fontSize: "2rem",
-        }}
-      >
-        Erro: {status.error}
-      </div>
-    );
-  }
-  
-  // Se o formData não carregou por algum motivo (mesmo sem erro), não renderiza o form
-  if (!formData) return null;
+if (status.error && !formData) {
+  return (
+    <div
+      style={{
+        color: "red",
+        textAlign: "center",
+        marginTop: "80px",       
+        fontSize: "32px",        
+        fontFamily: '"Montserrat", sans-serif',
+      }}
+    >
+      Erro: {status.error}
+    </div>
+  );
+}
+
+// Se o formData não carregou por algum motivo (mesmo sem erro), não renderiza o form
+if (!formData) return null;
+
 
 
   return (
@@ -136,7 +140,6 @@ const EditarFilme = () => {
           <span className="title-addmovie">Editar Filme</span>
         </h1>
         <form onSubmit={handleSubmit} className="form-filme">
-          {/* Campos do formulário (idênticos ao de Adicionar) */}
           <div className="form-group">
             <label htmlFor="nome">Título do Filme:</label>
             <input

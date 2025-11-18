@@ -4,12 +4,13 @@ import "../../components/MovieForm/movieform.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { useAuth } from "../../context/authcontext";
 
-
 // componente funcional que representa o forms de add filmes
 const AdicionarFilmes = () => {
   const navigate = useNavigate(); //navegação entre paginas
   const { userRole } = useAuth(); //userrole do contexto da autenticação
-  const [formData, setFormData] = useState({ //estado para armazenar os dados do forms
+
+  const [formData, setFormData] = useState({
+    //estado para armazenar os dados do forms
     nome: "",
     atores: "",
     diretor: "",
@@ -31,13 +32,13 @@ const AdicionarFilmes = () => {
 
   //função para atualizar o estado formData quando o usuário digita algo
   const handleChange = (e) => {
-    const { name, value } = e.target; 
+    const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   //função chamada ao enviar o forms
   const handleSubmit = async (e) => {
-    e.preventDefault(); //evita recarregar a página 
+    e.preventDefault(); //evita recarregar a página
     setStatus({ loading: true, error: null, success: null }); //indica que o envio começou
 
     try {
@@ -94,15 +95,14 @@ const AdicionarFilmes = () => {
   };
 
   return (
-
     //container principal
-    <div className="form-page-container"> 
+    <div className="form-page-container">
       <div className="form-filme-container">
         <h1>
           <i className="bi bi-plus-circle-fill"></i>
           <span className="title-addmovie">Adicionar Filme</span>
         </h1>
-        
+
         {/*forms de cadastro de filme */}
         <form onSubmit={handleSubmit} className="form-filme">
           <div className="form-group">
@@ -287,8 +287,8 @@ const AdicionarFilmes = () => {
             </button>
           </div>
         </form>
-        
-         {/* Mensagens de erro e sucesso */}
+
+        {/* Mensagens de erro e sucesso */}
         {status.error && (
           <div className="form-message error">{status.error}</div>
         )}
