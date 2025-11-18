@@ -13,6 +13,12 @@ A plataforma permite que usuários comuns descubram e enviem novos filmes para o
 * **Busca e Filtragem:** O site conta com uma funcionalidade de busca no header e um modal de filtros avançados (por Gênero, Ano, Ator, etc.).
 * **Gerenciamento de Perfil:** Usuários podem visualizar e editar seus perfis.
 
+## 🎨 Design (Figma)
+
+O protótipo de alta fidelidade e o guia de estilo do projeto estão disponíveis no Figma:
+
+* **[Link do Figma: LetMovie](https://www.figma.com/design/f8fInLkXSSzOIzIR6Hgd3c/LetMovie?node-id=2-3&t=G1Ou9W4XivFofvhZ-1)**
+
 ## 💻 Tecnologias Utilizadas
 
 * **Frontend:** React.js
