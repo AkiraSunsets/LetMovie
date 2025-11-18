@@ -1,16 +1,82 @@
-# React + Vite
+# 🎬 LetMovie
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+LetMovie é um projeto de site de gerenciamento de filmes e catálogo de streaming, focado em uma interface visual imersiva e um sistema de gerenciamento de conteúdo moderado.
 
-Currently, two official plugins are available:
+A plataforma permite que usuários comuns descubram e enviem novos filmes para o catálogo, enquanto Administradores têm o poder de aprovar, rejeitar ou excluir envios para manter a qualidade do acervo.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Funcionalidades Principais
 
-## React Compiler
+* **CRUD Completo de Filmes:** Usuários podem Adicionar, Editar e Visualizar filmes.
+* **Sistema de Permissão Dupla:** Diferenciação clara de interface e permissões entre "Usuário Normal" e "Administrador (ADM)".
+* **Moderação de Conteúdo:** Administradores possuem um painel de "Notificações Pendentes" para Aprovar (botão verde) ou Rejeitar (botão vermelho) os envios dos usuários.
+* **Deleção Segura:** Apenas ADMs podem ver o botão "Excluir" e devem confirmar a ação em um modal de segurança.
+* **Busca e Filtragem:** O site conta com uma funcionalidade de busca no header e um modal de filtros avançados (por Gênero, Ano, Ator, etc.).
+* **Gerenciamento de Perfil:** Usuários podem visualizar e editar seus perfis.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 💻 Tecnologias Utilizadas
 
-## Expanding the ESLint configuration
+* **Frontend:** React.js
+* **Backend:** Python (com `http.server` e `mysql.connector`)
+* **Banco de Dados:** MySQL
+* **Estilização:** CSS Puro e CSS Modules
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🔧 Instalação e Execução
+
+Para rodar o projeto localmente, siga os três passos abaixo, na ordem:
+
+### 1. Banco de Dados (MySQL)
+
+Antes de tudo, o banco de dados precisa estar criado e populado.
+
+1.  Abra seu gerenciador de banco de dados (MySQL Workbench, DBeaver, etc.).
+2.  Execute o arquivo `LetMovie.sql` (fornecido no projeto) para criar o banco de dados `LetMovie` e todas as tabelas e dados necessários.
+
+### 2. Backend (Python)
+
+O servidor Python é responsável por se conectar ao banco de dados e fornecer a API para o frontend.
+
+1.  Navegue até a pasta do backend:
+    ```bash
+    cd backend
+    ```
+2.  Crie e ative um ambiente virtual (virtual environment):
+    ```bash
+    py -m venv env
+    .\env\Scripts\activate
+    ```
+3.  Instale as dependências do Python:
+    ```bash
+    pip install -r requirements.txt
+    ```
+4.  **(!) PONTO CRÍTICO: Alterar a senha**
+    * Abra o arquivo `server.py` em um editor de código.
+    * Localize a linha de conexão do `mysql.connector` (próximo à linha 11).
+    * **Altere a senha** no parâmetro `password="root"` para a senha que você usa no seu MySQL.
+    ```python
+    mydb = mysql.connector.connect(
+        host="localhost",
+        user="root",
+        password="SUA_SENHA_AQUI", # Altere aqui
+        database="LetMovie"
+    )
+    ```
+5.  Inicie o servidor:
+    ```bash
+    py server.py
+    ```
+*O backend estará rodando e pronto para receber conexões em `http://localhost:8000`.*
+
+### 3. Frontend (React)
+
+O frontend React consome a API do backend e renderiza a interface do usuário.
+
+1.  Em um **novo terminal**, navegue até a pasta do frontend (pode ser a raiz do projeto):
+2.  Instale os pacotes do Node.js:
+    ```bash
+    npm install
+    ```
+3.  Inicie a aplicação React:
+    ```bash
+    npm run dev
+    ```
+*O site estará acessível no seu navegador, geralmente em `http://localhost:5173`.*
