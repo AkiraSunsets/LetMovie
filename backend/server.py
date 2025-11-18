@@ -90,7 +90,7 @@ class MyHandle(SimpleHTTPRequestHandler):
                 id_ator = self.get_or_create_id(cursor, 'Ator', ator_nome)
                 cursor.execute("INSERT INTO AtorFilme (id_filme, id_ator) VALUES (%s, %s)", (id_filme, id_ator))
     
-    # --- Verificador de Login (Simulado) ---
+    # --- Verificador de Login ---
     def accont_user(self, login, password):
         if login == "admin" and password == "admin123":
             return {"status": "logado", "role": "admin"}
@@ -145,7 +145,7 @@ class MyHandle(SimpleHTTPRequestHandler):
                     """)
                     params.extend([termo_busca, termo_busca, termo_busca])
                 
-                # --- LÓGICA DE FILTRO (ATUALIZADA) ---
+                # --- LÓGICA DE FILTRO ---
                 if 'genero' in query_params and query_params['genero'][0]:
                     where_clauses.append("g.Nome LIKE %s")
                     params.append(f"%{query_params['genero'][0]}%")
@@ -158,7 +158,6 @@ class MyHandle(SimpleHTTPRequestHandler):
                     where_clauses.append("CONCAT(a.Nome, ' ', a.Sobrenome) LIKE %s")
                     params.append(f"%{query_params['ator'][0]}%")
                 
-                # --- NOVOS FILTROS ---
                 if 'poster' in query_params and query_params['poster'][0]:
                     where_clauses.append("f.Poster LIKE %s")
                     params.append(f"%{query_params['poster'][0]}%")
@@ -166,7 +165,6 @@ class MyHandle(SimpleHTTPRequestHandler):
                 if 'sinopse' in query_params and query_params['sinopse'][0]:
                     where_clauses.append("f.Sinopse LIKE %s")
                     params.append(f"%{query_params['sinopse'][0]}%")
-                # --- FIM DOS NOVOS FILTROS ---
                 
                 if where_clauses:
                     sql += " WHERE " + " AND ".join(where_clauses)
@@ -190,7 +188,7 @@ class MyHandle(SimpleHTTPRequestHandler):
                 self.end_headers()
                 self.wfile.write(json.dumps({"error": f"Erro ao buscar filmes: {str(e)}"}).encode("utf-8"))
 
-        # --- ROTA DA HOME (ESSA É A ROTA QUE ESTÁ FALTANDO NO SEU SERVIDOR) ---
+        # --- ROTA DA HOME  ---
         elif path == "/api/home":
             try:
                 if not mydb.is_connected(): mydb.reconnect()
@@ -254,7 +252,6 @@ class MyHandle(SimpleHTTPRequestHandler):
                 self.send_header("Content-type", "application/json; charset=utf-8")
                 self.end_headers()
                 self.wfile.write(json.dumps({"error": f"Erro ao buscar dados da home: {str(e)}"}).encode("utf-8"))
-        # --- FIM DA ROTA DA HOME ---
 
         # Rota API: /api/filme/{id} (Filme individual)
         elif re.match(r"/api/filme/(\d+)", path):
@@ -391,7 +388,7 @@ class MyHandle(SimpleHTTPRequestHandler):
                 if not mydb.is_connected(): mydb.reconnect()
                 cursor = mydb.cursor()
                 
-                # Determina o status baseado no role (REQUISITO CUMPRIDO)
+                # Determina o status baseado no role 
                 status_filme = 'APROVADO' if data['userRole'] == 'admin' else 'PENDENTE'
                 
                 # Salva com o status correto
@@ -448,7 +445,7 @@ class MyHandle(SimpleHTTPRequestHandler):
                 cursor = mydb.cursor()
                 id_filme = int(data['id_filme'])
                 
-                # Edição também força o status PENDENTE se for usuário comum
+                # Força o status PENDENTE se for usuário comum
                 status_filme = 'APROVADO' if data['userRole'] == 'admin' else 'PENDENTE'
                 
                 sql_filme = """
@@ -526,7 +523,7 @@ class MyHandle(SimpleHTTPRequestHandler):
                 mydb.rollback() 
                 send_json_response(500, {"status": "erro", "message": f"Erro ao deletar: {str(e)}"})
         
-        # --- NOVAS ROTAS DE ADMIN ---
+        # --- ROTAS DE ADMIN ---
 
         # Rota POST: /api/filme/aprovar
         elif path == '/api/filme/aprovar':
