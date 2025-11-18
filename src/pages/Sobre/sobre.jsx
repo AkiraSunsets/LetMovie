@@ -3,8 +3,8 @@ import './sobre.css';
 
 const Sobre = () => {
   return (
-    <div>
-      <h1>Página de Adicionar Filmes</h1>
+    <div className='title-about'>
+      <h1>Coming soon...</h1>
     </div>
   );
 };
