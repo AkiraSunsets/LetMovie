@@ -4,15 +4,6 @@ LetMovie é um projeto de site de gerenciamento de filmes e catálogo de streami
 
 A plataforma permite que usuários comuns descubram e enviem novos filmes para o catálogo, enquanto Administradores têm o poder de aprovar, rejeitar ou excluir envios para manter a qualidade do acervo.
 
-<p align="left">
-  <img src="https://cdn.simpleicons.org/react/61DAFB" width="60" />
-  <img src="https://cdn.simpleicons.org/vite/646CFF" width="60" />
-  <img src="https://cdn.simpleicons.org/css3/1572B6" width="60" />
-  <img src="https://cdn.simpleicons.org/python/3776AB" width="60" />
-  <img src="https://cdn.simpleicons.org/bootstrap/7952B3" width="60" />
-  <img src="https://cdn.simpleicons.org/mysql/4479A1" width="60" />
-</p>
-
 ## 🚀 Funcionalidades Principais
 
 * **CRUD Completo de Filmes:** Usuários podem Adicionar, Editar e Visualizar filmes.
@@ -34,6 +25,15 @@ O protótipo de alta fidelidade e o guia de estilo do projeto estão disponívei
 * **Backend:** Python (com `http.server` e `mysql.connector`)
 * **Banco de Dados:** MySQL
 * **Estilização:** CSS Puro e CSS Modules
+
+<p align="left" style="display:flex; gap:20px;">
+  <img src="https://cdn.simpleicons.org/react/61DAFB" width="60" />
+  <img src="https://cdn.simpleicons.org/vite/646CFF" width="60" />
+  <img src="https://cdn.simpleicons.org/css3/1572B6" width="60" />
+  <img src="https://cdn.simpleicons.org/python/3776AB" width="60" />
+  <img src="https://cdn.simpleicons.org/bootstrap/7952B3" width="60" />
+  <img src="https://cdn.simpleicons.org/mysql/4479A1" width="60" />
+</p>
 
 ## 🔧 Instalação e Execução
 
@@ -95,5 +95,6 @@ O frontend React consome a API do backend e renderiza a interface do usuário.
     npm run dev
     ```
 *O site estará acessível no seu navegador, geralmente em `http://localhost:5173`.*
+
 
 
