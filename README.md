@@ -54,7 +54,7 @@ O servidor Python é responsável por se conectar ao banco de dados e fornecer a
     ```bash
     pip install -r requirements.txt
     ```
-4.  **(!) PONTO CRÍTICO: Alterar a senha**
+4.  ** Alterar a senha**
     * Abra o arquivo `server.py` em um editor de código.
     * Localize a linha de conexão do `mysql.connector` (próximo à linha 11).
     * **Altere a senha** no parâmetro `password="root"` para a senha que você usa no seu MySQL.
@@ -86,3 +86,4 @@ O frontend React consome a API do backend e renderiza a interface do usuário.
     npm run dev
     ```
 *O site estará acessível no seu navegador, geralmente em `http://localhost:5173`.*
+
