@@ -27,12 +27,12 @@ O protótipo de alta fidelidade e o guia de estilo do projeto estão disponívei
 * **Estilização:** CSS Puro e CSS Modules
 
 <p align="left" style="display:flex; gap:20px;">
-  <img src="https://cdn.simpleicons.org/react/61DAFB" width="60" />
-  <img src="https://cdn.simpleicons.org/vite/646CFF" width="60" />
-  <img src="https://cdn.simpleicons.org/css3/1572B6" width="60" />
-  <img src="https://cdn.simpleicons.org/python/3776AB" width="60" />
-  <img src="https://cdn.simpleicons.org/bootstrap/7952B3" width="60" />
-  <img src="https://cdn.simpleicons.org/mysql/4479A1" width="60" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" width="60" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg" width="60" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original-wordmark.svg" width="60"/>
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" width="60" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bootstrap/bootstrap-original-wordmark.svg" width="60" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original-wordmark.svg" width="60" />
 </p>
 
 ## 🔧 Instalação e Execução
@@ -95,6 +95,7 @@ O frontend React consome a API do backend e renderiza a interface do usuário.
     npm run dev
     ```
 *O site estará acessível no seu navegador, geralmente em `http://localhost:5173`.*
+
 
 
 
