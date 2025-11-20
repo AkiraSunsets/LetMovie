@@ -76,14 +76,14 @@ const Cadastro = () => {
       </form>
 
        {/* Links de navegação para login */}
-      <div className="login-links">
+      <nav className="login-links">
         <p className="cadastrar">
           <Link to="/login" className="sign-up">
             <span className="signup-white">Já possui uma conta?</span>
             <span className="signup-underline"> Fazer login</span>
           </Link>
         </p>
-      </div>
+      </nav>
     </Autenticacao>
   );
 };

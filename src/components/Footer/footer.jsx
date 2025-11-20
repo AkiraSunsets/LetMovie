@@ -3,15 +3,15 @@ import "../Footer/footer.css";
 
 const Footer = () => {
   return (
-    <footer className="footer-container"> {/* container principal que contem fundo, padding e borda superior */}
-      <div className="footer-content"> {/* agrupa a logo e o texto lado a lado*/}
-        <div className="footer-logo"> {/* logo */}
+    <footer className="footer-container" role="contentinfo"> 
+      <div className="footer-content"> 
+        <div className="footer-logo"> 
           <span className="logo-let">Let</span> 
           <span className="logo-movie">Movie</span>
         </div>
-        <span className="footer-text"> {/*texto informativo*/}
+        <small className="footer-text"> 
           - 2025 | Todos os direitos são reservados.
-        </span>
+        </small>
       </div>
     </footer>
   );

@@ -60,7 +60,7 @@ const Home = () => {
   return (
     <div className="home-page-container">
       {/* ===== Seção do Banner "Welcome" ===== */}
-      <section className="home-banner">
+      <section className="home-banner" aria-label="Boas-vindas">
         <div className="home-banner-content">
           <h1>
             Welcome to Let<span className="logo-movie-span">Movie</span>

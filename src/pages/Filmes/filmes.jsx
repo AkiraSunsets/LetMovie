@@ -84,23 +84,25 @@ const Filmes = () => {
     const hasActiveFilters = filters.genero || filters.ano || filters.ator || filters.poster || filters.sinopse;
 
     return (
-        <div className="filmes-page-container">
-            <div className="filmes-header">
+        <section className="filmes-page-container">
+            
+            <header className="filmes-header">
                 <h1>
-                    <i className="bi bi-film"></i>
+                    <i className="bi bi-film" aria-hidden="true"></i>
                     <span className='title-seemovie'>Nossos Filmes</span>
                 </h1>
                 <button 
                   className="filter-button" 
                   onClick={() => setShowFilterModal(true)}
+                  aria-haspopup="dialog"
                 >
-                    <i className="bi bi-filter"></i> Ver Filtros
+                    <i className="bi bi-filter" aria-hidden="true"></i> Ver Filtros
                 </button>
-            </div>
+            </header>
             
              {/* Exibe filtros ativos */}
             {hasActiveFilters && (
-                <div className="active-filters">
+                <div className="active-filters" role='status'>
                     <span>Filtros ativos: </span>
                     {filters.genero && <span className="filter-tag">Gênero: {filters.genero}</span>}
                     {filters.ano && <span className="filter-tag">Ano: {filters.ano}</span>}
@@ -113,7 +115,7 @@ const Filmes = () => {
                 </div>
             )}
 
-            <div className="filmes-grid">
+            <section className="filmes-grid" aria-label='Lista de filmes'>
               {filmes.length > 0 ? (
                     filmes.map(filme => (
                         <MovieCard key={filme.id_filme} filme={filme} />
@@ -121,7 +123,7 @@ const Filmes = () => {
                 ) : (
                     <p className="page-status">Nenhum filme encontrado para estes filtros.</p>
                 )}
-            </div>
+            </section>
 
             <FilterModal 
               isOpen={showFilterModal}
@@ -129,7 +131,7 @@ const Filmes = () => {
               onFilterSubmit={handleFilterSubmit}
               currentFilters={filters} // Passa os filtros atuais para o modal
             />
-        </div>
+        </section>
     );
 };
 

@@ -38,7 +38,7 @@ const DropdownHeader = ({ trigger, children }) => {
 
             {/* Renderiza o menu somente quando "isOpen" é true */}
             {isOpen && (
-                <div className="dropdown-menu">
+                <div className="dropdown-menu" role="menu">
                     {children}
             </div>
             )}

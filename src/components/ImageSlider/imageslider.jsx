@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from 'react-router-dom';
-import '../ImageSlider/imageslider.css'; 
+import { useNavigate } from "react-router-dom";
+import "../ImageSlider/imageslider.css";
 
 // 1. REMOVIDO O 'slidesData' FALSO
 // const slidesData = [ ... ];
@@ -39,32 +39,36 @@ const ImageSlider = ({ slides = [] }) => {
   }
 
   return (
-    <div className="slider-container">
+    <section className="slider-container" aria-label="Destaques">
       <div
         className="slider-carrossel"
         style={{ transform: `translateX(-${currentIndex * 100}%)` }}
       >
-        {/* 6. Mapeia os 'slides' (filmes) recebidos como prop */}
         {slides.map((slide, index) => (
-          <div className="slide" key={slide.id_filme}> {/* 7. Usa 'id_filme' */}
-            <img 
-                src={slide.poster} // 8. Usa 'poster'
-                alt={slide.nomeFilme} // 9. Usa 'nomeFilme'
-                className="slide-image"
-                onError={(e) => { e.target.src = 'https://placehold.co/1200x500/151515/c80710?text=Poster'; }}
+
+          <article className="slide" key={slide.id_filme}>
+            <img
+              src={slide.poster}
+              alt={`Destaque: ${slide.nomeFilme}`}
+              className="slide-image"
+              onError={(e) => {
+                e.target.src =
+                  "https://placehold.co/1200x500/151515/c80710?text=Poster";
+              }}
             />
             <div className="slide-content">
-              <h2>{slide.nomeFilme}</h2> {/* 10. Usa 'nomeFilme' */}
-              {/* 11. Usa 'sinopse', truncada para não ficar muito grande */}
-              <p>{slide.sinopse ? `${slide.sinopse.substring(0, 150)}...` : ''}</p> 
-              <button 
+              <h2>{slide.nomeFilme}</h2>
+              <p>
+                {slide.sinopse ? `${slide.sinopse.substring(0, 150)}...` : ""}
+              </p>
+              <button
                 className="slide-button"
-                onClick={() => handleVerMais(slide.id_filme)} // 12. Adiciona onClick
+                onClick={() => handleVerMais(slide.id_filme)}
               >
                 Ver Informações
               </button>
             </div>
-          </div>
+          </article>
         ))}
       </div>
 
@@ -78,7 +82,7 @@ const ImageSlider = ({ slides = [] }) => {
           ></div>
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -96,176 +96,198 @@ const AdicionarFilmes = () => {
 
   return (
     //container principal
-    <div className="form-page-container">
+    <section className="form-page-container" aria-labelledby="form-title">
       <div className="form-filme-container">
-        <h1>
-          <i className="bi bi-plus-circle-fill"></i>
+
+        {/* título da página */}
+        <h1 id="form-title">
+          <i className="bi bi-plus-circle-fill" aria-hidden="true"></i>
           <span className="title-addmovie">Adicionar Filme</span>
         </h1>
 
         {/*forms de cadastro de filme */}
         <form onSubmit={handleSubmit} className="form-filme">
-          <div className="form-group">
-            <label htmlFor="nome">Título do Filme:</label>
-            <input
-              type="text"
-              id="nome"
-              name="nome"
-              value={formData.nome}
-              onChange={handleChange}
-              placeholder="Ex: A volta dos que não foram"
-              required
-            />
-          </div>
 
-          <div className="form-group">
-            <label htmlFor="urlposter">URL do Pôster:</label>
-            <input
-              type="url"
-              id="urlposter"
-              name="urlposter"
-              value={formData.urlposter}
-              onChange={handleChange}
-              placeholder="Ex: https://image.com/..."
-              required
-            />
-          </div>
+          {/* Informações básicas */}
+          <fieldset className="form-fieldset">
+            <legend>Informações do Filme</legend>
 
-          <div className="form-row">
             <div className="form-group">
-              <label htmlFor="ano">Ano de Lançamento:</label>
-              <input
-                type="number"
-                id="ano"
-                name="ano"
-                value={formData.ano}
-                onChange={handleChange}
-                placeholder="Ex: 2024"
-                required
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="duracao">Duração (em minutos):</label>
-              <input
-                type="number"
-                id="duracao"
-                name="duracao"
-                value={formData.duracao}
-                onChange={handleChange}
-                placeholder="Ex: 120"
-                required
-              />
-            </div>
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="sinopse">Sinopse:</label>
-            <textarea
-              id="sinopse"
-              name="sinopse"
-              value={formData.sinopse}
-              onChange={handleChange}
-              placeholder="Digite a descrição do filme"
-            />
-          </div>
-
-          <div className="form-row">
-            <div className="form-group">
-              <label htmlFor="diretor">Diretor:</label>
+              <label htmlFor="nome">Título do Filme:</label>
               <input
                 type="text"
-                id="diretor"
-                name="diretor"
-                value={formData.diretor}
+                id="nome"
+                name="nome"
+                value={formData.nome}
                 onChange={handleChange}
-                placeholder="Ex: Christopher Nolan"
+                placeholder="Ex: A volta dos que não foram"
                 required
               />
             </div>
+
             <div className="form-group">
-              <label htmlFor="produtora">Produtora:</label>
+              <label htmlFor="urlposter">URL do Pôster:</label>
+              <input
+                type="url"
+                id="urlposter"
+                name="urlposter"
+                value={formData.urlposter}
+                onChange={handleChange}
+                placeholder="Ex: https://image.com/..."
+                required
+              />
+            </div>
+
+            {/* ano e duração */}
+            <div className="form-row">
+              <div className="form-group">
+                <label htmlFor="ano">Ano de Lançamento:</label>
+                <input
+                  type="number"
+                  id="ano"
+                  name="ano"
+                  value={formData.ano}
+                  onChange={handleChange}
+                  placeholder="Ex: 2024"
+                  required
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="duracao">Duração (em minutos):</label>
+                <input
+                  type="number"
+                  id="duracao"
+                  name="duracao"
+                  value={formData.duracao}
+                  onChange={handleChange}
+                  placeholder="Ex: 120"
+                  required
+                />
+              </div>
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="sinopse">Sinopse:</label>
+              <textarea
+                id="sinopse"
+                name="sinopse"
+                value={formData.sinopse}
+                onChange={handleChange}
+                placeholder="Digite a descrição do filme"
+              />
+            </div>
+          </fieldset>
+
+          {/* ficha técnica */}
+          <fieldset className="form-fieldset">
+            <legend>Ficha Técnica</legend>
+
+            <div className="form-row">
+              <div className="form-group">
+                <label htmlFor="diretor">Diretor:</label>
+                <input
+                  type="text"
+                  id="diretor"
+                  name="diretor"
+                  value={formData.diretor}
+                  onChange={handleChange}
+                  placeholder="Ex: Christopher Nolan"
+                  required
+                />
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="produtora">Produtora:</label>
+                <input
+                  type="text"
+                  id="produtora"
+                  name="produtora"
+                  value={formData.produtora}
+                  onChange={handleChange}
+                  placeholder="Ex: Warner Bros."
+                  required
+                />
+              </div>
+
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="atores">Atores (separados por vírgula):</label>
               <input
                 type="text"
-                id="produtora"
-                name="produtora"
-                value={formData.produtora}
+                id="atores"
+                name="atores"
+                value={formData.atores}
                 onChange={handleChange}
-                placeholder="Ex: Warner Bros."
+                placeholder="Ex: Ator Um, Atriz Dois"
                 required
               />
             </div>
-          </div>
+            </fieldset>
 
-          <div className="form-group">
-            <label htmlFor="atores">Atores (separados por vírgula):</label>
-            <input
-              type="text"
-              id="atores"
-              name="atores"
-              value={formData.atores}
-              onChange={handleChange}
-              placeholder="Ex: Ator Um, Atriz Dois"
-              required
-            />
-          </div>
+            {/* classificação */}
+            <fieldset className="form-fieldset">
+            <legend>Classificação</legend>
 
-          <div className="form-row">
-            <div className="form-group">
-              <label htmlFor="id_genero">Gênero:</label>
-              <select
-                id="id_genero"
-                name="id_genero"
-                value={formData.id_genero}
-                onChange={handleChange}
-              >
-                <option value="1">Romance</option>
-                <option value="2">Drama</option>
-                <option value="3">Ação</option>
-                <option value="4">Ficção Científica</option>
-                <option value="5">Aventura</option>
-                <option value="6">Terror</option>
-                <option value="7">Mistério</option>
-                <option value="8">Suspense</option>
-                <option value="9">Biografia</option>
-                <option value="10">Comédia</option>
-                <option value="11">Crime</option>
-                <option value="12">Animação</option>
-                <option value="13">Musical</option>
-                <option value="14">Fantasia</option>
-                <option value="15">Documentário</option>
-                <option value="16">Comédia Romântica</option>
-                <option value="17">Policial</option>
-              </select>
+            <div className="form-row">
+              <div className="form-group">
+                <label htmlFor="id_genero">Gênero:</label>
+                <select
+                  id="id_genero"
+                  name="id_genero"
+                  value={formData.id_genero}
+                  onChange={handleChange}
+                >
+                  <option value="1">Romance</option>
+                  <option value="2">Drama</option>
+                  <option value="3">Ação</option>
+                  <option value="4">Ficção Científica</option>
+                  <option value="5">Aventura</option>
+                  <option value="6">Terror</option>
+                  <option value="7">Mistério</option>
+                  <option value="8">Suspense</option>
+                  <option value="9">Biografia</option>
+                  <option value="10">Comédia</option>
+                  <option value="11">Crime</option>
+                  <option value="12">Animação</option>
+                  <option value="13">Musical</option>
+                  <option value="14">Fantasia</option>
+                  <option value="15">Documentário</option>
+                  <option value="16">Comédia Romântica</option>
+                  <option value="17">Policial</option>
+                </select>
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="id_linguagem">Linguagem Original:</label>
+                <select
+                  id="id_linguagem"
+                  name="id_linguagem"
+                  value={formData.id_linguagem}
+                  onChange={handleChange}
+                >
+                  <option value="1">Português</option>
+                  <option value="2">Inglês</option>
+                  <option value="3">Espanhol</option>
+                  <option value="4">Francês</option>
+                  <option value="5">Alemão</option>
+                  <option value="6">Italiano</option>
+                  <option value="7">Japonês</option>
+                  <option value="8">Chinês</option>
+                  <option value="9">Coreano</option>
+                  <option value="10">Russo</option>
+                  <option value="11">Árabe</option>
+                  <option value="12">Grego</option>
+                  <option value="13">Turco</option>
+                  <option value="14">Sueco</option>
+                  <option value="15">Hebraico</option>
+                  <option value="16">Tailandês</option>
+                </select>
+              </div>
             </div>
+          </fieldset>
 
-            <div className="form-group">
-              <label htmlFor="id_linguagem">Linguagem Original:</label>
-              <select
-                id="id_linguagem"
-                name="id_linguagem"
-                value={formData.id_linguagem}
-                onChange={handleChange}
-              >
-                <option value="1">Português</option>
-                <option value="2">Inglês</option>
-                <option value="3">Espanhol</option>
-                <option value="4">Francês</option>
-                <option value="5">Alemão</option>
-                <option value="6">Italiano</option>
-                <option value="7">Japonês</option>
-                <option value="8">Chinês</option>
-                <option value="9">Coreano</option>
-                <option value="10">Russo</option>
-                <option value="11">Árabe</option>
-                <option value="12">Grego</option>
-                <option value="13">Turco</option>
-                <option value="14">Sueco</option>
-                <option value="15">Hebraico</option>
-                <option value="16">Tailandês</option>
-              </select>
-            </div>
-          </div>
-
+          {/* botões de ação */}
           <div className="form-actions">
             <button
               type="button"
@@ -274,6 +296,7 @@ const AdicionarFilmes = () => {
             >
               Cancelar
             </button>
+
             <button
               type="submit"
               className="form-button submit"
@@ -296,7 +319,7 @@ const AdicionarFilmes = () => {
           <div className="form-message success">{status.success}</div>
         )}
       </div>
-    </div>
+    </section>
   );
 };
 

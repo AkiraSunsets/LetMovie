@@ -41,14 +41,14 @@ const PaginaBusca = () => {
     }, [query]); // Re-busca sempre que a query na URL mudar
 
     return (
-        <div className="busca-container"> 
+        <section className="busca-container" aria-live='polite'> 
             <h1>Resultados da Busca por: 
                 <span>"{query}"</span>
                 </h1> {/* Título com destaque para a query */}
 
             {/* Mensagem de carregamento */}
             {loading && <p>Buscando...</p>}
-            {error && <p className="busca-error">Erro: {error}</p>}
+            {error && <p className="busca-error" role='alert'>Erro: {error}</p>}
 
             {/* Caso não encontre filmes */}
             {!loading && !error && filmes.length === 0 && (
@@ -78,7 +78,7 @@ const PaginaBusca = () => {
                     ))}
                 </div>
             )}
-        </div>
+        </section>
     );
 };
 

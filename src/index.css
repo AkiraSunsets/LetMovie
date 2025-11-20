@@ -11,6 +11,17 @@ html {
 
 body {
   font-family: "Montserrat", sans-serif;
-  color: white; /* Define a cor do texto padrão como branca */
+  color: white;
   background-color: #151515; 
+}
+
+/* Reset para tags semânticas não terem margens surpresas */
+figure {
+  margin: 0;
+  padding: 0;
+  display: block; /* Garante que se comporte como uma div */
+}
+
+nav, section, article, header, footer, aside {
+  display: block; /* Garante comportamento de bloco em navegadores antigos */
 }

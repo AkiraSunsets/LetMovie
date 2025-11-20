@@ -38,7 +38,7 @@ const FilterModal = ({ isOpen, onClose, onFilterSubmit, currentFilters }) => {
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
-      <div className="filter-modal-content">
+      <form className="filter-modal-content">
         <h2>Filtre seus filmes de forma personalizada!</h2>
         
         {/* Campo genero */}
@@ -109,7 +109,7 @@ const FilterModal = ({ isOpen, onClose, onFilterSubmit, currentFilters }) => {
             Filtrar
           </button>
         </div>
-      </div>
+      </form>
     </Modal>
   );
 };

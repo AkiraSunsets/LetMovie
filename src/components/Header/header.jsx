@@ -3,36 +3,31 @@ import { NavLink, Link, useNavigate, useLocation } from "react-router-dom";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "./header.css";
 import DropdownHeader from "../DropdownHeader/dropdownheader";
-import { useAuth } from "../../context/authcontext"; //utilizado para mostrar headers diferentes para usuários/admins/sem logar
+import { useAuth } from "../../context/authcontext"; 
 
 const Header = () => {
-  const [searchTerm, setSearchTerm] = useState(""); //armazena o texto digitado na barra de pesquisa
-  const { userRole, logout } = useAuth(); // recebe o usuário e função de logout
-  const location = useLocation(); //detecta rota atual
-  const navigate = useNavigate(); //hook de navegação
+  const [searchTerm, setSearchTerm] = useState(""); 
+  const { userRole, logout } = useAuth(); 
+  const location = useLocation(); 
+  const navigate = useNavigate(); 
 
-  // Estado para notificações (somente admins)
   const [notificacoes, setNotificacoes] = useState([]);
 
-  //detecta se a pagina atual é login ou cadastro
   const isAuthPage =
     location.pathname === "/login" || location.pathname === "/cadastro";
 
-  // Busca notificações se for admin
   useEffect(() => {
     if (userRole === "admin") {
       const fetchNotificacoes = async () => {
         try {
-          // Busca API de filmes pendentes
           const response = await fetch(
             "http://localhost:8000/api/filmes/pendentes"
           );
           const data = await response.json();
           if (response.ok) {
-            //se estiver ok, exibe filmes pendentes
             setNotificacoes(data);
           } else {
-            console.error("Erro ao buscar notificações:", data.message); // se não, exibe mensagem de erro
+            console.error("Erro ao buscar notificações:", data.message); 
           }
         } catch (err) {
           console.error("Erro de rede ao buscar notificações:", err);
@@ -40,34 +35,27 @@ const Header = () => {
       };
       fetchNotificacoes();
     } else {
-      setNotificacoes([]); // Limpa se não for admin
+      setNotificacoes([]); 
     }
-  }, [userRole, location]); // Recarrega se a role ou a rota mudar
+  }, [userRole, location]); 
 
-  //quando o usuário envia o search
   const handleSearchSubmit = (event) => {
     event.preventDefault();
-
-    //redireciona para a página de busca com o resultado da pesquisa
     if (searchTerm.trim()) {
       navigate(`/busca?query=${encodeURIComponent(searchTerm.trim())}`);
       setSearchTerm("");
     }
   };
 
-  //logout e redirecionamento para a pagina login
   const handleLogout = () => {
     logout();
     navigate("/login");
   };
 
-  //menu de usuário
   const ProfileMenu = () => (
-    <>
+    <nav className="profile-menu-nav" aria-label="Menu de usuário">
       <div className="profile-menu-header">
-        <i className="bi bi-person-circle header-avatar-icon"></i>
-        
-        {/* mostra se o usuário é admin ou user */}
+        <i className="bi bi-person-circle header-avatar-icon" aria-hidden="true"></i>
         <span className="profile-menu-user">
           {userRole === "admin" ? "Administrador" : "Usuário Comum"}
         </span>
@@ -75,51 +63,42 @@ const Header = () => {
       <ul className="profile-menu-list">
         <li>
           <Link to="/perfil" className="profile-menu-item">
-            <i className="bi bi-person-fill"></i>
+            <i className="bi bi-person-fill" aria-hidden="true"></i>
             <span>Meu Perfil</span>
           </Link>
         </li>
-
         <li>
           <Link to="/editarperfil" className="profile-menu-item">
-            <i className="bi bi-gear-fill"></i>
+            <i className="bi bi-gear-fill" aria-hidden="true"></i>
             <span>Editar Perfil</span>
           </Link>
         </li>
-
-
-        {/*apenas admins conseguem ver as notificações */}
         {userRole === "admin" && (
-          <>
-            <li>
-              <Link to="/notificacoes" className="profile-menu-item">
-                <i className="bi bi-bell-fill"></i>
-                <span>Ver Notificações</span>
-              </Link>
-            </li>
-          </>
+          <li>
+            <Link to="/notificacoes" className="profile-menu-item">
+              <i className="bi bi-bell-fill" aria-hidden="true"></i>
+              <span>Ver Notificações</span>
+            </Link>
+          </li>
         )}
-
-        {/* botão de logout */}
         <li
           style={{ cursor: "pointer" }}
           className="profile-menu-item logout"
           onClick={handleLogout}
+          role="button" // Importante para acessibilidade em li clicável
         >
-          <i className="bi bi-box-arrow-right"></i>
+          <i className="bi bi-box-arrow-right" aria-hidden="true"></i>
           <span>Sair</span>
         </li>
       </ul>
-    </>
+    </nav>
   );
 
-  // Menu de notificações
   const NotificationsMenu = () => (
-    <>
+    <div className="notification-container"> {/* Mantém div ou section pequena */}
       <div className="notificacoes-menu-header">Notificações</div>
       <ul className="notifications-list">
         {notificacoes.length > 0 ? (
-          // Mostra só as 3 mais recentes no dropdown
           notificacoes.slice(0, 3).map((filme) => (
             <li className="notifications-item" key={filme.id_filme}>
               <span className="notifications-item-text">
@@ -135,10 +114,10 @@ const Header = () => {
           </li>
         )}
       </ul>
-      <Link to="/notificacoes" className="notification-view-link"> {/* botão para ir para a página completa */}
+      <Link to="/notificacoes" className="notification-view-link"> 
         Ver todas
       </Link>
-    </>
+    </div>
   );
 
   return (
@@ -150,10 +129,9 @@ const Header = () => {
         </Link>
       </div>
 
-      {/* Só mostra o menu se o usuário estiver logado */}
       {!isAuthPage && userRole && (
         <>
-          <nav className="nav-main">
+          <nav className="nav-main" aria-label="Navegação principal">
             <ul className="nav-list">
               <li className="nav-item">
                 <NavLink
@@ -171,8 +149,6 @@ const Header = () => {
                   Filmes
                 </NavLink>
               </li>
-
-            {/* link de adicionar filmes (todos os usuários possuem acesso) */}
               <li className="nav-item">
                 <NavLink
                   to="/adicionarfilmes"
@@ -181,7 +157,6 @@ const Header = () => {
                   Adicionar Filme
                 </NavLink>
               </li>
-
               <li className="nav-item">
                 <NavLink
                   to="/sobre"
@@ -193,36 +168,31 @@ const Header = () => {
             </ul>
           </nav>
 
-        {/* area direita do header */}
           <div className="header-right-section">
-
-            {/* barra de busca */}
-            <form className="search-form" onSubmit={handleSearchSubmit}>
+            <form className="search-form" onSubmit={handleSearchSubmit} role="search">
               <input
                 type="text"
                 placeholder="Buscar filmes..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="search-input"
+                aria-label="Buscar filmes"
               />
               <button
                 type="submit"
                 className="search-button"
                 aria-label="Buscar"
               >
-                <i className="bi bi-search"></i>
+                <i className="bi bi-search" aria-hidden="true"></i>
               </button>
             </form>
 
-            {/* icones da direita com popup */}
             <div className="section-icons">
               {userRole === "admin" && (
                 <DropdownHeader
                   trigger={
-
                     <button className="icon-button" aria-label="Notificações">
-                      <i className="bi bi-bell"></i>
-
+                      <i className="bi bi-bell" aria-hidden="true"></i>
                       {notificacoes.length > 0 && (
                         <span className="notification-badge">
                           {notificacoes.length}
@@ -235,11 +205,10 @@ const Header = () => {
                 </DropdownHeader>
               )}
 
-            {/* menu de usuário */}
               <DropdownHeader 
                 trigger={
                   <button className="icon-button" aria-label="Conta de Usuário">
-                    <i className="bi bi-person-circle header-avatar-icon"></i>
+                    <i className="bi bi-person-circle header-avatar-icon" aria-hidden="true"></i>
                   </button>
                 }
               >

@@ -72,9 +72,9 @@ const Notificacoes = () => {
     }
 
     return (
-        <div className="notificacoes-container">
+        <section className="notificacoes-container" aria-labelledby='notific-title'>
             <h1>
-                <i className="bi bi-bell-fill"></i>
+                <i className="bi bi-bell-fill" aria-hidden="true"></i>
                 <span className='title-notificacoes'>
                     Notificações Pendentes
                 </span>
@@ -111,7 +111,7 @@ const Notificacoes = () => {
                     ))}
                 </ul>
             )}
-        </div>
+        </section>
     );
 };
 

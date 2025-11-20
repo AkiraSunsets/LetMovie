@@ -1,11 +1,11 @@
 import React, { useRef } from "react";
 import './carrosseldefilmes.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
-import { useNavigate } from 'react-router-dom'; // Importar o useNavigate
+import { useNavigate } from 'react-router-dom';
 
 const CarrosselDeFilmes = ({ titulo, icone, filmes }) => {
     const listRef = useRef(null);
-    const navigate = useNavigate(); // Hook para navegação
+    const navigate = useNavigate();
 
     const handleScrollLeft = () => {
         if (listRef.current) {
@@ -19,56 +19,51 @@ const CarrosselDeFilmes = ({ titulo, icone, filmes }) => {
         }
     };
 
-    // Função para o botão "Ver Mais"
     const handleVerMais = (filmeId) => {
         navigate(`/filme/${filmeId}`);
     };
 
-    // Se não houver filmes, não mostra nada
     if (!filmes || filmes.length === 0) {
         return null; 
     }
 
     return (
-        <div className="carrossel-container">
+        <section className="carrossel-container" aria-label={`Seção de filmes ${titulo}`}>
             <div className="carrossel-header">
                 <h2>
-                    {/* Corrigido para a cor vermelha e espaçamento */}
-                    {icone && <i className={`${icone}`} style={{ color: '#c80710', marginRight: '10px' }}></i>}
+                    {icone && <i className={`${icone}`} style={{ color: '#c80710', marginRight: '10px' }} aria-hidden="true"></i>}
                     {titulo}
                 </h2>
-                <div className="carrossel-nav">
+                <nav className="carrossel-nav"> 
                     <button onClick={handleScrollLeft} aria-label="Rolar para esquerda">
                         <i className="bi bi-chevron-left"></i>
                     </button>
                     <button onClick={handleScrollRight} aria-label="Rolar para direita">
                         <i className="bi bi-chevron-right"></i>
                     </button>
-                </div>
+                </nav>
             </div>
 
             <div className="carrossel-list-container" ref={listRef}>
                 <div className="carrossel-list">
-                    {/* 1. Mapeia os 'filmes' recebidos como prop */}
                     {filmes.map((filme) => (
-                        <div className="carrossel-card" key={filme.id_filme}> {/* 2. USA 'id_filme' */}
+
+                        <article className="carrossel-card" key={filme.id_filme}> 
                             <img 
-                                src={filme.poster} // 3. USA 'poster'
-                                alt={filme.nomeFilme} // 4. USA 'nomeFilme'
+                                src={filme.poster} 
+                                alt={filme.nomeFilme} 
                                 className="carrossel-card-poster"
-                                // Fallback para imagem quebrada
                                 onError={(e) => { e.target.src = 'https://placehold.co/200x300/151515/c80710?text=Poster'; }}
                             />
                             <div className="carrossel-card-body">
-                                <h4>{filme.nomeFilme}</h4> {/* 5. USA 'nomeFilme' */}
+                                <h4>{filme.nomeFilme}</h4> 
                                 <div className="carrossel-card-details">
-                                    <span>{filme.ano}</span> {/* 6. USA 'ano' */}
+                                    <span>{filme.ano}</span> 
                                     <span>
                                         <i className="bi bi-star-fill" style={{ color: '#f5c518' }}></i>
-                                        4.1 {/* 7. Rating fixo (como no mockup) */}
+                                        4.1 
                                     </span>
                                 </div>
-                                {/* 8. Adiciona onClick para navegar */}
                                 <button 
                                     className="carrossel-card-button"
                                     onClick={() => handleVerMais(filme.id_filme)}
@@ -76,11 +71,11 @@ const CarrosselDeFilmes = ({ titulo, icone, filmes }) => {
                                     Ver Mais
                                 </button>
                             </div>
-                        </div>
+                        </article>
                     ))}
                 </div>
             </div>
-        </div>
+        </section>
     );
 };
 

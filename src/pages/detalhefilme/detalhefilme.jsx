@@ -138,7 +138,7 @@ const DetalheFilme = () => {
       ></div>
 
       <div className="detalhe-content">
-        <div className="detalhe-poster">
+        <div className="detalhe-poster">z
           <img
             src={filme.poster}
             alt={`Pôster de ${filme.nomeFilme}`}

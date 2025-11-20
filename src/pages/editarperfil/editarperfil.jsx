@@ -22,7 +22,7 @@ const EditarPerfil = () => {
     };
 
     return (
-        <div className="edit-perfil-container">
+        <section className="edit-perfil-container">
             <div className="edit-perfil-card">
                 <h1 className="edit-perfil-title">
                     <i className="bi bi-pencil-fill"></i>
@@ -88,7 +88,7 @@ const EditarPerfil = () => {
                     </div>
                 </form>
             </div>
-        </div>
+        </section>
     );
 };
 
