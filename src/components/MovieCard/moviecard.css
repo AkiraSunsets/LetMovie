@@ -25,9 +25,9 @@
 }
 
 .movie-card-poster {
-    margin: 0;   /* REMOVE a margem padrão do navegador */
+    margin: 0;  
     padding: 0;
-    width: 100%; /* Garante que o container ocupe a largura do card */
+    width: 100%; 
     display: block;
     aspect-ratio: 2/3;
     position: relative;
