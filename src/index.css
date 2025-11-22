@@ -1,29 +1,26 @@
-/* 1. Reset Básico (Mantém o layout organizado) */
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-/* 2. Garante que a página ocupe toda a tela */
+
 html, body {
   width: 100%;
   min-height: 100vh;
   margin: 0;
 }
 
-/* 3. O Fundo "Preto -> Vermelho" (Fixo) */
 body {
-  /* Gradiente idêntico ao seu Figma */
+
   background: linear-gradient(
     to bottom, 
-    #000000 0%,         /* Começa Preto Puro no topo */
-    #2B0A0A 61%,        /* Vira Vinho Escuro em 60% da tela */
-    #2B0A0A 100%        /* Continua Vinho até o fim */
+    #000000 0%,         
+    #2B0A0A 61%,        
+    #2B0A0A 100%        
   );
 
-  /* O Pulo do Gato: background-attachment: fixed 
-     Isso "cola" o gradiente na tela. Mesmo rolando, o preto fica no topo visual. */
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
