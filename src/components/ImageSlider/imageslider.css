@@ -1,6 +1,6 @@
 /*container principal*/
 .slider-container {
-  max-width: 1200px; 
+  max-width: 1500px; 
   margin: 20px auto; 
   position: relative; 
   overflow: hidden; /* Esconde os slides que estão fora */

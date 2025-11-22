@@ -1,12 +1,34 @@
-/* index.css ou App.css */
-body {
+
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+html, body, #root {
+  width: 100%;
   min-height: 100vh;
-  background: linear-gradient(to bottom right, #000000 29.18%, #2B0A0A 71.98%, #2B0A0A 98.8%);
-  background-attachment: fixed; /* mantém o gradiente fixo no scroll */
-  background-repeat: no-repeat;
-  background-size: cover;
+}
+
+body {
+  background: linear-gradient(
+    to bottom, 
+    #000000 0%, 
+    #2B0A0A 61%, 
+    #2B0A0A 100%
+  );
+
+  background-attachment: fixed;
+  background-size: cover;       
+  background-repeat: no-repeat; 
+  
+  /* Tipografia padrão */
   color: white;
   font-family: "Montserrat", sans-serif;
+  overflow-x: hidden; 
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
 }

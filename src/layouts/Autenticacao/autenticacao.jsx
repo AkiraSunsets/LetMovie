@@ -1,24 +1,33 @@
 import React from "react";
 import "./autenticacao.css";
 
+/*
+  Layout semântico para páginas de autenticação.
+  Usa <main>, <section>, <figure> e <article> adequadamente.
+*/
 const Autenticacao = ({ children }) => {
   return (
-    <section className="login-page">
-      <div className="login-container">
-        <div className="login-content">
-          <figure className="login-image">
+    <main className="login-page"> {/* Área principal da página */}
+
+      <section className="login-container"> {/* Conteúdo central da página */}
+        
+        <article className="login-content"> {/* Bloco que agrupa imagem + formulário */}
+
+          <figure className="login-image"> {/* pipoca e claquete */}
             <img
-              src={
-                new URL("../../assets/images/popcorn.svg", import.meta.url).href
-              }
-              alt="Ilustração de pipoca e claquete" 
+              src={new URL("../../assets/images/popcorn.svg", import.meta.url).href}
+              alt="Ilustração de pipoca e claquete"
             />
           </figure>
 
-          <div className="login-form-content">{children}</div>
-        </div>
-      </div>
-    </section>
+          <section className="login-form-content"> {/* Região onde o formulário será exibido */}
+            {children}
+          </section>
+
+        </article>
+      </section>
+
+    </main>
   );
 };
 

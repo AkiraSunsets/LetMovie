@@ -25,7 +25,6 @@ const ConfirmModal = ({ show, onClose, onConfirm, title, message }) => {
   );
 };
 
-
 // componente detalhe filme
 const DetalheFilme = () => {
   const { id } = useParams(); //pega o id do filme da url
@@ -129,108 +128,112 @@ const DetalheFilme = () => {
       />
 
     {/* container principal do detalhe */}
-    <div className="detalhe-container">
+      <main className="detalhe-container">
 
-      {/* poster */}
-      <div
-        className="detalhe-backdrop"
-        style={{ backgroundImage: `url(${filme.poster})` }}
-      ></div>
+        {/* Imagem de fundo (cobrindo toda a tela) */}
+        <div
+          className="detalhe-backdrop"
+          style={{ backgroundImage: `url(${filme.poster})` }}
+        />
 
-      <div className="detalhe-content">
-        <div className="detalhe-poster">z
-          <img
-            src={filme.poster}
-            alt={`Pôster de ${filme.nomeFilme}`}
-            onError={(e) => {
-              e.target.onerror = null;
-              e.target.src =
-                "https://placehold.co/300x450/151515/E50914?text=Imagem+Indisponivel";
-            }}
-          />
-        </div>
+        {/* CARD COM AS INFORMAÇÕES */}
+        <article className="detalhe-content">
 
-        {/* informações do filme */}
-        <div className="detalhe-info">
-          <h1 className="detalhe-title">
-            {filme.nomeFilme}
-            <span className="detalhe-year">({filme.ano})</span>
-          </h1>
+          {/* Poster grande na esquerda */}
+          <div className="detalhe-poster">
+            <img
+              src={filme.poster}
+              alt={`Pôster de ${filme.nomeFilme}`}
+              onError={(e) => {
+                e.target.onerror = null;
+                e.target.src =
+                  "https://placehold.co/300x450/151515/E50914?text=Imagem+Indisponivel";
+              }}
+            />
+          </div>
 
-          {/* duração e estrelas */}
-          <div className="detalhe-meta">
-            <span>{filme.tempo_duracao} min</span>
-            <span className="detalhe-rating">
-              <i className="bi bi-star-fill"></i>
-              {rating}
-            </span>
-          </div>
-          
-          {/* generos */}
-          <div className="detalhes-generos">
-            {filme.generos?.split(",").map((g) => (
-              <span key={g.trim()} className="detalhe-genero-tag">
-                {g.trim()}
-              </span>
-            ))}
-          </div>
+          {/* Informações do filme */}
+          <header className="detalhe-info">
+            <h1 className="detalhe-title">
+              {filme.nomeFilme}
+              <span className="detalhe-year">({filme.ano})</span>
+            </h1>
 
-          {/* sinopse */}
+            {/* Duração + Nota */}
+            <div className="detalhe-meta">
+              <span>{filme.tempo_duracao} min</span>
+              <span className="detalhe-rating">
+                <i className="bi bi-star-fill"></i>
+                {rating}
+              </span>
+            </div>
 
-          <h3 className="detalhe-subtitle">Sinopse:</h3>
-          <p className="detalhe-sinopse">
-            {filme.sinopse || "Nenhuma sinopse disponível."}
-          </p>
+            {/* Lista de gêneros */}
+            <div className="detalhes-generos">
+              {filme.generos?.split(",").map((g) => (
+                <span key={g.trim()} className="detalhe-genero-tag">
+                  {g.trim()}
+                </span>
+              ))}
+            </div>
 
-          {/* elenco */}
-          <div className="detalhe-crew">
-            <div className="crew-item">
-              <strong>Diretor(es):</strong>
-              <span>{filme.diretores || "Não informado"}</span>
-            </div>
-            <div className="crew-item">
-              <strong>Produtora(s):</strong>
-              <span>{filme.produtoras || "Não informado"}</span>
-            </div>
-            <div className="crew-item full">
-              <strong>Elenco:</strong>
-              <span>{filme.atores || "Não informado"}</span>
-            </div>
-          </div>
+            {/* Sinopse */}
+            <h3 className="detalhe-subtitle">Sinopse:</h3>
+            <p className="detalhe-sinopse">
+              {filme.sinopse || "Nenhuma sinopse disponível."}
+            </p>
 
-          {/* botoes de acao */}
-          <div className="detalhe-actions">
-            {/* Botão Voltar */}
-            <button
-              onClick={() => navigate(-1)}
-              className="detalhe-button back"
-            >
-              <i className="bi bi-arrow-left-circle"></i> Voltar
-            </button>
+            {/* Ficha técnica */}
+            <div className="detalhe-crew">
+              <div className="crew-item">
+                <strong>Diretor(es):</strong>
+                <span>{filme.diretores || "Não informado"}</span>
+              </div>
 
-            {/*qualquer usuário pode editar */}
-            <Link
-              to={`/editarfilme/${filme.id_filme}`}
-              className="detalhe-button edit"
-            >
-              <i className="bi bi-pencil-fill"></i> Editar
-            </Link>
+              <div className="crew-item">
+                <strong>Produtora(s):</strong>
+                <span>{filme.produtoras || "Não informado"}</span>
+              </div>
 
-            {/* EXCLUIR – restrito ao admin */}
-            {userRole === "admin" && (
-              <button
-                onClick={handleDeleteClick} //abrir o modal
-                className="detalhe-button delete"
-              >
-                <i className="bi bi-trash-fill"></i> Excluir
-              </button>
-            )}
-          </div>
-        </div>
-      </div>
-    </div>
+              <div className="crew-item full">
+                <strong>Elenco:</strong>
+                <span>{filme.atores || "Não informado"}</span>
+              </div>
+            </div>
+
+            {/* Botões */}
+            <div className="detalhe-actions">
+              {/* Voltar */}
+              <button
+                onClick={() => navigate(-1)}
+                className="detalhe-button back"
+              >
+                <i className="bi bi-arrow-left-circle"></i>
+                Voltar
+              </button>
+
+              {/* Editar */}
+              <Link to={`/editarfilme/${filme.id_filme}`} className="detalhe-button edit">
+                <i className="bi bi-pencil-fill"></i>
+                Editar
+              </Link>
+
+              {/* Excluir — só admin vê */}
+              {userRole === "admin" && (
+                <button
+                  onClick={handleDeleteClick}
+                  className="detalhe-button delete"
+                >
+                  <i className="bi bi-trash-fill"></i>
+                  Excluir
+                </button>
+              )}
+            </div>
+          </header>
+        </article>
+      </main>
     </>
-  );
+  );
 };
 
 export default DetalheFilme;

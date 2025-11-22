@@ -16,7 +16,7 @@ body {
 /* Container principal da homepage */
 .home-page-container {
   width: 100%;
-  max-width: 1200px;             
+  max-width: 1500px;             
   margin: 0 auto;                
   padding: 0 40px;               
   box-sizing: border-box;
@@ -36,11 +36,7 @@ body {
   padding: 20px;                 
   margin-top: 30px;
   margin-bottom: 30px;
-  box-sizing: border-box;
-  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)); /* Sobreposição escura */
-  background-size: cover;
-  background-position: center;
-  border-radius: 12px;          
+  box-sizing: border-box;     
 }
 
 /* Conteúdo do banner */
@@ -85,8 +81,7 @@ body {
 
 /* Mensagens de loading ou erro */
 .home-status-message {
-  min-height: 80vh;              /* Ocupa pelo menos 80% da altura da tela */
-  display: flex;
+  min-height: 80vh;             
   flex-direction: column; 
   align-items: center;
   justify-content: center;

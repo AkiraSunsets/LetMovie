@@ -21,23 +21,39 @@ const EditarPerfil = () => {
         navigate('/perfil'); // Volta para a página de perfil
     };
 
-    return (
+      return (
+        // Seção principal da página
         <section className="edit-perfil-container">
             <div className="edit-perfil-card">
+                
+                {/* Título da página */}
                 <h1 className="edit-perfil-title">
                     <i className="bi bi-pencil-fill"></i>
                     Editar Perfil
                 </h1>
                 
+                {/* Formulário de edição */}
                 <form onSubmit={handleSubmit}>
+
+                    {/* Área do avatar */}
                     <div className="edit-perfil-avatar-section">
-                        <img src="https://placehold.co/120x120/c80710/white?text=User" alt="Avatar" />
+                        <img 
+                            src="https://i.pinimg.com/1200x/62/45/44/624544c54200da39b9fd507498509092.jpg" 
+                            alt="Avatar" 
+                        />
+                        
+                        {/* Botões para mudar/remover a foto */}
                         <div className="edit-perfil-avatar-actions">
-                            <button type="button" className="avatar-button change">Mudar Foto</button>
-                            <button type="button" className="avatar-button remove">Remover Foto</button>
+                            <button type="button" className="avatar-button change">
+                                Mudar Foto
+                            </button>
+                            <button type="button" className="avatar-button remove">
+                                Remover Foto
+                            </button>
                         </div>
                     </div>
 
+                    {/* Campo: Nome */}
                     <div className="edit-perfil-field">
                         <label htmlFor="nome">Nome Completo:</label>
                         <input 
@@ -48,6 +64,7 @@ const EditarPerfil = () => {
                         />
                     </div>
                     
+                    {/* Linha com Gênero e Data de Nascimento */}
                     <div className="edit-perfil-field-row">
                         <div className="edit-perfil-field">
                             <label htmlFor="genero">Gênero:</label>
@@ -58,6 +75,7 @@ const EditarPerfil = () => {
                                 onChange={(e) => setGenero(e.target.value)} 
                             />
                         </div>
+
                         <div className="edit-perfil-field">
                             <label htmlFor="dataNasc">Data de Nascimento:</label>
                             <input 
@@ -69,6 +87,7 @@ const EditarPerfil = () => {
                         </div>
                     </div>
                     
+                    {/* Campo: Sobre mim */}
                     <div className="edit-perfil-field">
                         <label htmlFor="sobreMim">Sobre mim:</label>
                         <textarea 
@@ -78,10 +97,16 @@ const EditarPerfil = () => {
                         />
                     </div>
 
+                    {/* Botões de ação */}
                     <div className="edit-perfil-actions">
-                        <button type="button" className="edit-perfil-button cancel" onClick={() => navigate(-1)}>
+                        <button 
+                            type="button" 
+                            className="edit-perfil-button cancel" 
+                            onClick={() => navigate(-1)}
+                        >
                             Cancelar
                         </button>
+
                         <button type="submit" className="edit-perfil-button save">
                             Salvar
                         </button>

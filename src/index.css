@@ -2,28 +2,27 @@
 body {
   font-family: "Montserrat", sans-serif;
   color: white;
-  background-color: #151515; 
 }
 
-/* Reset para tags semânticas não terem margens surpresas */
+
 figure {
   margin: 0;
   padding: 0;
-  display: block; /* Garante que se comporte como uma div */
+  display: block; 
 }
 
 nav, section, article, header, footer, aside {
-  display: block; /* Garante comportamento de bloco em navegadores antigos */
+  display: block;
 }
 
 * {
-  box-sizing: border-box; /* Faz o padding ficar DENTRO da largura, não fora */
+  box-sizing: border-box; 
   margin: 0;
   padding: 0;
 }
 
 body, html {
   width: 100%;
-  overflow-x: hidden; /* Proíbe rolagem lateral na página inteira */
+  overflow-x: hidden; 
   max-width: 100vw;
 }

@@ -16,13 +16,13 @@
 }
 
 .sobre-header h1 {
-    font-size: clamp(32px, 5vw, 48px); /* Responsivo */
+    font-size: clamp(32px, 5vw, 48px); 
     font-weight: 700;
     margin-bottom: 10px;
 }
 
 .text-highlight {
-    color: #c80710; /* Vermelho da marca */
+    color: #c80710; 
 }
 
 .sobre-subtitle {
@@ -56,7 +56,7 @@
     border-color: #c80710;
 }
 
-/* Destaque para o card acadêmico (opcional) */
+/* Destaque para o card acadêmico */
 .sobre-card.highlight {
     background: linear-gradient(145deg, #1a1a1a 0%, #250505 100%);
 }
@@ -107,8 +107,6 @@
 /* Rodapé interno */
 .sobre-footer {
     text-align: center;
-    padding-top: 40px;
-    border-top: 1px solid #333333;
 }
 
 .heart-icon {
@@ -116,18 +114,3 @@
     animation: beat 1s infinite;
 }
 
-@keyframes beat {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.2); }
-}
-
-/* Responsividade */
-@media (max-width: 768px) {
-    .sobre-header h1 {
-        font-size: 32px;
-    }
-    
-    .sobre-content {
-        grid-template-columns: 1fr; /* 1 coluna no celular */
-    }
-}

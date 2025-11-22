@@ -17,7 +17,8 @@ const Sobre = () => {
       </header>
 
       <div className="sobre-content">
-        {/* Artigo Principal: O Projeto */}
+
+        {/* O Projeto */}
         <article className="sobre-card">
           <div className="icon-box">
             <i className="bi bi-camera-reels-fill" aria-hidden="true"></i>
@@ -31,24 +32,24 @@ const Sobre = () => {
           </p>
         </article>
 
-        {/* Artigo Secundário: Tecnologia */}
+        {/* Tecnologias */}
         <article className="sobre-card">
           <div className="icon-box">
             <i className="bi bi-code-slash" aria-hidden="true"></i>
           </div>
-          <h2>Tecnologia</h2>
+          <h2>Tecnologias</h2>
           <p>
             Este projeto é uma Aplicação de Página Única (SPA) moderna, construída para ser rápida e responsiva.
           </p>
           <ul className="tech-list">
             <li><strong>Frontend:</strong> React.js + Vite</li>
-            <li><strong>Estilização:</strong> CSS Modules (Design System Próprio)</li>
+            <li><strong>Estilização:</strong> CSS3</li>
             <li><strong>Backend:</strong> Python (API REST)</li>
             <li><strong>Banco de Dados:</strong> MySQL</li>
           </ul>
         </article>
 
-        {/* Artigo Terciário: Contexto Acadêmico */}
+        {/*Contexto Acadêmico */}
         <article className="sobre-card highlight">
           <div className="icon-box">
             <i className="bi bi-mortarboard-fill" aria-hidden="true"></i>
@@ -65,7 +66,7 @@ const Sobre = () => {
 
       {/* Rodapé da Seção com Créditos */}
       <footer className="sobre-footer">
-        <p>Desenvolvido com <i className="bi bi-heart-fill heart-icon"></i> por <strong>[Seu Nome Aqui]</strong></p>
+        <p>Desenvolvido com <i className="bi bi-heart-fill heart-icon"></i> por <strong>Ketlyn L. N. de Araújo (Akira Sunsets)</strong></p>
       </footer>
 
     </section>
