@@ -1,23 +1,21 @@
 .carrossel-container {
-    margin: 40px 0; /* Aumenta o espaçamento vertical */
-    /* Remove o padding-left para alinhar com o resto da página */
+    margin: 40px 0;
 }
 
 .carrossel-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* padding-right: 30px; */ /* Removido para alinhar */
-    margin-bottom: 20px; /* Mais espaço */
-    border-bottom: 1px solid #333333; /* Linha separadora como na referência */
+    margin-bottom: 20px; 
+    border-bottom: 1px solid #333333; 
     padding-bottom: 10px;
 }
 
 .carrossel-header h2 {
     color: white;
     font-size: 20px;
-    display: flex; /* Adicionado para alinhar o ícone */
-    align-items: center; /* Adicionado para alinhar o ícone */
+    display: flex; 
+    align-items: center; 
     gap: 10px;
     margin: 0;
     font-family: "Montserrat", sans-serif;
@@ -66,8 +64,7 @@
     border-radius: 8px;
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    background-color: #1a1a1a; /* Fundo para o card */
-    border: 1px solid #333333; /* Borda sutil */
+    border: 1px solid #333333; 
 }
 
 .carrossel-card:hover {
@@ -95,7 +92,7 @@
     white-space: nowrap; /*quebra se o texto for muito longo*/
     overflow: hidden;
     text-overflow: ellipsis;
-    color: #fff; /* Garante cor */
+    color: #ffffff; 
 }
 
 .carrossel-card-details {
@@ -103,32 +100,32 @@
     justify-content: space-between;
     align-items: center;
     font-size: 0.9rem;
-    color: #aaa; /* Cor mais suave */
+    color: #aaaaaa;
     font-family: "Montserrat", sans-serif;
 }
 
 .carrossel-card-details span {
     display: flex;
     align-items: center;
-    gap: 5px; /* Reduzido o gap */
+    gap: 5px;
 }
 
 .carrossel-card-button {
     width: 100%;
     background-color: #C80710;
     padding: 10px;
-    border-radius: 8px; /* Alinhado com o mockup */
+    border-radius: 8px;
     margin-top: 10px;
     border: none;
     color: white;
     font-weight: bold;
     font-family: "Montserrat", sans-serif;
-    font-size: 14px; /* Levemente menor */
+    font-size: 14px;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
 .carrossel-card-button:hover {
     background-color: #e50914;
-
 }
+
