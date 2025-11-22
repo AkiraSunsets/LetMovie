@@ -177,3 +177,71 @@ border-bottom-color: #c80710;
   font-size: 22px;
   color: #ffffff;
 }
+
+/*modal de logout*/
+
+/*conteudo do componente logout*/
+.logout-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 24px;
+    padding: 10px;
+    font-family: "Montserrat", sans-serif;
+}
+
+/* titulo centralizado*/
+.logout-title {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+/*paragrafo de alerta*/
+.logout-text {
+    margin: 0;
+    font-size: 18px;
+    color: #dddddd;
+}
+
+/*botões de ação do logout*/
+.logout-actions {
+    display: flex;
+    gap: 16px;
+    width: 100%;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+/*botões de ação*/
+.logout-button {
+    padding: 12px 32px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: background 0.2s;
+    font-family: "Montserrat", sans-serif;
+    font-size: 16px;
+    color: white;
+    min-width: 120px;
+}
+
+.logout-button.cancel {
+    background-color: #555555;
+    color: #ffffff;
+    border: 1px solid #444444;
+}
+
+.logout-button.cancel:hover {
+    background: #444444;
+}
+
+.logout-button.confirm {
+    background-color: #B21919;
+}
+
+.logout-button.confirm:hover {
+    background-color: #B02A37;
+}

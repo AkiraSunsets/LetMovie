@@ -46,6 +46,8 @@ const GenreCarousel = ({ generos }) => {
       className="genre-carousel-container"
       aria-label="Filtros de Gênero"
     >
+
+      {/* botão de navegação para rolar para a esquerda */}
       <button
         className="genre-nav-btn left"
         onClick={() => scroll("left")}
@@ -54,6 +56,7 @@ const GenreCarousel = ({ generos }) => {
         <i className="bi bi-chevron-left"></i>
       </button>
 
+      {/* lista horizontal de generos */}
       <div className="genre-list" ref={scrollRef} role="list">
         {generos.map((genero) => (
           <Link
@@ -71,6 +74,7 @@ const GenreCarousel = ({ generos }) => {
         ))}
       </div>
 
+      {/* botão de navegação para a direita */}
       <button
         className="genre-nav-btn right"
         onClick={() => scroll("right")}

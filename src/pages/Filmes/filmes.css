@@ -85,12 +85,13 @@
     margin-left: 10px;
 }
 
-/* --- REGRA CORRIGIDA (NÃO ESTÁ MAIS QUEBRADA) --- */
 .filmes-grid {
     margin-top: 20px; 
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     gap: 20px;
+    width: 100%;
+    padding-bottom: 40px;
 }
 
 .page-status {

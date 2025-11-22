@@ -147,8 +147,8 @@ class MyHandle(SimpleHTTPRequestHandler):
                 
                 # --- LÓGICA DE FILTRO ---
                 if 'genero' in query_params and query_params['genero'][0]:
-                    where_clauses.append("g.Nome LIKE %s")
-                    params.append(f"%{query_params['genero'][0]}%")
+                    where_clauses.append("g.Nome = %s")             
+                    params.append(query_params['genero'][0])        
 
                 if 'ano' in query_params and query_params['ano'][0]:
                     where_clauses.append("f.Ano = %s")

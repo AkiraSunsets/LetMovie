@@ -1,7 +1,133 @@
-.title-about h1 {
+/* Container Principal */
+.sobre-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+    box-sizing: border-box;
     color: white;
-    text-align: center;
-    margin-top: 50px;
-    margin-bottom: 50px;
     font-family: "Montserrat", sans-serif;
+}
+
+/* Cabeçalho */
+.sobre-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.sobre-header h1 {
+    font-size: clamp(32px, 5vw, 48px); /* Responsivo */
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.text-highlight {
+    color: #c80710; /* Vermelho da marca */
+}
+
+.sobre-subtitle {
+    font-size: 18px;
+    color: #aaaaaa;
+    font-weight: 300;
+}
+
+/* Grid de Conteúdo */
+.sobre-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+/* Cards Informativos */
+.sobre-card {
+    background-color: #1a1a1a;
+    border: 1px solid #333333;
+    border-radius: 12px;
+    padding: 32px;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.sobre-card:hover {
+    transform: translateY(-5px);
+    border-color: #c80710;
+}
+
+/* Destaque para o card acadêmico (opcional) */
+.sobre-card.highlight {
+    background: linear-gradient(145deg, #1a1a1a 0%, #250505 100%);
+}
+
+/* Ícones dentro dos cards */
+.icon-box {
+    background-color: rgba(200, 7, 16, 0.1);
+    color: #c80710;
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.sobre-card h2 {
+    font-size: 22px;
+    margin-bottom: 16px;
+    color: #ffffff;
+}
+
+.sobre-card p {
+    font-size: 16px;
+    color: #dddddd;
+    line-height: 1.6;
+    margin-bottom: 16px;
+}
+
+/* Lista de Tecnologias */
+.tech-list {
+    list-style: none;
+    padding: 0;
+}
+
+.tech-list li {
+    margin-bottom: 8px;
+    color: #dddddd;
+    font-size: 15px;
+}
+
+.tech-list strong {
+    color: #c80710;
+}
+
+/* Rodapé interno */
+.sobre-footer {
+    text-align: center;
+    padding-top: 40px;
+    border-top: 1px solid #333333;
+}
+
+.heart-icon {
+    color: #c80710;
+    animation: beat 1s infinite;
+}
+
+@keyframes beat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .sobre-header h1 {
+        font-size: 32px;
+    }
+    
+    .sobre-content {
+        grid-template-columns: 1fr; /* 1 coluna no celular */
+    }
 }
