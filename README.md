@@ -11,7 +11,7 @@ A plataforma permite que usuários comuns descubram e enviem novos filmes para o
 * **Moderação de Conteúdo:** Administradores possuem um painel de "Notificações Pendentes" para Aprovar (botão verde) ou Rejeitar (botão vermelho) os envios dos usuários.
 * **Deleção Segura:** Apenas ADMs podem ver o botão "Excluir" e devem confirmar a ação em um modal de segurança.
 * **Busca e Filtragem:** O site conta com uma funcionalidade de busca no header e um modal de filtros avançados (por Gênero, Ano, Ator, etc.).
-* **Gerenciamento de Perfil:** Usuários podem visualizar e editar seus perfis.
+* **Gerenciamento de Perfil:** Usuários podem visualizar e editar seus perfis (simulado).
 
 ## 🎨 Design (Figma)
 
@@ -95,6 +95,7 @@ O frontend React consome a API do backend e renderiza a interface do usuário.
     npm run dev
     ```
 *O site estará acessível no seu navegador, geralmente em `http://localhost:5173`.*
+
 
 
 
